@@ -8,17 +8,35 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+
 import axios from 'axios';
+import { Button, ButtonGroup } from '@mui/material';
+
 
 export function ShowEmployee() {
     const [Employees, setEmployees] = useState([])
+    const [Id, setId] = useState()
     useEffect(() => {
+        getUsers()
+    }, [])
+    function getUsers() {
         axios.get('http://localhost:5000/users').then(res => {
             console.log(res.data);
             setEmployees(res.data)
         })
-
-    },[])
+    }
+    function del(id, e) {
+        let idParse = id.toString()
+        let ID = {
+            "id": idParse
+        }
+        console.log("ID",ID);
+        axios.delete('http://localhost:5000/users/del/', {data:ID})
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+    }
     return (
         <>
             <TableContainer component={Paper}>
@@ -36,11 +54,13 @@ export function ShowEmployee() {
                             <TableCell align="right">วันเริ่มงาน</TableCell>
                             <TableCell align="right">วันเกิด</TableCell>
                             <TableCell align="right">เพศ</TableCell>
+                            <TableCell align="right"></TableCell>
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {Employees.map((row) => (
-                            <TableRow key={row.number_id}>
+                        {Employees.map((row, index) => (
+                            <TableRow key={row.id}>
                                 <TableCell component="th" scope="row">
                                     {row.number_id}
                                 </TableCell>
@@ -53,11 +73,21 @@ export function ShowEmployee() {
                                 <TableCell align="right">{row.start_date}</TableCell>
                                 <TableCell align="right">{row.date_of_birth}</TableCell>
                                 <TableCell align="right">{row.sex}</TableCell>
+                                <TableCell align="center">
+                                    <ButtonGroup color="primary" aria-label="outlined primary button group">
+                                        {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}
+                                        <Button onClick={() => del(row.id)}>Delete!</Button>
+                                    </ButtonGroup>
+                                </TableCell>
+                        
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
+            <>
+                {Id}
+            </>
         </>
     )
 }
