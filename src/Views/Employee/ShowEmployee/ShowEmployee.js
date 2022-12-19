@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { apiGet } from "../../../../Service/api";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,7 +8,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { apiGet } from "../../../../Service/api";
 
 
 import axios from 'axios';
@@ -20,16 +20,10 @@ export function ShowEmployee() {
     useEffect(() => {
         getUsers()
     }, [])
-        function getUsers() {
-        let getData = apiGet()
-        getData.then(res =>{
-            console.log(res.data);
-            setEmployees(res.data)
-        })
-        // axios.get('http://localhost:5000/users').then(res => {
-        //     console.log(res.data);
-        //     
-        // })
+    async function getUsers() {
+        const res = await apiGet()
+        console.log("res",res.data);
+        setEmployees(res.data)
     }
     function del(id, e) {
         let idParse = id.toString()
@@ -41,7 +35,7 @@ export function ShowEmployee() {
             .then(res => {
                 console.log(res);
                 console.log(res.data);
-                getUsers()
+                getUsers();
             })
     }
     return (
