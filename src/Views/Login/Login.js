@@ -31,7 +31,7 @@ export default function Login() {
         console.log(user, "-", password);
         // let user = params
         if (user && password == 'Natinan S.') {
-            navigate('/ShowEmployee')
+            navigate('/Employee/ShowEmployee')
             // window.location.href = '/ShowEmployee' 
         }
         else if (user != 'Natinan S.') {
@@ -47,6 +47,11 @@ export default function Login() {
                 <Grid
                     item
                     xs={12}
+                    container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justifyContent="center"
                 >
 
                     <div className='login'>
@@ -76,10 +81,10 @@ export default function Login() {
                         style={{margin:'10px auto'}}
                         /> */}
                         <FormControl sx={{ top: 10, width: '100%' }} variant="outlined">
-                            
+
                             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                             <OutlinedInput
-                                
+
                                 id="password"
                                 type={showPassword ? 'text' : 'password'}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -98,11 +103,19 @@ export default function Login() {
                                 label="Password"
                             />
                         </FormControl>
+                        <div className='Button'>
+                            {/* <Button variant="outlined" onClick={() => {
+                                login()
+                            }}
 
-                        <Button variant="outlined" onClick={() => {
-                            login()
+                            >Login</Button> */}
+                            <Button variant="outlined" fullWidth onClick={() => {
+                                login()
+                            }}
+                            >Login</Button>
+                        </div>
 
-                        }} style={{ marginTop: '2%', marginLeft: '93.5%' }}>Login</Button>
+
                     </div>
                 </Grid>
             </Container>

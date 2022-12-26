@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -6,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { apiUpdate } from "../../../Service/api";
 
 export default function UserCreate() {
 
@@ -36,8 +37,8 @@ export default function UserCreate() {
           alert(res.data)
           if (res['status'] === 200) {
             // window.location.href = '/';
+            navigate("/Employee/ShowEmployee")
             console.log("!!!!!!!!!!");
-            navigate('/ShowEmployee')
           }
           console.log(res.data);
         }
@@ -174,7 +175,6 @@ export default function UserCreate() {
             fullWidth
             variant="contained"
             color="primary"
-
           >
             Create
           </Button>

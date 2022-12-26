@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { apiGet } from "../../../../Service/api";
+import { useNavigate } from "react-router-dom";
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { apiGet } from "../../../Service/api";
 
 
 import axios from 'axios';
@@ -17,26 +18,44 @@ import { Button, ButtonGroup } from '@mui/material';
 export function ShowEmployee() {
     const [Employees, setEmployees] = useState([])
     const [Id, setId] = useState()
+    const navigate = useNavigate()
     useEffect(() => {
         getUsers()
     }, [])
-    async function getUsers() {
-        const res = await apiGet()
-        console.log("res",res.data);
-        setEmployees(res.data)
+    function getUsers() {
+        let getData = apiGet()
+        getData.then(res => {
+            console.log(res.data);
+            setEmployees(res.data)
+        })
+        // axios.get('http://localhost:5000/users').then(res => {
+        //     console.log(res.data);
+        //     
+        // })
     }
     function del(id, e) {
         let idParse = id.toString()
         let ID = {
             "id": idParse
         }
-        console.log("ID",ID);
-        axios.delete('http://localhost:5000/users/del/', {data:ID})
+        console.log("ID", ID);
+        axios.delete('http://localhost:5000/users/del/', { data: ID })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
-                getUsers();
+
+                getUsers()
             })
+    }
+    function update_employee(ID) {
+        let idParse = ID.toString();
+        navigate('/Employee/update', {
+            state: {
+                id: idParse
+            }
+        })
+
+
     }
     return (
         <>
@@ -75,12 +94,15 @@ export function ShowEmployee() {
                                 <TableCell align="right">{row.date_of_birth}</TableCell>
                                 <TableCell align="right">{row.sex}</TableCell>
                                 <TableCell align="center">
-                                    <ButtonGroup color="primary" aria-label="outlined primary button group">
+                                    <ButtonGroup aria-label="outlined primary button group">
                                         {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}
-                                        <Button onClick={() => del(row.id)}>Delete!</Button>
+
+                                        <Button color="primary" onClick={() => update_employee(row.id)}>Edit</Button>
+                                        <Button color="error" onClick={() => del(row.id)}>Delete!</Button>
+
                                     </ButtonGroup>
                                 </TableCell>
-                        
+
                             </TableRow>
                         ))}
                     </TableBody>
