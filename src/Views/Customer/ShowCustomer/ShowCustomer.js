@@ -8,7 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { apiGet,apiGetCustomer } from "../../../Service/api";
+import { apiDeleteCustomer, apiGet,apiGetCustomer } from "../../../Service/api";
 
 
 import axios from 'axios';
@@ -33,18 +33,17 @@ export default function ShowCustomer(){
         // })
     }
     function del(id, e) {
-        // let idParse = id.toString()
-        // let ID = {
-        //     "id": idParse
-        // }
-        // console.log("ID", ID);
-        // axios.delete('http://localhost:5000/users/del/', { data: ID })
-        //     .then(res => {
-        //         console.log(res);
-        //         console.log(res.data);
-
-        //         GetCustomer ()
-        //     })
+        let idParse = id.toString()
+        let ID = {
+            "number_id": idParse
+        }
+        console.log("ID", ID);
+        apiDeleteCustomer(ID)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                GetCustomer ()
+            })
     }
     function update_employee(ID) {
         // let idParse = ID.toString();
@@ -94,8 +93,8 @@ export default function ShowCustomer(){
                             <ButtonGroup aria-label="outlined primary button group">
                                 {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}
 
-                                <Button color="primary" onClick={() => update_employee(row.id)}>Edit</Button>
-                                <Button color="error" onClick={() => del(row.id)}>Delete!</Button>
+                                <Button color="primary" onClick={() => update_employee(row.number_id)}>Edit</Button>
+                                <Button color="error" onClick={() => del(row.number_id)}>Delete!</Button>
 
                             </ButtonGroup>
                         </TableCell>
