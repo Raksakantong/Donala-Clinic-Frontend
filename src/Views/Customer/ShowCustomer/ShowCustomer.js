@@ -45,13 +45,14 @@ export default function ShowCustomer(){
                 GetCustomer ()
             })
     }
-    function update_employee(ID) {
-        // let idParse = ID.toString();
-        // navigate('/Employee/update', {
-        //     state: {
-        //         id: idParse
-        //     }
-        // })
+    function update_customer(ID) {
+        console.log("number id == ",ID);
+        let idParse = ID.toString();
+        navigate('/customer/updateCustomer', {
+            state: {
+                id: idParse
+            }
+        })
 
 
     }
@@ -93,7 +94,7 @@ export default function ShowCustomer(){
                             <ButtonGroup aria-label="outlined primary button group">
                                 {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}
 
-                                <Button color="primary" onClick={() => update_employee(row.number_id)}>Edit</Button>
+                                <Button color="primary" onClick={() => update_customer(row.number_id)}>Edit</Button>
                                 <Button color="error" onClick={() => del(row.number_id)}>Delete!</Button>
 
                             </ButtonGroup>

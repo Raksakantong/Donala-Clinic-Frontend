@@ -13,7 +13,11 @@ const apiUpdate = async (data) => {
 
 //Customer APIs Methods
 const apiGetCustomer = async() =>{
-    return await axios.get('http://localhost:5000/customer/all')
+    return await axios.get('http://localhost:5000/customer/')
+};
+
+const apiGetSomeCustomer = async(ID) =>{
+  return await axios.get(`http://localhost:5000/customer/${ID}`)
 };
 
 const apiAddCustomer = async(data) =>{
@@ -22,6 +26,8 @@ const apiAddCustomer = async(data) =>{
 const apiDeleteCustomer = async(dataID) =>{
   return await axios.delete('http://localhost:5000/customer/delete', { data: dataID })
 }
+const apiUpdateCustomer = async (data) => {
+  return await axios.put("http://localhost:5000/customer/update");
+};
 
-
-export { apiGet, apiGetSomeUser, apiUpdate,apiGetCustomer,apiAddCustomer,apiDeleteCustomer };
+export { apiGet, apiGetSomeUser, apiUpdate,apiGetCustomer,apiAddCustomer,apiDeleteCustomer,apiUpdateCustomer,apiGetSomeCustomer };

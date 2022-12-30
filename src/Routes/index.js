@@ -7,6 +7,7 @@ import UpdateEmployee from "../Views/Employee/UpdateEmployee/UpdateEmployee";
 import  Login  from "../Views/Login/Login";
 import AddCustomer from "../Views/Customer/AddCustomer/AddCustomer";
 import ShowCustomer from "../Views/Customer/ShowCustomer/ShowCustomer";
+import UpdateCustomer from "../Views/Customer/UpdateCustomer/UpdateCustomer";
 
 export default function Routes1() {
   return (
@@ -21,7 +22,7 @@ export default function Routes1() {
       <Route exact path='/Employee/update' element={<UpdateEmployee />} />
       <Route exact path='/customer/showCustomers' element={<ShowCustomer />} />
       <Route exact path='/customer/AddCustomer' element={<AddCustomer />} />
-
+      <Route exact path='/customer/updateCustomer' element={<UpdateCustomer />} />
     </Routes>
   </BrowserRouter>
 

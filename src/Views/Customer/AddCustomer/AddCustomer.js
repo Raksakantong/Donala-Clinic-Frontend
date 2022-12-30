@@ -17,9 +17,9 @@ const AddCustomer = () => {
     const [phone_number, setPhone_number] = useState('');
     const [sex, setSex] = useState('');
     const [blood, setBlood] = useState('');
-    const [drug_allergy, setDrug_allergy] = useState('');
-    const [congenital_diseaset, setCongenital_diseaset] = useState('');
-    const [etc_note, setEtc_note] = useState('');
+    const [drug_allergy, setDrug_allergy] = useState('ไม่มี');
+    const [congenital_diseaset, setCongenital_diseaset] = useState('ไม่มี');
+    const [etc_note, setEtc_note] = useState('ไม่มี');
     
 
     const handleSubmit = event => {
