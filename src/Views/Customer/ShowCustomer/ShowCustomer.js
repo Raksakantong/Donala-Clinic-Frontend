@@ -87,9 +87,9 @@ export default function ShowCustomer(){
                         <TableCell align="right">{row.phone_number}</TableCell>
                         <TableCell align="right">{row.sex}</TableCell>
                         <TableCell align="right">{row.blood}</TableCell>
-                        <TableCell align="right">{row.drug_allergy}</TableCell>
-                        <TableCell align="right">{row.congenital_disease	}</TableCell>
-                        <TableCell align="right">{row.etc_note}</TableCell>
+                        <TableCell align="right">{row.drugAllergy}</TableCell>
+                        <TableCell align="right">{row.congenitalDisease	}</TableCell>
+                        <TableCell align="right">{row.etcNote}</TableCell>
                         <TableCell align="center">
                             <ButtonGroup aria-label="outlined primary button group">
                                 {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}

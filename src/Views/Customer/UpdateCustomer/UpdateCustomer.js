@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { apiGet,apiGetSomeCustomer,apiGetSomeUser,apiUpdate, apiUpdateCustomer } from "../../../Service/api";
+import { apiGet, apiGetSomeCustomer, apiGetSomeUser, apiUpdate, apiUpdateCustomer } from "../../../Service/api";
 import axios from "axios";
 
 import { styled } from '@mui/material/styles';
@@ -21,9 +21,9 @@ export default function UpdateCustomer() {
     const [phone_number, setPhone_number] = useState('');
     const [sex, setSex] = useState('');
     const [blood, setBlood] = useState('');
-    const [drug_allergy, setDrug_allergy] = useState('');
-    const [congenital_diseaset, setCongenital_diseaset] = useState('');
-    const [etcNote,setEtcNote] = useState('');
+    const [drugAllergy, setDrugAllergy] = useState('');
+    const [congenitalDisease, setCongenitalDisease] = useState('');
+    const [etcNote, setEtcNote] = useState('');
     const [Employees, setEmployees] = useState([])
     const [ID, setId] = useState()
     const [Employees1, setEmployees1] = useState()
@@ -40,23 +40,22 @@ export default function UpdateCustomer() {
     const handleSubmit = event => {
         event.preventDefault();
         var data = {
-            'number_id': number_id,
-            'fname': fname,
-            'lname': lname,
-            'phone_number': phone_number,
-            'sex': sex,
-            'blood': blood,
-            'drug_allergy': drug_allergy,
-            'congenital_diseaset': congenital_diseaset,
-            'etc_note': etcNote,
-            'id': location.state.id,
+            "blood":blood,
+            "congenital_disease": congenitalDisease,
+            "drug_allergy": drugAllergy,
+            "etc_note": etcNote,
+            "fname": fname,
+            "lname": lname,
+            "number_id": location.state.id,
+            "phone_number": phone_number,
+            "sex": sex
         }
-        console.log("data : ",data);
+        console.log("data : ", data);
         apiUpdateCustomer(data).then(function (res) {
-            alert(res.data)
+            alert(data)
             if (res['status'] === 200) {
                 // window.location.href = '/';
-                navigate("/customer/showCustomer")
+                navigate("/customer/showCustomers")
                 console.log("!!!!!!!!!!");
             }
             console.log(res.data);
@@ -64,7 +63,7 @@ export default function UpdateCustomer() {
         )
     }
 
-     function getDataFromID() {
+    function getDataFromID() {
         const options = {
             params: {
                 id: location.state.id
@@ -72,7 +71,11 @@ export default function UpdateCustomer() {
         };
         apiGetSomeCustomer(location.state.id).then(async (res) => {
             let data = await res.data
-            console.log("data from id ",data);
+            console.log("data from id ", data[0].congenitalDisease
+            );
+            data.map((m) => {
+                console.log("map : ", m.congenitalDiseaset);
+            })
             if (data) {
                 setNumber_id(data[0].number_id)
                 setFname(data[0].fname)
@@ -80,9 +83,11 @@ export default function UpdateCustomer() {
                 setPhone_number(data[0].phone_number)
                 setSex(data[0].sex)
                 setBlood(data[0].blood)
-                setDrug_allergy(data[0].drug_allergy)
-                setCongenital_diseaset(data[0].congenital_diseaset)
-                setEtcNote(data[0].etc_note)
+                setDrugAllergy(data[0].drugAllergy)
+                setCongenitalDisease(data[0].congenitalDisease)
+                console.log("Congenital_diseaset === ", data[0].congenitalDisease);
+                console.log("Blood", data[0].blood);
+                setEtcNote(data[0].etcNote)
             }
 
 
@@ -111,7 +116,7 @@ export default function UpdateCustomer() {
                                 fullWidth
                                 id="number_id"
                                 label="Number id"
-                                onChange={(e) => setNumber_id(e.target.value)}
+                                // onChange={(e) => setNumber_id(e.target.value)}
                                 autoFocus
                             />
                         </Grid>
@@ -125,7 +130,7 @@ export default function UpdateCustomer() {
                                 fullWidth
                                 id="firstName"
                                 label="First Name"
-                                onChange={(e) => {setFname(e.target.value);console.log("ee ==> ",e)}}
+                                onChange={(e) => { setFname(e.target.value); console.log("ee ==> ", e) }}
                                 autoFocus
                             />
                         </Grid>
@@ -175,24 +180,24 @@ export default function UpdateCustomer() {
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
-                                value={drug_allergy}
+                                value={drugAllergy}
                                 variant="outlined"
                                 required
                                 fullWidth
                                 id="drug_allergy"
                                 label="Drug allergy"
-                                onChange={(e) => setDrug_allergy(e.target.value)}
+                                onChange={(e) => setDrugAllergy(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
-                                value={congenital_diseaset}
+                                value={congenitalDisease}
                                 variant="outlined"
                                 required
                                 fullWidth
                                 id="Congenital diseaset"
-                                label="Congenital diseaset"
-                                onChange={(e) => setCongenital_diseaset(e.target.value)}
+                                label="Congenital diseaset ot"
+                                onChange={(e) => setCongenitalDisease(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={12}>
