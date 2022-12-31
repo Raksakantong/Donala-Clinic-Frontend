@@ -49,14 +49,14 @@ export default function UpdateCustomer() {
             'drug_allergy': drug_allergy,
             'congenital_diseaset': congenital_diseaset,
             'etc_note': etcNote,
-            'number_id': location.state.id,
+            'id': location.state.id,
         }
         console.log("data : ",data);
         apiUpdateCustomer(data).then(function (res) {
-            alert("Update Successfully")
+            alert(res.data)
             if (res['status'] === 200) {
                 // window.location.href = '/';
-                navigate("/customer/showCustomers")
+                navigate("/customer/showCustomer")
                 console.log("!!!!!!!!!!");
             }
             console.log(res.data);
