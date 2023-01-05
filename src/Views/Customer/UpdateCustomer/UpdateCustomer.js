@@ -52,7 +52,7 @@ export default function UpdateCustomer() {
         }
         console.log("data : ", data);
         apiUpdateCustomer(data).then(function (res) {
-            alert(data)
+            alert("แก้ไขข้อมูลสำเร็จ")
             if (res['status'] === 200) {
                 // window.location.href = '/';
                 navigate("/customer/showCustomers")
@@ -196,7 +196,7 @@ export default function UpdateCustomer() {
                                 required
                                 fullWidth
                                 id="Congenital diseaset"
-                                label="Congenital diseaset ot"
+                                label="Congenital diseaset "
                                 onChange={(e) => setCongenitalDisease(e.target.value)}
                             />
                         </Grid>

@@ -30,4 +30,43 @@ const apiUpdateCustomer = async (data) => {
   return await axios.put("http://localhost:5000/customers/edit",data);
 };
 
-export { apiGet, apiGetSomeUser, apiUpdate,apiGetCustomer,apiAddCustomer,apiDeleteCustomer,apiUpdateCustomer,apiGetSomeCustomer };
+//Doctor APIs Methods
+// const apiGetDoctors = async()=>{
+//   const getData = await axios.get('http://localhost:5000/doctors/')
+//   getData.then(function (res) {
+//     return res.data
+//   }).catch(function(err){
+//     return err
+//   })
+
+// }
+const apiGetDoctors = async()=>{
+   return axios.get('http://localhost:5000/doctor/');
+};
+const apiAddDoctor = async(data) =>{
+  return await axios.post('http://localhost:5000/doctor/add',data)
+}
+const apiDeleteDoctor = async(dataID) =>{
+return await axios.delete('http://localhost:5000/doctor/delete', { data: dataID })
+}
+const apiUpdateDoctor = async (data) => {
+return await axios.put("http://localhost:5000/doctor/edit",data);
+};
+const apiGetSomeDoctor = async (ID) => {
+  return await axios.get(`http://localhost:5000/doctor/${ID}`)
+};
+export { 
+  apiGet, 
+  apiGetSomeUser, 
+  apiUpdate,
+  apiGetCustomer,
+  apiAddCustomer,
+  apiDeleteCustomer,
+  apiUpdateCustomer,
+  apiGetSomeCustomer,
+  apiGetDoctors,
+  apiAddDoctor,
+  apiDeleteDoctor,
+  apiUpdateDoctor,
+  apiGetSomeDoctor
+ };

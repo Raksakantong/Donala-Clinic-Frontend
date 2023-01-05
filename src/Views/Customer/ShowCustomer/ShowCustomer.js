@@ -27,10 +27,7 @@ export default function ShowCustomer(){
             console.log(res.data);
             setCustomers(res.data)
         })
-        // axios.get('http://localhost:5000/users').then(res => {
-        //     console.log(res.data);
-        //     
-        // })
+
     }
     function del(id, e) {
         let idParse = id.toString()
