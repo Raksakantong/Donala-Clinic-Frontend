@@ -31,8 +31,9 @@ export default function Login() {
         console.log(user, "-", password);
         // let user = params
         if (user && password == 'Natinan S.') {
-            navigate('/Employee/ShowEmployee')
+            // navigate('/Employee/ShowEmployee')
             // window.location.href = '/ShowEmployee' 
+            navigate('/Home')
         }
         else if (user != 'Natinan S.') {
             alert('ชื่อผู้ใช้ไม่ถูกต้อง')
