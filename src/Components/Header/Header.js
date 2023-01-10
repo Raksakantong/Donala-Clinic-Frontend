@@ -149,15 +149,36 @@ function Header() {
             DONALA CLINIC
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
+
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                
+                onClick={navEmployee}
                 sx={{ my: 2, color: "#C3A55C", display: "block" }}
               >
-                {page}
+                {pages[0]}
               </Button>
-            ))}
+              <Button
+                
+                onClick={navCustomer}
+                sx={{ my: 2, color: "#C3A55C", display: "block" }}
+              >
+                {pages[1]}
+              </Button>
+              <Button
+               
+                onClick={navDoctor}
+                sx={{ my: 2, color: "#C3A55C", display: "block" }}
+              >
+                {pages[2]}
+              </Button>
+              <Button
+               
+                onClick={navEmployee}
+                sx={{ my: 2, color: "#C3A55C", display: "block" }}
+              >
+                {pages[3]}
+              </Button>
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
