@@ -9,6 +9,9 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import user from "../../../Assets/user.png";
+import { fontSize } from "@mui/system";
+import Header from "../../../Components/Header/Header.js";
 
 export default function UpdateEmployee() {
 
@@ -98,11 +101,42 @@ export default function UpdateEmployee() {
 
 
     return (
+        <div>
+           <Header/>
         <Container maxWidth="xs">
             <div >
-                <Typography component="h1" variant="h5">
-                    User
-                </Typography>
+            <br />
+        <div className="title">
+          <div className="image">
+            <img src={user} alt="" />
+          </div>
+          <br />
+          <Typography component="h1" variant="h6">
+            แก้ไขข้อมูลพนักงาน
+          </Typography>
+        </div>
+        {/* 
+        <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="filled"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                onChange={(e) => setFname(e.target.value)}
+                autoFocus
+                inputProps={{
+                  style: {
+                    fontFamily: "Arial",
+                    color: "white",
+                    backgroundColor: "#fff7",
+                    height: "15px",
+                  },
+                }}
+              />
+        
+        */}
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} >
@@ -111,118 +145,220 @@ export default function UpdateEmployee() {
                                 }
                                 autoComplete="number_id"
                                 name="number_id"
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="number_id"
                                 label="Number id"
                                 onChange={(e) => setNumber_id(e.target.value)}
                                 autoFocus
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12} >
+                        <Grid item xs={12} md={6} lg={6} xl={6} >
                             <TextField
                                 value={fname}
                                 autoComplete="fname"
                                 name="firstName"
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="firstName"
                                 label="First Name"
                                 onChange={(e) => {setFname(e.target.value);console.log("ee ==> ",e)}}
                                 autoFocus
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={6} lg={6} xl={6}>
                             <TextField
                                 value={lname}
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="lastName"
                                 label="Last Name"
                                 onChange={(e) => setLname(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={6} lg={6} xl={6} >
                             <TextField
                                 value={start_date}
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="Start date"
                                 label="Start Date"
-                                onChange={(e) => setStart_date(e.target.value)}
+                                onChange={(e) => setStart_date(e.target.value)
+                                }
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={6} lg={6} xl={6}>
                             <TextField
                                 value={date_of_birth}
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="date of birth"
                                 label="Date of Birth"
                                 onChange={(e) => setdate_of_birth(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={6} lg={6} xl={6}>
                             <TextField
                                 value={age}
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="age"
                                 label="Age"
                                 onChange={(e) => setAge(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={6} lg={6} xl={6}>
                             <TextField
                                 value={sex}
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="sex"
                                 label="Sex"
                                 onChange={(e) => setSex(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={4} lg={4} xl={4}>
                             <TextField
                                 value={height}
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="height"
                                 label="Height"
                                 onChange={(e) => setHeight(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={4} lg={4} xl={4}>
                             <TextField
                                 value={weight}
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="weight"
                                 label="weight"
                                 onChange={(e) => setWeight(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} md={4} lg={4} xl={4}>
                             <TextField
                                 value={blood}
-                                variant="outlined"
+                                variant="filled"
                                 required
                                 fullWidth
                                 id="blood"
                                 label="Blood"
                                 onChange={(e) => setBlood(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                      fontFamily: "Arial",
+                                      color: "#0F3A5D",
+                                      backgroundColor: "#fff7",
+                                      height: "15px",
+                                      fontWeight:'bold',
+                                      fontSize:'medium'
+                                    },
+                                  }}
                             />
                         </Grid>
                     </Grid>
+                    <br/>
                     <Button
                         type="submit"
                         fullWidth
@@ -234,6 +370,8 @@ export default function UpdateEmployee() {
                     </Button>
                 </form>
             </div>
-        </Container>
+        </Container> 
+        </div>
+        
     );
 }

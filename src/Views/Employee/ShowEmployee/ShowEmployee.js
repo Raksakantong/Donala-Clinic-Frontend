@@ -22,6 +22,11 @@ import { apiGet } from "../../../Service/api";
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import CreateIcon from '@mui/icons-material/Create';
 
+
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
+
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
@@ -93,6 +98,9 @@ export function ShowEmployee() {
             },
         });
     }
+    function goToAdd() {
+        navigate('/Employee/create')
+    }
     return (
         <>
             {/* <TableContainer component={Paper}>
@@ -152,7 +160,13 @@ export function ShowEmployee() {
 
             {/* card employee */}
             <Header />
+            <br/>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid item  xs={12} sm={12} md={12} lg={12} xl={12} >
+                    <div className="add-employee"> 
+                        <button type="" onClick={()=>goToAdd()}>เพิ่มข้อมูล</button>
+                    </div>
+                </Grid>
                 {Employees.map((data) => (
                     <Grid item xs={12} sm={6} md={6} lg={3} xl={3}>
                         <div className="employee-card">
@@ -180,10 +194,13 @@ export function ShowEmployee() {
                                     <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.id)}/>
                                     
                                 </Box>
+
                             </div>
 
                         </div>
+
                     </Grid>
+                
                 ))}
             </Grid>
         </>
