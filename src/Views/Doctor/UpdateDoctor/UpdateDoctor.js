@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { apiGet, apiGetSomeCustomer, apiGetSomeDoctor, apiGetSomeUser, apiUpdate, apiUpdateCustomer, apiUpdateDoctor } from "../../../Service/api";
 import axios from "axios";
-
+import Header from "../../../Components/Header/Header";
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -18,7 +18,7 @@ export default function UpdateCustomer() {
     const [id, setId] = useState('');
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
-    
+
 
     useEffect(() => {
 
@@ -41,7 +41,7 @@ export default function UpdateCustomer() {
         console.log("data : ", data);
         apiUpdateDoctor(data).then(function (res) {
             console.log(data);
-            console.log("resss === ",res);
+            console.log("resss === ", res);
             alert("แก้ไขข้อมูลสำเร็จ")
             if (res['status'] === 200) {
                 // window.location.href = '/';
@@ -80,64 +80,74 @@ export default function UpdateCustomer() {
 
 
     return (
-        <Container maxWidth="xs">
-            <div >
-                <Typography component="h1" variant="h5">
-                    Customer
-                </Typography>
-                <form onSubmit={handleSubmit}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} >
-                            <TextField
-                                value={id
-                                }
-                                autoComplete="id"
-                                name="id"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="id"
-                                label="id"
-                                // onChange={(e) => setNumber_id(e.target.value)}
-                                autoFocus
-                            />
+        <div>
+            <Header />
+
+            <br />
+            <Container maxWidth="xs">
+                <div >
+                    <div className="title">
+                        <Typography component="h1" variant="h5">
+                            แก้ไขข้อมูลแพทย์
+                        </Typography>
+                    </div>
+
+                    <form onSubmit={handleSubmit}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} >
+                                <TextField
+                                    value={id
+                                    }
+                                    autoComplete="id"
+                                    name="id"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="id"
+                                    label="id"
+                                    // onChange={(e) => setNumber_id(e.target.value)}
+                                    autoFocus
+                                />
+                            </Grid>
+                            <Grid item xs={12} >
+                                <TextField
+                                    value={fname}
+                                    autoComplete="fname"
+                                    name="firstName"
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="firstName"
+                                    label="First Name"
+                                    onChange={(e) => { setFname(e.target.value); console.log("ee ==> ", e) }}
+                                    autoFocus
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    value={lname}
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="lastName"
+                                    label="Last Name"
+                                    onChange={(e) => setLname(e.target.value)}
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} >
-                            <TextField
-                                value={fname}
-                                autoComplete="fname"
-                                name="firstName"
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="firstName"
-                                label="First Name"
-                                onChange={(e) => { setFname(e.target.value); console.log("ee ==> ", e) }}
-                                autoFocus
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                value={lname}
-                                variant="outlined"
-                                required
-                                fullWidth
-                                id="lastName"
-                                label="Last Name"
-                                onChange={(e) => setLname(e.target.value)}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                    >
-                        Edit
-                    </Button>
-                </form>
-            </div>
-        </Container>
+                        <br/>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                        >
+                            Edit
+                        </Button>
+                    </form>
+                </div>
+            </Container>
+        </div>
+
     );
 }

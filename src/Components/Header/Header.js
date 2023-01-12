@@ -122,7 +122,9 @@ function Header() {
                   {pages[2]}
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={navEmployee} sx={{ color: "#C3A55C" }}>
+              <MenuItem 
+              // onClick={navEmployee} 
+              sx={{ color: "#C3A55C" }}>
                 <Typography  textAlign="center" sx={{ color: "#C3A55C" }}>
                   {pages[3]}
                 </Typography>
@@ -173,7 +175,7 @@ function Header() {
               </Button>
               <Button
                
-                onClick={navEmployee}
+                // onClick={navEmployee}
                 sx={{ my: 2, color: "#C3A55C", display: "block" }}
               >
                 {pages[3]}

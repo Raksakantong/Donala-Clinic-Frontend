@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { apiDeleteDoctor, apiGetDoctors } from "../../../Service/api";
 import { useNavigate } from "react-router-dom";
+import Header from "../../../Components/Header/Header";
 
 
 import Table from '@mui/material/Table';
@@ -53,19 +54,34 @@ function update_doctor(ID) {
 
 
 }
+function goToAdd() {
+  navigate('/doctor/AddDoctor')
+  
+}
 
 
   return (
     <>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="caption table">
-          <caption>A basic table example with a caption</caption>
-          <TableHead>
+    <Header />
+      <br/>
+      <div className="add-customer">
+        <button type="" onClick={() => goToAdd()}>เพิ่มข้อมูล</button>
+      </div>
+    <div className="table">
+            <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} >
+          <TableHead 
+          sx={{
+                "& th": {
+                  color: "#fff",
+                  backgroundColor: "#0F3A5D",
+                },
+              }}>
             <TableRow>
             <TableCell align="center">No.</TableCell>
               <TableCell align="right">ชื่อ</TableCell>
               <TableCell align="right">นามสกุล</TableCell>
-              <TableCell align="right"></TableCell>
+              <TableCell align="center">ตัวเลือก</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -95,6 +111,8 @@ function update_doctor(ID) {
           </TableBody>
         </Table>
       </TableContainer>
+    </div>
+
       <></>
     </>
   );
