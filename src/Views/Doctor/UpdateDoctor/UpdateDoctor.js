@@ -61,13 +61,13 @@ export default function UpdateCustomer() {
         };
         apiGetSomeDoctor(location.state.id).then(async (res) => {
             let data = await res.data
-            console.log("data from id ", data[0].fname
+            console.log("data from id ", data
             );
             data.map((m) => {
                 console.log("map : ", m.fname);
             })
             if (data) {
-                setId(data[0].id)
+                setId(data[0].number_id)
                 setFname(data[0].fname)
                 setLname(data[0].lname)
             }

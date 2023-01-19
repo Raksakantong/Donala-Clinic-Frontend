@@ -23,3 +23,37 @@
 
     }
 }
+.doctor{
+    margin:5%;
+
+    .doctor-img{
+        margin-left:auto ;
+        margin-right: auto;
+        width: 80%;
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+    }
+    .grid-detail{ 
+        background-color: rgba(255, 228, 196, 0.47);   
+        border-radius: 20px;
+        .doctor-detail{
+        
+        margin:15% 30px auto 30px;
+        text-align: center;
+        align-items: center;
+        justify-items: center;    
+        
+        .button-group{
+        margin-top: 30%;
+        margin-left: 75%;
+        margin-right: auto;
+    }
+    
+    }
+}
+
+}

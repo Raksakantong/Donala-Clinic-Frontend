@@ -14,10 +14,17 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import { createTheme, ThemeProvider } from "@mui/material/styles"
 // import { Box } from '@mui/system';
 
 
 export default function Login() {
+    const theme = createTheme({
+        typography: {
+          fontFamily: ["Kanit", "sans-serif"].join(","),
+        },
+      });
+
     const [user, setUser] = useState()
     const [password, setPassword] = useState()
     const navigate = useNavigate()
@@ -43,6 +50,7 @@ export default function Login() {
         }
     }
     return (
+        
         <div className='login'>
             <Container>
                 <Grid

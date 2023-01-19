@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+@font-face {
+  font-family: "KanitLight";
+  src: local("KanitLight"),
+   url("./fonts/Kanit/Kanit-Light.ttf") format("truetype");
+  font-weight: bold;
+  }
+html{
+  font-family: "KanitLight";
+ }
 .App {
   text-align: center;
 }

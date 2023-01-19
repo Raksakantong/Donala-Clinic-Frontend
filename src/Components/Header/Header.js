@@ -15,6 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../../Assets/logo.png";
 import "./Header.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+
 
 import { useNavigate } from "react-router";
 
@@ -27,6 +29,11 @@ const nav = [
 ];
 
 function Header() {
+  const theme = createTheme({
+    typography: {
+      fontFamily: ["Kanit", "sans-serif"].join(","),
+    },
+  });
   const navigate = useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -59,6 +66,7 @@ function Header() {
     <AppBar position="static" sx={{ background: "#fff" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+         <ThemeProvider theme={theme}>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Typography
             variant="h6"
@@ -67,7 +75,7 @@ function Header() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "Kanit",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "#C3A55C",
@@ -108,7 +116,7 @@ function Header() {
               }}
             >
               <MenuItem onClick={navEmployee} sx={{ color: "#C3A55C" }} >
-                <Typography  textAlign="center" sx={{ color: "#C3A55C" }} >
+                <Typography  textAlign="center" sx={{ color: "#C3A55C" ,fontFamily: "Kanit",}} >
                   {pages[0]}
                 </Typography>
               </MenuItem>
@@ -214,6 +222,7 @@ function Header() {
               ))}
             </Menu>
           </Box>
+          </ThemeProvider>
         </Toolbar>
       </Container>
     </AppBar>
