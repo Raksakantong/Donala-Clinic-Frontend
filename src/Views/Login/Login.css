@@ -1,20 +1,41 @@
-.login{
-margin:25% auto 20% auto ;
-gap: 10px;
-align-items: center;
-justify-content: center;
-display: flex;
-flex-direction: column;
-width: 80%;
+.login {
+    margin: 0px auto 0px auto;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background-color: #0F3A5D;
+    padding: 10% 10% 10% 10%;
 
-}    
-Container{
-margin-top: 20%;
+    height:70%;
+  
+
+}
+  img{
+        width: 50%;
+        height: 30%;
     }
-.Button{
+Container {
+    margin-top:-100px;
+    width: 500px;
+    /* // background-color: #0F3A5D; */
+}
+
+.Button {
     display: flex;
     flex-direction: row;
     gap: 5px;
     margin-top: 2%;
     width: 100%;
 }
+
+
+
+body {
+    /* background-image: url('../../Assets/bg2.png'); */
+    /* // background-color: #0F3A5D;
+    // color: white; */
+}
+

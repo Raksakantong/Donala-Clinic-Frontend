@@ -19,9 +19,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 
 import { useNavigate } from "react-router";
+import { Logout } from "@mui/icons-material";
 
 const pages = ["ข้อมูลพนักงาน", "ข้อมูลลูกค้า", "ข้อมูลแพทย์", "รายการตรวจ"];
-const settings = ["โปรไฟล์", "ออกจากระบบ"];
+// const settings = ["โปรไฟล์", "ออกจากระบบ"];
 const nav = [
   "/Employee/ShowEmployee",
   "/customer/showCustomers",
@@ -60,6 +61,9 @@ function Header() {
   }
   const navDoctor = () =>{
     navigate('/doctor/showDoctor')
+  }
+  const LogOut = () =>{
+    navigate('/')
   }
 
   return (
@@ -213,13 +217,18 @@ function Header() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              {/* {settings.map((setting) => ( */}
+                <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" sx={{ color: "#C3A55C" }}>
-                    {setting}
+                    Natinan S.
                   </Typography>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography onClick={LogOut} textAlign="center" sx={{ color: "#C3A55C" }}>
+                    ออกจากระบบ
+                  </Typography>
+                </MenuItem>
+              {/* // ))} */}
             </Menu>
           </Box>
           </ThemeProvider>

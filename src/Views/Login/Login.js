@@ -1,7 +1,10 @@
 import { CardTravel, WindowOutlined } from '@mui/icons-material';
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { apiLogin } from "../../Service/api";
 import './Login.css';
+
+
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
@@ -15,15 +18,19 @@ import FormControl from '@mui/material/FormControl';
 import Input from '@mui/material/Input';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { createTheme, ThemeProvider } from "@mui/material/styles"
+import logo from "../../Assets/logo.png";
 // import { Box } from '@mui/system';
 
 
 export default function Login() {
     const theme = createTheme({
         typography: {
-          fontFamily: ["Kanit", "sans-serif"].join(","),
+            fontFamily: ["Kanit", "sans-serif"].join(","),
         },
-      });
+        TextField: {
+            color: 'white'
+        }
+    });
 
     const [user, setUser] = useState()
     const [password, setPassword] = useState()
@@ -37,22 +44,32 @@ export default function Login() {
     function login() {
         console.log(user, "-", password);
         // let user = params
-        if (user && password == 'Natinan S.') {
-            // navigate('/Employee/ShowEmployee')
-            // window.location.href = '/ShowEmployee' 
-            navigate('/Home')
+        let data = {
+            "username": user,
+            "password": password
         }
-        else if (user != 'Natinan S.') {
-            alert('ชื่อผู้ใช้ไม่ถูกต้อง')
-        }
-        else {
-            alert('ข้อมูลไม่ถูกต้อง')
-        }
+        apiLogin(data).then(async (data) => {
+            console.log("dataDoctor", data.data);
+            if (data.data != 'User not found') {
+                // navigate('/Employee/ShowEmployee')
+                // window.location.href = '/ShowEmployee' 
+                navigate('/Home')
+            }
+            else if (!user ) {
+                alert('ชื่อผู้ใช้ไม่ถูกต้อง')
+            }
+            else {
+                alert('ข้อมูลไม่ถูกต้อง')
+            }
+
+        })
+
     }
     return (
-        
-        <div className='login'>
+
+        <div className='login' sx={{backgroudColor:'#0F3A5D'}}>
             <Container>
+
                 <Grid
                     item
                     xs={12}
@@ -64,6 +81,7 @@ export default function Login() {
                 >
 
                     <div className='login'>
+                        <img src={logo} alt="" />
                         <div className=''>
 
                         </div>
@@ -89,7 +107,7 @@ export default function Login() {
                         autoFocus
                         style={{margin:'10px auto'}}
                         /> */}
-                        <FormControl sx={{ top: 10, width: '100%' }} variant="outlined">
+                        <FormControl sx={{ top: 10, width: '100%', color: '#fff' }} variant="outlined">
 
                             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                             <OutlinedInput

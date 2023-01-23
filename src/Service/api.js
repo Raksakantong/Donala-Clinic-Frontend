@@ -1,5 +1,9 @@
 import axios from "axios";
 
+const apiLogin = async(data) =>{
+  return await axios.post('http://localhost:5000/login',data)
+}
+
 const apiGet = async () => {
   return await axios.get("http://localhost:5000/users");
 };
@@ -55,7 +59,8 @@ return await axios.put("http://localhost:5000/doctor/edit",data);
 const apiGetSomeDoctor = async (ID) => {
   return await axios.get(`http://localhost:5000/doctor/${ID}`)
 };
-export { 
+export {
+  apiLogin, 
   apiGet, 
   apiGetSomeUser, 
   apiUpdate,

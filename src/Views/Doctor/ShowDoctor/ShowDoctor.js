@@ -93,7 +93,8 @@ export default function ShowDoctor() {
                   {data.fname} {data.lname}
                 </h2>
                 <h3>{data.specialist}</h3>
-                <p>{data.profile}</p>
+                <p>{data.profile} {data.Degree}</p>
+               
                 <div className="button-group">
                   <ButtonGroup
                     aria-label=" contained button group"
