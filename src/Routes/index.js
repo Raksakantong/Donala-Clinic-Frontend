@@ -12,6 +12,7 @@ import ShowDoctor  from "../Views/Doctor/ShowDoctor/ShowDoctor";
 import AddDoctor from "../Views/Doctor/AddDoctor/AddDoctor";
 import UpdateDoctor from "../Views/Doctor/UpdateDoctor/UpdateDoctor";
 import Home from "../Views/Home/Home";
+import HomeDoctor from "../Views/Home/HomeDoctor/HomeDoctor";
 
 export default function Routes1() {
   return (
@@ -22,6 +23,7 @@ export default function Routes1() {
       <Route exact path="/" element= {<Login/>} />
       {/* <Route exact path="/Login" element={<ShowEmployee />} /> */}
       <Route exact path="/Home" element= {<Home/>} />
+      <Route exact path="/HomeDoctor" element= {<HomeDoctor/>} />
       <Route exact path="/Employee/ShowEmployee" element={<ShowEmployee />} />
       <Route exact path='/Employee/create' element={<UserCreate />} />
       <Route exact path='/Employee/update' element={<UpdateEmployee />} />

@@ -12,15 +12,15 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import logo from "../../Assets/logo.png";
-import "./Header.scss";
+import logo from "../../../Assets/logo.png";
+import "./HeaderDoctor.scss";
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 
 import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
 
-const pages = ["ข้อมูลพนักงาน", "ข้อมูลลูกค้า", "ข้อมูลแพทย์", "รายการตรวจ"];
+const pages = ["บันทึกประวัติ", "ประวัติการรักษาคลินิค"];
 // const settings = ["โปรไฟล์", "ออกจากระบบ"];
 const nav = [
   "/Employee/ShowEmployee",
@@ -28,7 +28,7 @@ const nav = [
   "/doctor/showDoctor",
 ];
 
-function Header() {
+function HeaderDoctor() {
   const theme = createTheme({
     typography: {
       fontFamily: ["Kanit", "sans-serif"].join(","),
@@ -236,4 +236,4 @@ function Header() {
     </AppBar>
   );
 }
-export default Header;
+export default HeaderDoctor;
