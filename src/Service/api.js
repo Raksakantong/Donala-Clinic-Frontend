@@ -59,6 +59,10 @@ return await axios.put("http://localhost:5000/doctor/edit",data);
 const apiGetSomeDoctor = async (ID) => {
   return await axios.get(`http://localhost:5000/doctor/${ID}`)
 };
+//Treatment APIs methods
+const apiAddTreatment = async (data) =>{
+  return await axios.post('http://localhost:5000/treatment/add',data);
+}
 export {
   apiLogin, 
   apiGet, 
@@ -73,5 +77,6 @@ export {
   apiAddDoctor,
   apiDeleteDoctor,
   apiUpdateDoctor,
-  apiGetSomeDoctor
+  apiGetSomeDoctor,
+  apiAddTreatment
  };
