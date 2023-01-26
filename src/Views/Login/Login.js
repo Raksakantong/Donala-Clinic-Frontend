@@ -53,7 +53,15 @@ export default function Login() {
             if (data.data != 'User not found') {
                 // navigate('/Employee/ShowEmployee')
                 // window.location.href = '/ShowEmployee' 
-                navigate('/Home')
+                // navigate('/Home')
+                console.log("user data ==> ",data.data);
+                console.log("role ==> ",data.data[0].role);
+                if (data.data[0].role == '0') {
+                   navigate('/Home') 
+                }
+                else if (data.data[0].role == '2'){
+                    navigate('/HomeDoctor')   
+                }
             }
             else if (!user ) {
                 alert('ชื่อผู้ใช้ไม่ถูกต้อง')

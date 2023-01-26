@@ -20,7 +20,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
 
-const pages = ["ฟอร์มบันทึกการรักษา", "ประวัติการรักษาคลินิค"];
+const pages = ["ฟอร์มบันทึกการรักษา", "ประวัติการรักษาคลินิก","ข้อมูลลูกค้า (OPD)"];
 // const settings = ["โปรไฟล์", "ออกจากระบบ"];
 const nav = [
   "/treatmentform",
@@ -56,10 +56,10 @@ function HeaderDoctor() {
       navigate('/treatmentform')  
   }
   const navCustomer = () =>{
-    navigate('/customer/showCustomers')
+    navigate('/doctor/show-clinic-treatment')
   }
   const navDoctor = () =>{
-    navigate('/doctor/showDoctor')
+    navigate('/doctor/showOPD')
   }
   const LogOut = () =>{
     navigate('/')
@@ -133,13 +133,13 @@ function HeaderDoctor() {
                   {pages[2]}
                 </Typography>
               </MenuItem>
-              <MenuItem 
+              {/* <MenuItem 
               // onClick={navEmployee} 
               sx={{ color: "#C3A55C" }}>
                 <Typography  textAlign="center" sx={{ color: "#C3A55C" }}>
                   {pages[3]}
                 </Typography>
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />

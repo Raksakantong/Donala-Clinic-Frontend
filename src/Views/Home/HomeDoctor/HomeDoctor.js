@@ -5,7 +5,7 @@ export default function HomeDoctor() {
   return (
   <>
   <HeaderDoctor/>
-  <div>HomeDoctor</div>
+  <div>HomeDoctor (แสดงข้อมูลการรักษาของคลินิก)</div>
   </>
     
   )
