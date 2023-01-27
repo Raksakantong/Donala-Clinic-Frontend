@@ -62,6 +62,9 @@ export default function Login() {
                 else if (data.data[0].role == '2'){
                     navigate('/HomeDoctor')   
                 }
+                else if (data.data[0].role == '1') {
+                    navigate('/homeEmployee')
+                }
             }
             else if (!user ) {
                 alert('ชื่อผู้ใช้ไม่ถูกต้อง')

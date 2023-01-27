@@ -13,14 +13,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../../../Assets/logo.png";
-import "./HeaderDoctor.scss";
+import "./HeaderEmployee.scss";
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 
 import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
 
-const pages = ["ฟอร์มบันทึกการรักษา", "ประวัติการรักษาคลินิก","ข้อมูลลูกค้า (OPD)"];
+const pages = ["พนักงานคลินิค", "ประวัติการรักษาคลินิก","ข้อมูลลูกค้า (OPD)"];
 // const settings = ["โปรไฟล์", "ออกจากระบบ"];
 const nav = [
   "/treatmentform",
@@ -59,7 +59,7 @@ function HeaderDoctor() {
     navigate('/doctor/show-clinic-treatment')
   }
   const navDoctor = () =>{
-    navigate('/showOPD')
+    navigate('/homeEmployee/showOPD')
   }
   const LogOut = () =>{
     navigate('/')
