@@ -1,6 +1,3 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,6 +12,9 @@ import { apiGet } from "../../../Service/api";
 import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
 import CreateIcon from '@mui/icons-material/Create';
 
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
@@ -28,10 +28,10 @@ import user from "../../../Assets/user.png";
 import axios from "axios";
 import { Button, ButtonGroup } from "@mui/material";
 
-import "./ShowEmployee.scss";
-import Header from "../../../Components/Header/Header";
+import "./AllEmployees.scss";
+import HeaderEmployee from "../../../Components/Header/HeaderEmployee/HeaderEmployee";
 
-export default function ShowEmployee() {
+export default function AllEmployees() {
     const act = ["ลบ", "แก้ไข"];
     const [Employees, setEmployees] = useState([]);
     const [Id, setId] = useState();
@@ -67,33 +67,33 @@ export default function ShowEmployee() {
         //
         // })
     }
-    function del(id, e) {
-        let idParse = id.toString();
-        let ID = {
-            id: idParse,
-        };
-        console.log("ID", ID);
-        axios
-            .delete("http://localhost:5000/users/del/", { data: ID })
-            .then((res) => {
-                console.log(res);
-                console.log(res.data);
+    // function del(id, e) {
+    //     let idParse = id.toString();
+    //     let ID = {
+    //         id: idParse,
+    //     };
+    //     console.log("ID", ID);
+    //     axios
+    //         .delete("http://localhost:5000/users/del/", { data: ID })
+    //         .then((res) => {
+    //             console.log(res);
+    //             console.log(res.data);
 
-                getUsers();
-            });
-            handleCloseNavMenu() 
-    }
-    function update_employee(ID) {
-        let idParse = ID.toString();
-        navigate("/Employee/update", {
-            state: {
-                id: idParse,
-            },
-        });
-    }
-    function goToAdd() {
-        navigate('/Employee/create')
-    }
+    //             getUsers();
+    //         });
+    //         handleCloseNavMenu() 
+    // }
+    // function update_employee(ID) {
+    //     let idParse = ID.toString();
+    //     navigate("/Employee/update", {
+    //         state: {
+    //             id: idParse,
+    //         },
+    //     });
+    // }
+    // function goToAdd() {
+    //     navigate('/Employee/create')
+    // }
     return (
         <>
             {/* <TableContainer component={Paper}>
@@ -152,12 +152,12 @@ export default function ShowEmployee() {
       <>{Id}</> */}
 
             {/* card employee */}
-            <Header />
+            <HeaderEmployee />
             <br/>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item  xs={12} sm={12} md={12} lg={12} xl={12} >
                     <div className="add-employee"> 
-                        <button type="" onClick={()=>goToAdd()}>เพิ่มข้อมูล</button>
+                        {/* <button type="" onClick={()=>goToAdd()}>เพิ่มข้อมูล</button> */}
                     </div>
                 </Grid>
                 {Employees.map((data) => (
@@ -181,14 +181,14 @@ export default function ShowEmployee() {
                                     <p>เพศ : {data.sex}</p>
                                 </div>
                             </div>
-                            <div className="more-vert">
+                            {/* <div className="more-vert">
                                 <Box sx={{marginRight:1,display:'flex'}}>
                                     <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.id)}/>
                                     <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.id)}/>
                                     
                                 </Box>
 
-                            </div>
+                            </div> */}
 
                         </div>
 

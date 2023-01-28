@@ -20,7 +20,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
 
-const pages = ["พนักงานคลินิค", "ประวัติการรักษาคลินิก","ข้อมูลลูกค้า (OPD)"];
+const pages = ["พนักงานทั้งหมดของคลินิค", "เคสการรักษาทั้งหมดของคลินิก","ข้อมูลลูกค้า (OPD)"];
 // const settings = ["โปรไฟล์", "ออกจากระบบ"];
 const nav = [
   "/treatmentform",
@@ -53,10 +53,10 @@ function HeaderDoctor() {
     setAnchorElUser(null);
   };
   const navEmployee = () => { 
-      navigate('/treatmentform')  
+      navigate('/homeEmployee/all-employees')  
   }
   const navCustomer = () =>{
-    navigate('/doctor/show-clinic-treatment')
+    navigate('/homeEmployee/show-clinic-treatment')
   }
   const navDoctor = () =>{
     navigate('/homeEmployee/showOPD')

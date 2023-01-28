@@ -1,5 +1,5 @@
 import React from 'react'
-import { ShowEmployee } from '../Views/Employee/ShowEmployee/ShowEmployee';
+import ShowEmployee  from '../Views/Employee/ShowEmployee/ShowEmployee';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import UserCreate from "../Views/Employee/AddEmployee/UserCreate";
@@ -18,6 +18,9 @@ import ShowOPD from "../Views/ShowOPD/ShowOPD";
 import ShowClinicTreatment from "../Views/ShowClinicTreatment/ShowClinicTreatment";
 import HomeEmployee from "../Views/Home/HomeEmployee/HomeEmployee";
 import ShowOPDEmployee from "../Views/ShowOPD/ShowOPDEmployee";
+import AllEmployees from "../Views/Employee/AllEmployees/AllEmployees";
+import ShowClinicTreatmentE from "../Views/ShowClinicTreatment/ShowClinicTreatmentE";
+
 export default function Routes1() {
   return (
 
@@ -46,7 +49,8 @@ export default function Routes1() {
 
       <Route exact path='/homeEmployee' element={<HomeEmployee/>} />
       <Route exact path='/homeEmployee/showOPD' element={<ShowOPDEmployee/>} />
-
+      <Route exact path='/homeEmployee/all-employees' element={<AllEmployees/>} />
+      <Route exact path='/homeEmployee/show-clinic-treatment' element={<ShowClinicTreatmentE/>} />
     </Routes>
   </BrowserRouter>
 

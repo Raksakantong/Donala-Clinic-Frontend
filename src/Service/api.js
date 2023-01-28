@@ -35,15 +35,6 @@ const apiUpdateCustomer = async (data) => {
 };
 
 //Doctor APIs Methods
-// const apiGetDoctors = async()=>{
-//   const getData = await axios.get('http://localhost:5000/doctors/')
-//   getData.then(function (res) {
-//     return res.data
-//   }).catch(function(err){
-//     return err
-//   })
-
-// }
 const apiGetDoctors = async()=>{
    return axios.get('http://localhost:5000/doctor/');
 };
@@ -59,10 +50,17 @@ return await axios.put("http://localhost:5000/doctor/edit",data);
 const apiGetSomeDoctor = async (ID) => {
   return await axios.get(`http://localhost:5000/doctor/${ID}`)
 };
+
 //Treatment APIs methods
 const apiAddTreatment = async (data) =>{
   return await axios.post('http://localhost:5000/treatment/add',data);
+};
+
+ const apiGetTreatment = async () => {
+  return await axios.get('http://localhost:5000/treatment/show');
 }
+
+
 export {
   apiLogin, 
   apiGet, 
@@ -78,5 +76,6 @@ export {
   apiDeleteDoctor,
   apiUpdateDoctor,
   apiGetSomeDoctor,
-  apiAddTreatment
+  apiAddTreatment,
+  apiGetTreatment
  };

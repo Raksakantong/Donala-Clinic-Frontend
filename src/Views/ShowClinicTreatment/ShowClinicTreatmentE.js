@@ -1,10 +1,9 @@
-import React from 'react';
-import HeaderDoctor from "../../Components/Header/HeaderDoctor/HeaderDoctor";
+import HeaderEmployee from "../../Components/Header/HeaderEmployee/HeaderEmployee";
 import ClinicTreatment from "../../Components/ClinicTreatment/ClinicTreatment";
-export default function ShowClinicTreatment() {
+export default function ShowClinicTreatmentE() {
   return (
     <>
-    <HeaderDoctor/>
+    <HeaderEmployee/>
     <ClinicTreatment/>
     <div>ShowClinicTreatment (แสดงหน้าเคสการรักษาทั้งหมดของคลินิก)</div></>
     

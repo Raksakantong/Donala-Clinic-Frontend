@@ -1,0 +1,24 @@
+.employee{
+// background-image: url('../../../Assets/welcome.png') ;
+height:100%;
+// width: 100px;
+display: flex;
+flex-direction: column;
+align-content: center;
+background-color: #0F3A5D;
+.image{
+
+    // top: 50%;
+    margin: 8% auto;
+    width: 90%;
+    display: flex;
+    
+    img{
+        width: 60%;
+        height: 70%;
+        margin: 0 auto;
+    }
+
+    
+}  
+}
