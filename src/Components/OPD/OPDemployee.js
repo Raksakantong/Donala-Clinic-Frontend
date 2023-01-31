@@ -55,15 +55,15 @@ export default function ShowCustomer() {
     });
   }
   function goToAdd() {
-    navigate('/customer/AddCustomer')
+    navigate('/homeEmployee/add-customer')
   }
   // /customer/AddCustomer
   return (
     <>
       <br/>
-      {/* <div className="add-customer">
+      <div className="add-customer">
         <button type="" onClick={() => goToAdd()}>เพิ่มข้อมูล</button>
-      </div> */}
+      </div>
       <div className="table">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 400 }} aria-label="caption table">

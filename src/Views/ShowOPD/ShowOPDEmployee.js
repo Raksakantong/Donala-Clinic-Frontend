@@ -1,12 +1,12 @@
 import React from 'react'
 import HeaderEmployee from "../../Components/Header/HeaderEmployee/HeaderEmployee";
-import OPD from "../../Components/OPD/OPD";
+import OPDemployee from "../../Components/OPD/OPDemployee";
 
 export default function ShowOPDEmployee() {
   return (
     <div>
         <HeaderEmployee/>
-        <OPD/>
+        <OPDemployee/>
     </div>
   )
 }

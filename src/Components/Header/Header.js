@@ -219,7 +219,7 @@ function Header() {
               {/* {settings.map((setting) => ( */}
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" sx={{ color: "#C3A55C" }}>
-                    Natinan S.
+                  เจ้าของ
                   </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>

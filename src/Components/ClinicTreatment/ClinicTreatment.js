@@ -63,9 +63,9 @@ export default function ShowCustomer() {
     <>
       <br />
       <div className="add-customer">
-        <button type="" onClick={() => goToAdd()}>
+        {/* <button type="" onClick={() => goToAdd()}>
           เพิ่มข้อมูล
-        </button>
+        </button> */}
       </div>
       <div className="table">
         <TableContainer component={Paper}>
