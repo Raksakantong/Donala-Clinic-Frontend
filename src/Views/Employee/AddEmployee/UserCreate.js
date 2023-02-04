@@ -59,6 +59,8 @@ export default function UserCreate() {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [blood, setBlood] = useState("");
+  const [role, setRole] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div>
       <Header/>
