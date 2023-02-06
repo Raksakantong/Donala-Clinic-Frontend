@@ -54,7 +54,6 @@ export default function UpdateEmployee() {
             'height': height,
             'weight': weight,
             'blood': blood,
-            'id': location.state.id,
         }
         apiUpdate(data).then(function (res) {
             alert("Update Successfully")

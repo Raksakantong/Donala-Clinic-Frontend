@@ -1,63 +1,63 @@
 import axios from "axios";
 
 const apiLogin = async(data) =>{
-  return await axios.post('http://localhost:5000/login',data)
+  return await axios.post('http://localhost:3000/login',data)
 }
 
 const apiGet = async () => {
-  return await axios.get("http://localhost:5000/users");
+  return await axios.get("http://localhost:3000/users");
 };
 const apiGetSomeUser = async (id) => {
-  return await axios.get(`http://localhost:5000/users/${id}`);
+  return await axios.get(`http://localhost:3000/users/${id}`);
 };
 const apiUpdate = async (data) => {
-  return await axios.put("http://localhost:5000/users/update",data);
+  return await axios.put("http://localhost:3000/users/update",data);
 };
 
 
 //Customer APIs Methods
 const apiGetCustomer = async() =>{
-    return await axios.get('http://localhost:5000/customer/')
+    return await axios.get('http://localhost:3000/customer/')
 };
 
 const apiGetSomeCustomer = async(ID) =>{
-  return await axios.get(`http://localhost:5000/customer/${ID}`)
+  return await axios.get(`http://localhost:3000/customer/${ID}`)
 };
 
 const apiAddCustomer = async(data) =>{
-    return await axios.post('http://localhost:5000/customer/add',data)
+    return await axios.post('http://localhost:3000/customer/add',data)
 }
 const apiDeleteCustomer = async(dataID) =>{
-  return await axios.delete('http://localhost:5000/customer/delete', { data: dataID })
+  return await axios.delete('http://localhost:3000/customer/delete', { data: dataID })
 }
 const apiUpdateCustomer = async (data) => {
-  return await axios.put("http://localhost:5000/customers/edit",data);
+  return await axios.put("http://localhost:3000/customers/edit",data);
 };
 
 //Doctor APIs Methods
 const apiGetDoctors = async()=>{
-   return axios.get('http://localhost:5000/doctor/');
+   return axios.get('http://localhost:3000/doctor/');
 };
 const apiAddDoctor = async(data) =>{
-  return await axios.post('http://localhost:5000/doctor/add',data)
+  return await axios.post('http://localhost:3000/doctor/add',data)
 }
 const apiDeleteDoctor = async(dataID) =>{
-return await axios.delete('http://localhost:5000/doctor/delete', { data: dataID })
+return await axios.delete('http://localhost:3000/doctor/delete', { data: dataID })
 }
 const apiUpdateDoctor = async (data) => {
-return await axios.put("http://localhost:5000/doctor/edit",data);
+return await axios.put("http://localhost:3000/doctor/edit",data);
 };
 const apiGetSomeDoctor = async (ID) => {
-  return await axios.get(`http://localhost:5000/doctor/${ID}`)
+  return await axios.get(`http://localhost:3000/doctor/${ID}`)
 };
 
 //Treatment APIs methods
 const apiAddTreatment = async (data) =>{
-  return await axios.post('http://localhost:5000/treatment/add',data);
+  return await axios.post('http://localhost:3000/treatment/add',data);
 };
 
  const apiGetTreatment = async () => {
-  return await axios.get('http://localhost:5000/treatment/show');
+  return await axios.get('http://localhost:3000/treatment/show');
 }
 
 

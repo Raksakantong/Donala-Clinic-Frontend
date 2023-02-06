@@ -74,12 +74,13 @@ export default function ShowEmployee() {
         };
         console.log("ID", ID);
         axios
-            .delete("http://localhost:5000/users/del/", { data: ID })
+            .delete("http://localhost:3000/users/del/", { data: ID })
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
 
                 getUsers();
+
             });
             handleCloseNavMenu() 
     }
@@ -183,8 +184,8 @@ export default function ShowEmployee() {
                             </div>
                             <div className="more-vert">
                                 <Box sx={{marginRight:1,display:'flex'}}>
-                                    <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.id)}/>
-                                    <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.id)}/>
+                                    <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.number_id)}/>
+                                    <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.number_id)}/>
                                     
                                 </Box>
 
