@@ -31,7 +31,7 @@ export default function UserCreate() {
     };
     axios
       .post(
-        "http://localhost:5000/users/add",
+        "http://localhost:3000/users/add",
         // headers: {
         //   Accept: 'application/form-data',
         //   'Content-Type': 'application/json',
@@ -44,8 +44,10 @@ export default function UserCreate() {
           // window.location.href = '/';
           navigate("/Employee/ShowEmployee");
           console.log("!!!!!!!!!!");
+        }else{
+         console.log(res.data);  
         }
-        console.log(res.data);
+        
       });
   };
 
