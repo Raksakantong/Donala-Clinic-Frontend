@@ -149,7 +149,7 @@ export default function UpdateEmployee() {
                                 fullWidth
                                 id="number_id"
                                 label="Number id"
-                                onChange={(e) => setNumber_id(e.target.value)}
+                                // onChange={(e) => setNumber_id(e.target.value)}
                                 autoFocus
                                 inputProps={{
                                     style: {
