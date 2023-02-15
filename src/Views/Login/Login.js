@@ -2,7 +2,8 @@ import { CardTravel, WindowOutlined } from '@mui/icons-material';
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { apiLogin } from "../../Service/api";
-import './Login.css';
+import Cookies from 'js-cookie'
+import './Login.scss';
 
 
 import Container from '@mui/material/Container';
@@ -54,19 +55,21 @@ export default function Login() {
                 // navigate('/Employee/ShowEmployee')
                 // window.location.href = '/ShowEmployee' 
                 // navigate('/Home')
-                console.log("user data ==> ",data.data);
-                console.log("role ==> ",data.data[0].role);
+                const res = { 'user': data.data[0].fname, 'role': data.data[0].role};
+                Cookies.set('data',JSON.stringify(res) );
+                console.log("user data ==> ", data.data);
+                console.log("role ==> ", data.data[0].role);
                 if (data.data[0].role == '0') {
-                   navigate('/Home') 
+                    navigate('/Home')
                 }
-                else if (data.data[0].role == '2'){
-                    navigate('/HomeDoctor')   
+                else if (data.data[0].role == '2') {
+                    navigate('/HomeDoctor')
                 }
                 else if (data.data[0].role == '1') {
                     navigate('/homeEmployee')
                 }
             }
-            else if (!user ) {
+            else if (!user) {
                 alert('ชื่อผู้ใช้ไม่ถูกต้อง')
             }
             else {
@@ -78,7 +81,7 @@ export default function Login() {
     }
     return (
 
-        <div className='login' sx={{backgroudColor:'#0F3A5D'}}>
+        <div className='login' sx={{ backgroudColor: '#0F3A5D' }}>
             <Container>
 
                 <Grid

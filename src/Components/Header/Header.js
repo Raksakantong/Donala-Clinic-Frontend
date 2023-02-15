@@ -15,7 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../../Assets/logo.png";
 import "./Header.scss";
 import { createTheme, ThemeProvider } from "@mui/material/styles"
-
+import Cookies from 'js-cookie'
 
 import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
@@ -28,7 +28,11 @@ const nav = [
   "/doctor/showDoctor",
 ];
 
-function Header() {
+function Header(props) {
+  React.useEffect(()=> 
+  getCookies,[]
+  )
+
   const theme = createTheme({
     typography: {
       fontFamily: ["Kanit", "sans-serif"].join(","),
@@ -63,6 +67,11 @@ function Header() {
   }
   const LogOut = () =>{
     navigate('/')
+  }
+  const getCookies = ()=>{
+    let res = JSON.stringify(Cookies.get('data'))
+    const json = JSON.parse(Cookies.get('data'))
+    console.log("data cookies ===>",json);
   }
 
   return (
@@ -217,9 +226,12 @@ function Header() {
               onClose={handleCloseUserMenu}
             >
               {/* {settings.map((setting) => ( */}
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" sx={{ color: "#C3A55C" }}>
-                  เจ้าของ
+                <MenuItem 
+                // onClick={handleCloseUserMenu}
+                onClick={getCookies}
+                >
+                  <Typography textAlign="center" sx={{ color: "#C3A55C" }}  >
+                  {props.name.user}
                   </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>

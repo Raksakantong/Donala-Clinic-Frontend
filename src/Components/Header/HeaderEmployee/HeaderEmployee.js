@@ -28,7 +28,7 @@ const nav = [
   "/doctor/showDoctor",
 ];
 
-function HeaderDoctor() {
+function HeaderDoctor(props) {
   const theme = createTheme({
     typography: {
       fontFamily: ["Kanit", "sans-serif"].join(","),
@@ -219,7 +219,7 @@ function HeaderDoctor() {
               {/* {settings.map((setting) => ( */}
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" sx={{ color: "#C3A55C" }}>
-                  พนักงาน
+                  {props.name.user}
                   </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
