@@ -19,6 +19,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
+import  Cookies  from 'js-cookie';
 
 const pages = ["พนักงานทั้งหมดของคลินิค", "เคสการรักษาทั้งหมดของคลินิก","ข้อมูลลูกค้า (OPD)"];
 // const settings = ["โปรไฟล์", "ออกจากระบบ"];
@@ -38,6 +39,17 @@ function HeaderDoctor(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  const [data,setData] = React.useState([])
+  
+  React.useEffect(()=>
+  getCookies,[]
+  )
+  const getCookies =()=> {
+    let res = JSON.stringify(Cookies.get('data'));
+    const json = JSON.parse(Cookies.get('data'));
+    setData(json);
+    console.log("data cookies ===>", json);
+  }
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -219,7 +231,7 @@ function HeaderDoctor(props) {
               {/* {settings.map((setting) => ( */}
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center" sx={{ color: "#C3A55C" }}>
-                  {props.name.user}
+                  {data.user}
                   </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>

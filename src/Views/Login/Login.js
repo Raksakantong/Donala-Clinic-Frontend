@@ -1,5 +1,5 @@
 import { CardTravel, WindowOutlined } from '@mui/icons-material';
-import React, { useState } from 'react'
+import React, { useState,useEffect} from 'react'
 import { useNavigate } from "react-router-dom";
 import { apiLogin } from "../../Service/api";
 import Cookies from 'js-cookie'
@@ -42,7 +42,12 @@ export default function Login() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    useEffect(()=>
+    Cookies.remove('data')
+    )
     function login() {
+
         console.log(user, "-", password);
         // let user = params
         let data = {
@@ -87,6 +92,7 @@ export default function Login() {
                 <Grid
                     item
                     xs={12}
+                    md={12}
                     container
                     spacing={0}
                     direction="column"

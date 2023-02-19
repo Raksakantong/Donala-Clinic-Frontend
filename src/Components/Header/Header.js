@@ -1,4 +1,4 @@
-import * as React from "react";
+import  React,{useEffect} from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -28,10 +28,18 @@ const nav = [
   "/doctor/showDoctor",
 ];
 
-function Header(props) {
-  React.useEffect(()=> 
+function Header() {
+  const [data,setData] = React.useState([])
+  
+  useEffect(()=>
   getCookies,[]
   )
+  const getCookies =()=> {
+    let res = JSON.stringify(Cookies.get('data'));
+    const json = JSON.parse(Cookies.get('data'));
+    setData(json);
+    console.log("data cookies ===>", json);
+  }
 
   const theme = createTheme({
     typography: {
@@ -67,11 +75,6 @@ function Header(props) {
   }
   const LogOut = () =>{
     navigate('/')
-  }
-  const getCookies = ()=>{
-    let res = JSON.stringify(Cookies.get('data'))
-    const json = JSON.parse(Cookies.get('data'))
-    console.log("data cookies ===>",json);
   }
 
   return (
@@ -231,7 +234,7 @@ function Header(props) {
                 onClick={getCookies}
                 >
                   <Typography textAlign="center" sx={{ color: "#C3A55C" }}  >
-                  {props.name.user}
+                  {data.user}
                   </Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
