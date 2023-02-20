@@ -79,24 +79,6 @@ export default function ShowCustomer() {
                 },
               }}
             >
-              {/* case_detail
-: 
-"เสริมจมูกแบบใช้ซิลิโคนโดยใช้เนื้อเยื่อหลังหูรองปลายจมูก"
-case_id
-: 
-1
-case_name
-: 
-"เสริมจมูก"
-customer_id
-: 
-"0000000000001"
-date
-: 
-"24/12/65"
-price
-: 
-60000 */}
               <TableRow>
                 <TableCell>ลำดับ</TableCell>
                 <TableCell align="center">ชื่อเคส</TableCell>
@@ -109,7 +91,7 @@ price
             </TableHead>
             <TableBody>
               {treatment.map((row, index) => (
-                <TableRow key={row.id}>
+                <TableRow key={row.case_id}>
                   <TableCell component="th" scope="row">
                     {index+1}
                   </TableCell>

@@ -60,7 +60,7 @@ export default function Login() {
                 // navigate('/Employee/ShowEmployee')
                 // window.location.href = '/ShowEmployee' 
                 // navigate('/Home')
-                const res = { 'user': data.data[0].fname, 'role': data.data[0].role};
+                const res = { 'id':parseInt(data.data[0].number_id),'user': data.data[0].fname, 'role': data.data[0].role};
                 Cookies.set('data',JSON.stringify(res) );
                 console.log("user data ==> ", data.data);
                 console.log("role ==> ", data.data[0].role);

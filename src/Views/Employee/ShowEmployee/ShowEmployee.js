@@ -162,8 +162,8 @@ export default function ShowEmployee() {
                     </div>
                 </Grid>
                 {Employees.map((data) => (
-                    <Grid item xs={12} sm={6} md={6} lg={3} xl={3}>
-                        <div className="employee-card">
+                    <Grid item xs={12} sm={6} md={6} lg={3} xl={3} key={data.number_id}>
+                        <div className="employee-card" >
 
                             <div className="employee-img">
                                 <img src={user} alt="" />

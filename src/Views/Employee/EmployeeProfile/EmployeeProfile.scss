@@ -1,0 +1,49 @@
+.card-profile{
+    height: 90%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    // margin-top: 50px;
+    padding: 3%;
+    background-color: antiquewhite;
+    justify-content: center;
+    h2{
+        text-align: center;
+        margin: 0;
+    }
+    .profile{
+        .image{
+            background-color: rgb(3, 99, 195);
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+           
+            img{
+                align-self: center;
+                width: 40%;
+                height: 40%;
+                margin-left: auto;
+                margin-right: auto;
+                
+                
+            }
+            
+        }
+        .detail{
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 20px;
+                background-color: azure;
+                width: 80%;
+                padding: 10%;
+                border-radius: 20px;
+                h4{
+                    text-align:start;
+                }
+            }
+    }
+    
+}

@@ -174,7 +174,7 @@ export default function AllEmployees() {
                                         ชื่อ {data.fname} {data.lname}
                                     </p>
                                     <p>อายุ {data.age} ปี</p>
-                                    <p>กรุ๊ปเลือด : B</p>
+                                    <p>กรุ๊ปเลือด : {data.blood}</p>
                                     <p>ส่วนสูง {data.height} ซม.</p>
                                     <p>น้ำหนัก {data.weight} กก.</p>
                                     <p>เริ่มงาน : {data.start_date}</p>

@@ -25,9 +25,16 @@ import user from "../../../Assets/user.png";
 import HeaderDoctor from "../../../Components/Header/HeaderDoctor/HeaderDoctor";
 import { apiAddTreatment } from "../../../Service/api";
 
-export default function UserCreate() {
-  const navigate = useNavigate();
+export default function TreatmentForm() {
 
+  const [name, setName] = useState("");
+  const [number_id, setNumber_id] = useState("");
+  const [case_datail, setCase_datail] = useState("");
+  const [price, setPrice] = useState();
+  const [date, setDate] = useState("");
+
+  const navigate = useNavigate();
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     var data = {
@@ -43,18 +50,12 @@ export default function UserCreate() {
         alert(res.data);
         if (res["status"] === 200) {
           // window.location.href = '/';
-        //   navigate("/Employee/ShowEmployee");
+          navigate("/show-clinic-treatment");
           console.log("!!!!!!!!!!");
         }
         console.log(res.data);
       });
   };
-
-  const [name, setName] = useState("");
-  const [number_id, setNumber_id] = useState("");
-  const [case_datail, setCase_datail] = useState("");
-  const [price, setPrice] = useState();
-  const [date, setDate] = useState("");
   return (
     <div>
       <HeaderDoctor/>

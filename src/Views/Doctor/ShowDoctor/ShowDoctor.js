@@ -67,8 +67,8 @@ export default function ShowDoctor() {
         </button>
       </div>
 
-      {doctors.map((data) => (
-        <div className="doctor">
+      {doctors.map((data,index) => (
+        <div className="doctor" key={index}>
           <Grid
             container
             rowSpacing={1}

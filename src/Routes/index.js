@@ -21,7 +21,8 @@ import ShowOPDEmployee from "../Views/ShowOPD/ShowOPDEmployee";
 import AllEmployees from "../Views/Employee/AllEmployees/AllEmployees";
 import ShowClinicTreatmentE from "../Views/ShowClinicTreatment/ShowClinicTreatmentE";
 import AddCustomerForEmployee from "../Views/Customer/AddCustomer/AddCustomerForEmployee";
-
+import EmployeeProfile from "../Views/Employee/EmployeeProfile/EmployeeProfile";
+import EmployeesEdit from '../Views/Employee/EmployeeProfile/EmployeeEdit/EmployeesEdit';
 export default function Routes1() {
   return (
 
@@ -53,6 +54,8 @@ export default function Routes1() {
       <Route exact path='/homeEmployee/add-customer' element={<AddCustomerForEmployee/>} />
       <Route exact path='/homeEmployee/all-employees' element={<AllEmployees/>} />
       <Route exact path='/homeEmployee/show-clinic-treatment' element={<ShowClinicTreatmentE/>} />
+      <Route exact path='/homeEmployee/profile' element={<EmployeeProfile/>} />
+      <Route exact path='/homeEmployee/profile/edit' element={<EmployeesEdit/>} />
     </Routes>
   </BrowserRouter>
 

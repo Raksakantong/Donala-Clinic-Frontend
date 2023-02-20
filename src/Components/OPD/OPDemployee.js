@@ -91,7 +91,7 @@ export default function ShowCustomer() {
             </TableHead>
             <TableBody>
               {Customers.map((row, index) => (
-                <TableRow key={row.id}>
+                <TableRow key={row.number_id}>
                   <TableCell component="th" scope="row">
                     {row.number_id}
                   </TableCell>
