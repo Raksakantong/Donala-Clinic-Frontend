@@ -8,6 +8,15 @@ import CreditScore from '@mui/icons-material/CreditScore';
 import { useNavigate, useLocation } from 'react-router-dom';
 import HeaderEmployee from '../../../Components/Header/HeaderEmployee/HeaderEmployee';
 import Cookies from 'js-cookie';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import EventIcon from '@mui/icons-material/Event';
+import LensBlurIcon from '@mui/icons-material/LensBlur';
+import TransgenderIcon from '@mui/icons-material/Transgender';
+import HeightIcon from '@mui/icons-material/Height';
+import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
+import BloodtypeIcon from '@mui/icons-material/Bloodtype';
 
 const EmployeeProfile = () => {
 
@@ -21,7 +30,7 @@ const EmployeeProfile = () => {
   }
   
    
-    
+
     , [])
 
 
@@ -65,16 +74,16 @@ const EmployeeProfile = () => {
                 <Grid container sx={{ marginLeft: 'auto', marginRight: 'auto', width: 0.9, marginBottom: 5 }} key={index} >
                   <Grid item xs={12} sm={12} md={12} lg={5} xl={5} sx={{ marginLeft: 'auto', marginRight: 'auto', width: 0.9 }}>
                     <div className='detail'>
-                      <h4>เลขบัตรประจำตัวประชาชน : {d.number_id}</h4>
-                      <h4>ชื่อ : {d.fname}</h4>
-                      <h4>นามสกุล : {d.lname}</h4>
-                      <h4>วันเริ่มงาน : {d.start_date}</h4>
-                      <h4>วันเกิด : {d.date_of_birth}</h4>
-                      <h4>อายุ : {d.age}</h4>
-                      <h4>เพศ : {d.sex}</h4>
-                      <h4>ส่วนสูง : {d.height}</h4>
-                      <h4>น้ำหนัก : {d.weight}</h4>
-                      <h4>กรุ๊ปเลือด : {d.blood}</h4>
+                      <h4><FingerprintIcon/>เลขบัตรประจำตัวประชาชน : {d.number_id}</h4>
+                      <h4><AccountCircleIcon /> ชื่อ : {d.fname} {d.lname}</h4>
+                      {/* <h4>นามสกุล : </h4> */}
+                      <h4><EventAvailableIcon />วันเริ่มงาน : {d.start_date}</h4>
+                      <h4><EventIcon/>วันเกิด : {d.date_of_birth}</h4>
+                      <h4><LensBlurIcon/>อายุ : {d.age}</h4>
+                      <h4><TransgenderIcon/>เพศ : {d.sex}</h4>
+                      <h4><HeightIcon/>ส่วนสูง : {d.height}</h4>
+                      <h4><MonitorWeightIcon/>น้ำหนัก : {d.weight}</h4>
+                      <h4><BloodtypeIcon/>กรุ๊ปเลือด : {d.blood}</h4>
                     </div>
                     <>
                       <Typography align='center' margin={1}>

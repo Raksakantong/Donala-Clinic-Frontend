@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "../EmployeeProfile.scss";
 import user from "../../../../Assets/user.png";
-import { apiUpdate,apiGetSomeUser } from '../../../../Service/api';
+import { apiUpdate, apiGetSomeUser } from '../../../../Service/api';
 import Grid from '@mui/material/Grid';
 import { Button, Typography, TextField } from '@mui/material';
 import CreditScore from '@mui/icons-material/CreditScore';
@@ -11,21 +11,23 @@ import HeaderEmployee from '../../../../Components/Header/HeaderEmployee/HeaderE
 
 export default function EmployeesEdit() {
     const [data, setData] = useState([]);
-    const [fname,setFname] = useState('');
-    const [lname,setLname] = useState('');
-    const [StartDate,setStartDate] = useState('');
-    const [dateOfBirth,setDateOfBirth] = useState('');
-    const [age,setAge] = useState('');
-    const [sex,setSex] = useState('');
-    const [height,setHeight] = useState('');
-    const [weight,setWeight] = useState('');
-    const [blood,setBlood] = useState('');
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [StartDate, setStartDate] = useState('');
+    const [dateOfBirth, setDateOfBirth] = useState('');
+    const [age, setAge] = useState('');
+    const [sex, setSex] = useState('');
+    const [height, setHeight] = useState('');
+    const [weight, setWeight] = useState('');
+    const [blood, setBlood] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
 
-    useEffect(() =>
-        getProfile,
-        console.log("location.state.id ==== ",location.state.id),
+    useEffect(() => {
+        getProfile()
+            console.log("location.state.id ==== ", location.state.id)
+    }
+        ,
         []);
 
 
@@ -49,33 +51,29 @@ export default function EmployeesEdit() {
     const handleSubmit = (event) => {
         event.preventDefault();
         var data = {
-          fname: fname,
-          lname: lname,
-          start_date: StartDate,
-          date_of_birth: dateOfBirth,
-          age:age,
-          sex:sex,
-          height:height,
-          weight:weight,
-          blood: blood,
-          number_id: location.state.id,
+            fname: fname,
+            lname: lname,
+            start_date: StartDate,
+            date_of_birth: dateOfBirth,
+            age: age,
+            sex: sex,
+            height: height,
+            weight: weight,
+            blood: blood,
+            number_id: location.state.id,
 
         };
         console.log("data : ", data);
         apiUpdate(data).then(function (res) {
-          alert(res.data);
-          if (res["status"] === 200) {
-            // window.location.href = '/';
-            navigate("/homeEmployees/profile",{
-                state: {
-                  id: location.state.id,
-                },
-              });
-            console.log("!!!!!!!!!!");
-          }
-          console.log(res.data);
+            alert(res.data);
+            if (res["status"] === 200) {
+                // window.location.href = '/';
+                navigate("/homeEmployee/profile");
+                console.log("!!!!!!!!!!");
+            }
+            console.log(res.data);
         });
-      };
+    };
 
     return (
         <>
