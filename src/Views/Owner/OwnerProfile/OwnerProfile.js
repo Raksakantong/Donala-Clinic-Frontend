@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./OwnerProfile.scss";
 import user from "../../../Assets/user.png";
-import { apiGetSomeUser } from '../../../Service/api';
+import { apiGetSomeOwner } from '../../../Service/api';
 import Grid from '@mui/material/Grid';
 import { Button, Typography } from '@mui/material';
 import CreditScore from '@mui/icons-material/CreditScore';
@@ -17,7 +17,8 @@ import TransgenderIcon from '@mui/icons-material/Transgender';
 import HeightIcon from '@mui/icons-material/Height';
 import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
 import BloodtypeIcon from '@mui/icons-material/Bloodtype';
-
+import PersonAddAlt1Icon from '@mui/icons-material/PersonAddAlt1';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 
 const OwnerProfile = () => {
     const [data, setData] = useState([])
@@ -43,7 +44,7 @@ const OwnerProfile = () => {
     }
     async function getProfile() {
       const json = await JSON.parse(Cookies.get('data'));
-      await apiGetSomeUser(json.id).then((res) => {
+      await apiGetSomeOwner(json.id).then((res) => {
         setData(res.data)
         console.log('ข้อมูลพนักงาน ===> ', res.data[0]);
       })
@@ -51,7 +52,7 @@ const OwnerProfile = () => {
   
     function update_employee(ID) {
       let idParse = ID.toString();
-      navigate("/homeEmployee/profile/edit", {
+      navigate("/homeOwner/profile/edit", {
         state: {
           id: idParse,
         },
@@ -62,7 +63,7 @@ const OwnerProfile = () => {
       <>
         <HeaderEmployee />
         <div className='card-profile'>
-          <h2>ข้อมูลพนักงาน</h2>
+          <h2>ข้อมูลส่วนตัว</h2>
           <div className='profile'>
             <div className='image'>
               <img src={user} alt="" />
@@ -75,15 +76,15 @@ const OwnerProfile = () => {
                     <Grid item xs={12} sm={12} md={12} lg={5} xl={5} sx={{ marginLeft: 'auto', marginRight: 'auto', width: 0.9 }}>
                       <div className='detail'>
                         <h4><FingerprintIcon/>เลขบัตรประจำตัวประชาชน : {d.number_id}</h4>
-                        <h4><AccountCircleIcon /> ชื่อ : {d.fname} {d.lname}</h4>
-                        {/* <h4>นามสกุล : </h4> */}
-                        <h4><EventAvailableIcon />วันเริ่มงาน : {d.start_date}</h4>
+                        <h4><PersonAddAlt1Icon /> ชื่อ : {d.fname} </h4>
+                        <h4><PersonAddAltIcon/>นามสกุล : {d.lname}</h4>
+                        {/* <h4><EventAvailableIcon />วันเริ่มงาน : {d.start_date}</h4>
                         <h4><EventIcon/>วันเกิด : {d.date_of_birth}</h4>
                         <h4><LensBlurIcon/>อายุ : {d.age}</h4>
                         <h4><TransgenderIcon/>เพศ : {d.sex}</h4>
                         <h4><HeightIcon/>ส่วนสูง : {d.height}</h4>
                         <h4><MonitorWeightIcon/>น้ำหนัก : {d.weight}</h4>
-                        <h4><BloodtypeIcon/>กรุ๊ปเลือด : {d.blood}</h4>
+                        <h4><BloodtypeIcon/>กรุ๊ปเลือด : {d.blood}</h4> */}
                       </div>
                       <>
                         <Typography align='center' margin={1}>

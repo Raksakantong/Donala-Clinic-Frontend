@@ -84,12 +84,6 @@ function HeaderDoctor(props) {
       },
     }
     )
-
-    //   navigate("/Employee/update", {
-    //     state: {
-    //         id: idParse,
-    //     },
-    // });
   }
   const LogOut = () => {
     navigate('/')

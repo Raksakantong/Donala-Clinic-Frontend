@@ -73,9 +73,23 @@ function Header() {
   const navDoctor = () =>{
     navigate('/doctor/showDoctor')
   }
+  const navProfile = () => {
+    let ID = data.id
+    // let idParse = ID.toString();
+    console.log("id", ID);
+    handleCloseUserMenu()
+    navigate('/homeOwner/profile', {
+      state: {
+        id: ID,
+      },
+    }
+    )
+  }
   const LogOut = () =>{
     navigate('/')
   }
+
+  // /homeOwner/profile
 
   return (
     <AppBar position="static" sx={{ background: "#fff" }}>
@@ -231,7 +245,8 @@ function Header() {
               {/* {settings.map((setting) => ( */}
                 <MenuItem 
                 // onClick={handleCloseUserMenu}
-                onClick={getCookies}
+                // onClick={getCookies}
+                onClick={navProfile}
                 >
                   <Typography textAlign="center" sx={{ color: "#C3A55C" }}  >
                   {data.user}

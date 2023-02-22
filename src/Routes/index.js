@@ -24,7 +24,7 @@ import AddCustomerForEmployee from "../Views/Customer/AddCustomer/AddCustomerFor
 import EmployeeProfile from "../Views/Employee/EmployeeProfile/EmployeeProfile";
 import EmployeesEdit from '../Views/Employee/EmployeeProfile/EmployeeEdit/EmployeesEdit';
 import OwnerProfile from '../Views/Owner/OwnerProfile/OwnerProfile';
-
+import OwnerEdit from '../Views/Owner/OwnerEdit/OwnerEdit';
 
 export default function Routes1() {
   return (
@@ -41,6 +41,7 @@ export default function Routes1() {
       <Route exact path='/Employee/create' element={<UserCreate />} />
       <Route exact path='/Employee/update' element={<UpdateEmployee />} />
       <Route exact path="/homeOwner/profile" element= {<OwnerProfile/>} />
+      <Route exact path="/homeOwner/profile/edit" element= {<OwnerEdit/>} />
 
       <Route exact path='/customer/showCustomers' element={<ShowCustomer />} />
       <Route exact path='/customer/AddCustomer' element={<AddCustomer />} />

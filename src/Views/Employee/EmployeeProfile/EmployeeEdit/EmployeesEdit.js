@@ -79,7 +79,7 @@ export default function EmployeesEdit() {
         <>
             <HeaderEmployee />
             <div className='card-profile'>
-                <h2>ข้อมูลพนักงาน</h2>
+                <h2>แก้ไขข้อมูลพนักงาน</h2>
                 <div className='profile'>
                     <div className='image'>
                         <img src={user} alt="" />

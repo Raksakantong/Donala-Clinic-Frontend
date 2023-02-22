@@ -3,7 +3,18 @@ import axios from "axios";
 const apiLogin = async(data) =>{
   return await axios.post('http://localhost:3000/login',data)
 }
+//Owner APIs Methods
 
+const apiGetSomeOwner = async (id) => {
+  return await axios.get(`http://localhost:3000/owner/${id}`);
+};
+
+const apiUpdateOwner = async(data) =>{
+  return await axios.put(`http://localhost:3000/owner/update/`,data);
+}
+
+
+//Employee APIs Methods
 const apiGet = async () => {
   return await axios.get("http://localhost:3000/users");
 };
@@ -63,6 +74,8 @@ const apiAddTreatment = async (data) =>{
 
 export {
   apiLogin, 
+  apiUpdateOwner,
+  apiGetSomeOwner,
   apiGet, 
   apiGetSomeUser, 
   apiUpdate,
