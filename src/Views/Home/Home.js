@@ -3,7 +3,7 @@ import Header from "../../Components/Header/Header";
 import './Home.css'
 import Cookies from 'js-cookie'
 import { useEffect } from 'react';
-
+import Dashboard from "../Dashboard/Dashboard";
 
 export default function Home() {
 
@@ -21,8 +21,9 @@ export default function Home() {
 
   return (
     <div>
-        <Header name={data}/>
+        <Header />
         <>แสดงแดชบอร์ดเกี่ยวกับการรักษาภายในคลินิก</>
+        <Dashboard/>
     </div>
   )
 }

@@ -82,7 +82,7 @@ export default function ShowEmployee() {
                 getUsers();
 
             });
-            handleCloseNavMenu() 
+        handleCloseNavMenu()
     }
     function update_employee(ID) {
         let idParse = ID.toString();
@@ -154,11 +154,11 @@ export default function ShowEmployee() {
 
             {/* card employee */}
             <Header />
-            <br/>
+            <br />
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                <Grid item  xs={12} sm={12} md={12} lg={12} xl={12} >
-                    <div className="add-employee"> 
-                        <button type="" onClick={()=>goToAdd()}>เพิ่มข้อมูล</button>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
+                    <div className="add-employee">
+                        <button type="" onClick={() => goToAdd()}>เพิ่มข้อมูล</button>
                     </div>
                 </Grid>
                 {Employees.map((data) => (
@@ -183,10 +183,10 @@ export default function ShowEmployee() {
                                 </div>
                             </div>
                             <div className="more-vert">
-                                <Box sx={{marginRight:1,display:'flex'}}>
-                                    <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.number_id)}/>
-                                    <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.number_id)}/>
-                                    
+                                <Box sx={{ marginRight: 1, display: 'flex' }}>
+                                    <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.number_id)} />
+                                    <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.number_id)} />
+
                                 </Box>
 
                             </div>
@@ -194,7 +194,7 @@ export default function ShowEmployee() {
                         </div>
 
                     </Grid>
-                
+
                 ))}
             </Grid>
         </>
