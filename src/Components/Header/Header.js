@@ -19,8 +19,9 @@ import Cookies from 'js-cookie'
 
 import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
+import ShowCustomer from '../../Views/Customer/ShowCustomer/ShowCustomer';
 
-const pages = ["ข้อมูลพนักงาน", "ข้อมูลลูกค้า", "ข้อมูลแพทย์", "รายการตรวจ"];
+const pages = ["ข้อมูลพนักงาน", "ข้อมูลลูกค้า", "ข้อมูลแพทย์", "ประวัติการรักษาคลินิก"];
 // const settings = ["โปรไฟล์", "ออกจากระบบ"];
 const nav = [
   "/Employee/ShowEmployee",
@@ -73,6 +74,10 @@ function Header() {
   const navDoctor = () =>{
     navigate('/doctor/showDoctor')
   }
+
+  const navShowTreatment = ()=>{
+    navigate('/homeOwner/show-clinic-treatment')
+  }
   const navProfile = () => {
     let ID = data.id
     // let idParse = ID.toString();
@@ -111,7 +116,7 @@ function Header() {
               textDecoration: "none",
             }}
           >
-            <img src={logo} alt="" className="logo" />
+            <img src={logo} alt="" className="logo" onClick={()=> navigate('/Home')} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -160,7 +165,7 @@ function Header() {
                 </Typography>
               </MenuItem>
               <MenuItem 
-              // onClick={navEmployee} 
+              onClick={navShowTreatment} 
               sx={{ color: "#C3A55C" }}>
                 <Typography  textAlign="center" sx={{ color: "#C3A55C" }}>
                   {pages[3]}
@@ -212,7 +217,7 @@ function Header() {
               </Button>
               <Button
                
-                // onClick={navEmployee}
+               onClick={navShowTreatment} 
                 sx={{ my: 2, color: "#C3A55C", display: "block" }}
               >
                 {pages[3]}

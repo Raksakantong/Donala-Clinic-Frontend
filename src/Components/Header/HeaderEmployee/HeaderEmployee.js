@@ -98,7 +98,7 @@ function HeaderDoctor(props) {
             <Typography
               variant="h6"
               noWrap
-              href="/Home"
+            
               sx={{
                 mr: 2,
                 display: { xs: "none", md: "flex" },
@@ -109,7 +109,7 @@ function HeaderDoctor(props) {
                 textDecoration: "none",
               }}
             >
-              <img src={logo} alt="" className="logo" />
+              <img src={logo} alt="" className="logo" onClick={()=> navigate('/homeEmployee')} />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

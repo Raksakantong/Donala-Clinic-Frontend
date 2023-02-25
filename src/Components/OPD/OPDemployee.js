@@ -48,7 +48,7 @@ export default function ShowCustomer() {
   function update_customer(ID) {
     console.log("number id == ", ID);
     let idParse = ID.toString();
-    navigate("/customer/updateCustomer", {
+    navigate("/homeEmployee/showOPD/edit", {
       state: {
         id: idParse,
       },
@@ -86,7 +86,7 @@ export default function ShowCustomer() {
                 <TableCell align="center">แพ้ยา</TableCell>
                 <TableCell align="center">โรคประจำตัว</TableCell>
                 <TableCell align="center">หมายเหตุ</TableCell>
-                {/* <TableCell align="center">ตัวเลือก</TableCell> */}
+                <TableCell align="center">ตัวเลือก</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -103,21 +103,21 @@ export default function ShowCustomer() {
                   <TableCell align="center">{row.drugAllergy}</TableCell>
                   <TableCell align="center">{row.congenitalDisease}</TableCell>
                   <TableCell align="center">{row.etcNote}</TableCell>
-                  {/* <TableCell align="center"> */}
-                    {/* <ButtonGroup aria-label="outlined primary button group"> */}
-                      {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}
-{/* 
+                  <TableCell align="center"> 
+                    <ButtonGroup aria-label="outlined primary button group"> 
+                      {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button>  */}
+ 
                       <Button
                         color="primary"
                         onClick={() => update_customer(row.number_id)}
                       >
                         Edit
                       </Button>
-                      <Button color="error" onClick={() => del(row.number_id)}>
+                      {/* <Button color="error" onClick={() => del(row.number_id)}>
                         Delete!
-                      </Button>
-                    </ButtonGroup> */}
-                  {/* </TableCell> */}
+                      </Button> */}
+                    </ButtonGroup> 
+                  </TableCell> 
                 </TableRow>
               ))}
             </TableBody>

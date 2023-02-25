@@ -14,6 +14,8 @@ export default function AddDoctor() {
 
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const [specialist, setSpecialist] = useState("");
+  const [role, setRole] = useState("2");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
@@ -21,6 +23,8 @@ export default function AddDoctor() {
     var data = {
       fname: fname,
       lname: lname,
+      specialist:specialist,
+      role:role,
       password: password,
     };
     apiAddDoctor(data).then(function (res) {
@@ -54,7 +58,7 @@ export default function AddDoctor() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="ชื่อ"
                   onChange={(e) => setFname(e.target.value)}
                   autoFocus
                 />
@@ -65,25 +69,48 @@ export default function AddDoctor() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="นามสกุล"
                   onChange={(e) => setLname(e.target.value)}
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  // type="password"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="specialist"
+                  label="ความเชี่ยวชาญ"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Grid>
+              {/* <Grid item xs={12}>
+                <TextField
+                  // type="password"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="role"
+                  label="หน้าที่"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Grid> */}
               <Grid item xs={12}>
                 <TextField
                   type="password"
                   variant="outlined"
                   required
                   fullWidth
-                  id="phone_number"
-                  label="Password"
+                  id="password"
+                  label="รหัสผ่าน"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
+
             </Grid>
             <br/>
             <Button type="submit" fullWidth variant="contained" color="primary">
-              Create
+              เพิ่มแพทย์
             </Button>
           </form>
         </div>

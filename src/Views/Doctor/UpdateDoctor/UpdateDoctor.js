@@ -18,6 +18,7 @@ export default function UpdateCustomer() {
     const [id, setId] = useState('');
     const [fname, setFname] = useState('');
     const [lname, setLname] = useState('');
+    const [specialist,setSpecialist] = useState('')
 
 
     useEffect(() => {
@@ -33,8 +34,9 @@ export default function UpdateCustomer() {
         event.preventDefault();
         var data = {
 
-            "fname": fname,
-            "lname": lname,
+            fname: fname,
+            lname: lname,
+            specialist:specialist,
             "id": location.state.id,
 
         }
@@ -70,6 +72,7 @@ export default function UpdateCustomer() {
                 setId(data[0].number_id)
                 setFname(data[0].fname)
                 setLname(data[0].lname)
+                setSpecialist(data[0].specialist)
             }
 
 
@@ -132,6 +135,17 @@ export default function UpdateCustomer() {
                                     id="lastName"
                                     label="Last Name"
                                     onChange={(e) => setLname(e.target.value)}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    value={specialist}
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    id="specialist"
+                                    label="ความเชี่ยวชาญ"
+                                    onChange={(e) => setSpecialist(e.target.value)}
                                 />
                             </Grid>
                         </Grid>

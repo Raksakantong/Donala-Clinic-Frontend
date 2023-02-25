@@ -50,7 +50,7 @@ export default function TreatmentForm() {
         alert(res.data);
         if (res["status"] === 200) {
           // window.location.href = '/';
-          navigate("/show-clinic-treatment");
+          navigate("/doctor/show-clinic-treatment");
           console.log("!!!!!!!!!!");
         }
         console.log(res.data);

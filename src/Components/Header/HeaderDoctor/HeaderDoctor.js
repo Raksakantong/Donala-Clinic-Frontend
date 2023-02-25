@@ -97,7 +97,7 @@ function HeaderDoctor() {
               textDecoration: "none",
             }}
           >
-            <img src={logo} alt="" className="logo" />
+            <img src={logo} alt="" className="logo" onClick={()=>navigate('/HomeDoctor')}/>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

@@ -1,5 +1,5 @@
 import { CardTravel, WindowOutlined } from '@mui/icons-material';
-import React, { useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { apiLogin } from "../../Service/api";
 import Cookies from 'js-cookie'
@@ -43,8 +43,10 @@ export default function Login() {
         event.preventDefault();
     };
 
-    useEffect(()=>
-    Cookies.remove('data')
+    useEffect(() => {
+        Cookies.remove('data')
+    }
+
     )
     function login() {
 
@@ -60,8 +62,8 @@ export default function Login() {
                 // navigate('/Employee/ShowEmployee')
                 // window.location.href = '/ShowEmployee' 
                 // navigate('/Home')
-                const res = { 'id':parseInt(data.data[0].number_id),'user': data.data[0].fname, 'role': data.data[0].role};
-                Cookies.set('data',JSON.stringify(res) );
+                const res = { 'id': parseInt(data.data[0].number_id), 'user': data.data[0].fname, 'role': data.data[0].role };
+                Cookies.set('data', JSON.stringify(res));
                 console.log("user data ==> ", data.data);
                 console.log("role ==> ", data.data[0].role);
                 if (data.data[0].role == '0') {
@@ -105,7 +107,16 @@ export default function Login() {
                         <div className=''>
 
                         </div>
-                        <TextField autoComplete="user"
+                        <TextField
+                            sx={{
+                                input: { color: '#ffff' }, lebel: { color: '#ffff' }, "& .MuiFormLabel-root": {
+                                    color: '#ffff'
+                                },
+                                "& .MuiFormLabel-root.Mui-focused": {
+                                    color: '#ffff'
+                                }
+                            }}
+                            autoComplete="user"
                             fullWidth
                             name="user"
                             variant="outlined"
@@ -129,9 +140,14 @@ export default function Login() {
                         /> */}
                         <FormControl sx={{ top: 10, width: '100%', color: '#fff' }} variant="outlined">
 
-                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <InputLabel sx={{
+                                color: '#fff',
+                                '&.Mui-focused': {
+                                    color: '#fff'
+                                }
+                            }} htmlFor="outlined-adornment-password">Password</InputLabel>
                             <OutlinedInput
-
+                            sx={{color:'#fff'}}
                                 id="password"
                                 type={showPassword ? 'text' : 'password'}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -159,6 +175,7 @@ export default function Login() {
                             <Button variant="outlined" fullWidth onClick={() => {
                                 login()
                             }}
+                            sx={{color:'#fff'}}
                             >Login</Button>
                         </div>
 
