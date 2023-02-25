@@ -7,6 +7,9 @@ import Grid from '@mui/material/Grid';
 import TotalCustomer from '../../Components/Dashboard/TotalCustomer';
 import Typography from "@mui/material/Typography";
 import StaticChart from '../../Components/Dashboard/StaticChart';
+import CourseChart from "../../Components/Dashboard/CourseChart";
+import TrendChart from '../../Components/Dashboard/TrendChart';
+
 
 const Dashboard = () => {
     return (
@@ -28,6 +31,12 @@ const Dashboard = () => {
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={8} xl={8} >
                     <StaticChart />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={4} xl={4} >
+                    <CourseChart />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
+                    <TrendChart />
                 </Grid>
                 
                 
