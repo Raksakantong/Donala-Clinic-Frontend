@@ -45,6 +45,7 @@ export default function TreatmentForm() {
       date: date,
 
     };
+    console.log(data);
     apiAddTreatment(data)
       .then((res) =>{
         alert(res.data);
@@ -162,12 +163,14 @@ export default function TreatmentForm() {
             </Grid>
             <Grid item xs={12} md={6} lg={6} xl={6}>
               <TextField
+              InputLabelProps={{ shrink: true }}
+              type='date'
                 variant="filled"
                 required
                 fullWidth
                 id="date"
                 label="วันที่"
-                onChange={(e) => setDate(e.target.value)}
+                onChange={(e) => setDate(e.target.value) }
                 inputProps={{
                   style: {
                     fontFamily: "Arial",

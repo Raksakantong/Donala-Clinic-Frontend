@@ -21,13 +21,13 @@ const TrendChart = () => {
     
       const options = {
         scales: {
-            yAxes: [
+            y: 
               {
                 ticks: {
                   beginAtZero: true,
                 },
               },
-            ],
+            
           },
         responsive: true,
         plugins: {

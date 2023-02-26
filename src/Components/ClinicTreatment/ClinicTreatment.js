@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -17,11 +18,13 @@ import {
 import "./ClinicTreatment.scss";
 
 import axios from "axios";
-import { Button, ButtonGroup } from "@mui/material";
-
+import SearchIcon from '@mui/icons-material/Search';
 export default function ClinicTreatmentO() {
   const [treatment, setTreatment] = useState([]);
   const [Id, setId] = useState();
+  const [date, setDate] = useState([])
+  const [searchTerm, setSearchTerm] = useState("");
+  
   const navigate = useNavigate();
   useEffect(() => {
     GetTreatment();
@@ -31,7 +34,9 @@ export default function ClinicTreatmentO() {
     let getData = apiGetTreatment();
     getData.then((res) => {
       console.log("GetTreatment() ==>", res.data);
+      console.log("GetTreatment date ==>", res.data.map((m) => m.date));
       setTreatment(res.data);
+      setDate(res.data.map((m) => m.date))
     });
   }
   function del(id, e) {
@@ -58,16 +63,50 @@ export default function ClinicTreatmentO() {
   function goToAdd() {
     navigate("/customer/AddCustomer");
   }
+  function showDate() {
+    console.log("วันที่ทั้งหมด ===> ", date);
+  }
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredCases = treatment.filter((item) =>
+    item.customer_id.includes(searchTerm)
+  );
   // /customer/AddCustomer
   return (
     <>
       <br />
+      {/* date:{date} */}
+
       <div className="add-customer">
         {/* <button type="" onClick={() => goToAdd()}>
           เพิ่มข้อมูล
         </button> */}
+        <Paper
+          component="form"
+          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+        >
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="ค้นหาลูกค้า"
+            // inputProps={{ 'aria-label': 'search google maps' }}
+            onChange={handleSearch}
+
+          />
+          <IconButton type="button" sx={{ p: '10px' }}style={{borderRadius: 0,background:'none'}}>
+            <SearchIcon color="primary"/>
+          </IconButton>
+          {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <DirectionsIcon />
+          </IconButton> */}
+        </Paper>
+
       </div>
       <div className="table">
+        
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 400 }} aria-label="caption table">
             {/* <caption>A basic table example with a caption</caption> */}
@@ -90,10 +129,10 @@ export default function ClinicTreatmentO() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {treatment.map((row, index) => (
+              {filteredCases.map((row, index) => (
                 <TableRow key={row.case_id}>
                   <TableCell component="th" scope="row">
-                    {index+1}
+                    {index + 1}
                   </TableCell>
                   <TableCell align="center">{row.case_name}</TableCell>
                   <TableCell align="center">{row.customer_id}</TableCell>
@@ -105,17 +144,18 @@ export default function ClinicTreatmentO() {
                   {/* <ButtonGroup aria-label="outlined primary button group"> */}
                   {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}
                   {/* 
-                      <Button
-                        color="primary"
-                        onClick={() => update_customer(row.number_id)}
-                      >
-                        Edit
-                      </Button>
+                       <Button
+                    color="primary"
+                    onClick={ showDate()}
+                  >
+                    Edit
+                  </Button>
                       <Button color="error" onClick={() => del(row.number_id)}>
                         Delete!
                       </Button>
                     </ButtonGroup> */}
                   {/* </TableCell> */}
+
                 </TableRow>
               ))}
             </TableBody>
@@ -123,7 +163,8 @@ export default function ClinicTreatmentO() {
         </TableContainer>
       </div>
 
-      <></>
+      <>
+      </>
     </>
   );
 }
