@@ -8,6 +8,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
 import {
   apiDeleteCustomer,
   apiGet,
@@ -22,6 +25,7 @@ import { Button, ButtonGroup } from "@mui/material";
 export default function ShowCustomer() {
   const [Customers, setCustomers] = useState([]);
   const [Id, setId] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     GetCustomer();
@@ -57,13 +61,39 @@ export default function ShowCustomer() {
   function goToAdd() {
     navigate('/customer/AddCustomer')
   }
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredCases = Customers.filter((item) =>
+    item.number_id.includes(searchTerm)
+  );
   // /customer/AddCustomer
   return (
     <>
       <Header />
       <br/>
       <div className="add-customer">
-        <button type="" onClick={() => goToAdd()}>เพิ่มข้อมูล</button>
+        <button type="" onClick={() => goToAdd()} style={{borderRadius:5}}>เพิ่มข้อมูล</button>
+        <Paper
+          component="form"
+          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+        >
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="ค้นหาลูกค้า"
+            // inputProps={{ 'aria-label': 'search google maps' }}
+            onChange={handleSearch}
+
+          />
+          <IconButton type="button" sx={{ p: '10px' }} style={{ borderRadius: 0, background: 'none' }}>
+            <SearchIcon color="primary" />
+          </IconButton>
+          {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <DirectionsIcon />
+          </IconButton> */}
+        </Paper>
       </div>
       <div className="table">
         <TableContainer component={Paper}>
@@ -91,7 +121,7 @@ export default function ShowCustomer() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {Customers.map((row, index) => (
+              {filteredCases.map((row, index) => (
                 <TableRow key={row.number_id}>
                   <TableCell component="th" scope="row">
                     {row.number_id}

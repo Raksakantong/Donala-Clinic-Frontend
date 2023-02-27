@@ -77,8 +77,8 @@ const EmployeeProfile = () => {
                       <h4><FingerprintIcon/>เลขบัตรประจำตัวประชาชน : {d.number_id}</h4>
                       <h4><AccountCircleIcon /> ชื่อ : {d.fname} {d.lname}</h4>
                       {/* <h4>นามสกุล : </h4> */}
-                      <h4><EventAvailableIcon />วันเริ่มงาน : {d.start_date}</h4>
-                      <h4><EventIcon/>วันเกิด : {d.date_of_birth}</h4>
+                      <h4><EventAvailableIcon />วันเริ่มงาน : {new Date(d.start_date).toLocaleDateString()}</h4>
+                      <h4><EventIcon/>วันเกิด : {new Date(d.date_of_birth).toLocaleDateString()}</h4>
                       <h4><LensBlurIcon/>อายุ : {d.age}</h4>
                       <h4><TransgenderIcon/>เพศ : {d.sex}</h4>
                       <h4><HeightIcon/>ส่วนสูง : {d.height}</h4>

@@ -13,9 +13,13 @@ import TrendChart from '../../Components/Dashboard/TrendChart';
 
 const Dashboard = () => {
     return (
-        <div style={{margin:30}}>
-            <div><Typography variant='h3'sx={{fontWeight:'bold'}}>Dashboard</Typography><div style={{backgroundColor:'#ffff',height:1,marginTop:8,marginBottom:8}}></div></div>
-            
+        <div style={{ margin: 30 }}>
+            <div>
+                <Typography variant='h3' sx={{ fontWeight: 'bold' }}>Dashboard</Typography>
+                <div style={{ backgroundColor: '#ffff', height: 1, marginTop: 8, marginBottom: 8 }}>
+                </div>
+            </div>
+
             <Grid container rowSpacing={3} spacing={2}>
                 <Grid item xs={12} sm={12} md={12} lg={3} xl={3} >
                     <TotalTodaySale />
@@ -38,9 +42,9 @@ const Dashboard = () => {
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
                     <TrendChart />
                 </Grid>
-                
-                
-                
+
+
+
             </Grid>
 
         </div>

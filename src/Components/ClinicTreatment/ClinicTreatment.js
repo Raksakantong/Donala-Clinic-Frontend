@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import IconButton from '@mui/material/IconButton';
-import InputBase from '@mui/material/InputBase';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,6 +7,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
+import Grid from "@mui/material/Grid";
 import {
   apiDeleteCustomer,
   apiGetTreatment,
@@ -18,13 +20,15 @@ import {
 import "./ClinicTreatment.scss";
 
 import axios from "axios";
-import SearchIcon from '@mui/icons-material/Search';
+import Typography from '@mui/material/Typography';
+import { margin } from "@mui/system";
+
 export default function ClinicTreatmentO() {
   const [treatment, setTreatment] = useState([]);
   const [Id, setId] = useState();
   const [date, setDate] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
-  
+
   const navigate = useNavigate();
   useEffect(() => {
     GetTreatment();
@@ -36,7 +40,7 @@ export default function ClinicTreatmentO() {
       console.log("GetTreatment() ==>", res.data);
       console.log("GetTreatment date ==>", res.data.map((m) => m.date));
       setTreatment(res.data);
-      setDate(res.data.map((m) => m.date))
+      setDate(res.data.map((m) => m.date.slice(0, 10)))
     });
   }
   function del(id, e) {
@@ -76,17 +80,21 @@ export default function ClinicTreatmentO() {
   );
   // /customer/AddCustomer
   return (
-    <>
+    <div style={{margin:20}}>
       <br />
       {/* date:{date} */}
 
-      <div className="add-customer">
+      <div 
+      // className="add-customer"
+      >
         {/* <button type="" onClick={() => goToAdd()}>
           เพิ่มข้อมูล
         </button> */}
-        <Paper
+        <Grid container rowSpacing={3} spacing={2}><Grid item xs={12} sm={12} md={12} xl={8} lg={8}><Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '5px', p: '2px 4px' }} >เคสการรักษาทั้งหมดของคลินิก</Typography></Grid>
+        <Grid item xs={12} sm={12} md={12} xl={4} lg={4}  >
+          <Paper
           component="form"
-          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+          sx={{ p: '0px 0px', display: 'flex', alignItems: 'center', width:'100%', marginBottom: '0px', marginTop: '0px' }}
         >
           <InputBase
             sx={{ ml: 1, flex: 1 }}
@@ -95,18 +103,21 @@ export default function ClinicTreatmentO() {
             onChange={handleSearch}
 
           />
-          <IconButton type="button" sx={{ p: '10px' }}style={{borderRadius: 0,background:'none'}}>
-            <SearchIcon color="primary"/>
+          <IconButton type="button" sx={{ p: '10px' }} style={{ borderRadius: 0, background: 'none' }}>
+            <SearchIcon color="primary" />
           </IconButton>
           {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
             <DirectionsIcon />
           </IconButton> */}
-        </Paper>
+        </Paper></Grid>
+        </Grid>
+        
 
       </div>
+      <div style={{ backgroundColor: '#ffff', height: 1, marginTop: 15, marginBottom: 8 ,width:'full'}}></div>
       <div className="table">
-        
+
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 400 }} aria-label="caption table">
             {/* <caption>A basic table example with a caption</caption> */}
@@ -138,7 +149,9 @@ export default function ClinicTreatmentO() {
                   <TableCell align="center">{row.customer_id}</TableCell>
                   <TableCell align="center">{row.case_detail}</TableCell>
                   <TableCell align="center">{row.price}</TableCell>
-                  <TableCell align="center">{row.date}</TableCell>
+                  <TableCell align="center">{new Date(row.date).toLocaleDateString()}</TableCell>
+
+
 
                   {/* <TableCell align="center"> */}
                   {/* <ButtonGroup aria-label="outlined primary button group"> */}
@@ -165,6 +178,6 @@ export default function ClinicTreatmentO() {
 
       <>
       </>
-    </>
+    </div>
   );
 }

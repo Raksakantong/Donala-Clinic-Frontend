@@ -8,6 +8,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
 import {
   apiDeleteCustomer,
   apiGet,
@@ -18,10 +21,13 @@ import "./OPD.scss";
 
 import axios from "axios";
 import { Button, ButtonGroup } from "@mui/material";
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 export default function ShowCustomer() {
   const [Customers, setCustomers] = useState([]);
   const [Id, setId] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     GetCustomer();
@@ -57,75 +63,123 @@ export default function ShowCustomer() {
   function goToAdd() {
     navigate('/homeEmployee/add-customer')
   }
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredCases = Customers.filter((item) =>
+    item.number_id.includes(searchTerm)
+  );
   // /customer/AddCustomer
   return (
     <>
-      <br/>
-      <div className="add-customer">
-        <button type="" onClick={() => goToAdd()}>เพิ่มข้อมูล</button>
-      </div>
-      <div className="table">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 400 }} aria-label="caption table">
-            {/* <caption>A basic table example with a caption</caption> */}
-            <TableHead
-              sx={{
-                "& th": {
-                  color: "#fff",
-                  backgroundColor: "#0F3A5D",
-                },
-              }}
-            >
-              <TableRow>
-                <TableCell>เลขบัตรประจำตัวประชาชน</TableCell>
-                <TableCell align="center">ชื่อ</TableCell>
-                <TableCell align="center">นามสกุล</TableCell>
-                <TableCell align="center">เบอร์โทร</TableCell>
-                <TableCell align="center">เพศ</TableCell>
-                <TableCell align="center">กรุ๊ปเลือด</TableCell>
-                <TableCell align="center">แพ้ยา</TableCell>
-                <TableCell align="center">โรคประจำตัว</TableCell>
-                <TableCell align="center">หมายเหตุ</TableCell>
-                <TableCell align="center">ตัวเลือก</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {Customers.map((row, index) => (
-                <TableRow key={row.number_id}>
-                  <TableCell component="th" scope="row">
-                    {row.number_id}
-                  </TableCell>
-                  <TableCell align="center">{row.fname}</TableCell>
-                  <TableCell align="center">{row.lname}</TableCell>
-                  <TableCell align="center">{row.phone_number}</TableCell>
-                  <TableCell align="center">{row.sex}</TableCell>
-                  <TableCell align="center">{row.blood}</TableCell>
-                  <TableCell align="center">{row.drugAllergy}</TableCell>
-                  <TableCell align="center">{row.congenitalDisease}</TableCell>
-                  <TableCell align="center">{row.etcNote}</TableCell>
-                  <TableCell align="center"> 
-                    <ButtonGroup aria-label="outlined primary button group"> 
-                      {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button>  */}
- 
-                      <Button
-                        color="primary"
-                        onClick={() => update_customer(row.number_id)}
-                      >
-                        Edit
-                      </Button>
-                      {/* <Button color="error" onClick={() => del(row.number_id)}>
-                        Delete!
-                      </Button> */}
-                    </ButtonGroup> 
-                  </TableCell> 
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+      <div style={{ margin: 20 }}>
+        <br />
+        <div >
 
-      <></>
+          <Grid container rowSpacing={1} spacing={1}>
+            <Grid item xs={12} sm={12} md={12} xl={7} lg={7}>
+              <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '0px', p: '2px 4px', display: 'flex', }}>
+                ข้อมูลลูกค้า (OPD)
+              </Typography>
+            </Grid>
+            <Grid item xs={8} sm={8} md={8} xl={3} lg={3}>
+              <Paper
+                component="form"
+                sx={{ p: '0px 0px', display: 'flex', alignItems: 'center', width: '100%', marginBottom: '0px', marginTop: '0px' }}
+              >
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  placeholder="ค้นหาOPD"
+                  // inputProps={{ 'aria-label': 'search google maps' }}
+                  onChange={handleSearch}
+
+                />
+                <IconButton type="button" sx={{ p: '10px' }} style={{ borderRadius: 0, background: 'none' }}>
+                  <SearchIcon color="primary" />
+                </IconButton>
+                {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <DirectionsIcon />
+          </IconButton> */}
+              </Paper>
+            </Grid>
+            <Grid item xs={4} sm={4} md={4} xl={2} lg={2}>
+              <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '-2px', p: '2px 4px', display: 'flex', justifyContent: 'end' }}><button type="" onClick={() => goToAdd()}
+                style={{
+                  borderRadius: 5,
+                  margin: 0,
+                  borderRadius: '5px',
+                  border: 0,
+                  padding: '0px',
+                  color: '#fff',
+                  backgroundColor: '#a47600',
+                  alignSelf: 'end', width: '100%', height: 45
+                }}>เพิ่มข้อมูล</button></Typography>
+            </Grid>
+          </Grid>
+        </div>
+        <div style={{ backgroundColor: '#ffff', height: 1, marginTop: 15, marginBottom: 8, width: 'full' }}></div>
+        <div className="table">
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 400 }} aria-label="caption table">
+              {/* <caption>A basic table example with a caption</caption> */}
+              <TableHead
+                sx={{
+                  "& th": {
+                    color: "#fff",
+                    backgroundColor: "#0F3A5D",
+                  },
+                }}
+              >
+                <TableRow>
+                  <TableCell>เลขบัตรประจำตัวประชาชน</TableCell>
+                  <TableCell align="center">ชื่อ</TableCell>
+                  <TableCell align="center">นามสกุล</TableCell>
+                  <TableCell align="center">เบอร์โทร</TableCell>
+                  <TableCell align="center">เพศ</TableCell>
+                  <TableCell align="center">กรุ๊ปเลือด</TableCell>
+                  <TableCell align="center">แพ้ยา</TableCell>
+                  <TableCell align="center">โรคประจำตัว</TableCell>
+                  <TableCell align="center">หมายเหตุ</TableCell>
+                  <TableCell align="center">ตัวเลือก</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredCases.map((row, index) => (
+                  <TableRow key={row.number_id}>
+                    <TableCell component="th" scope="row">
+                      {row.number_id}
+                    </TableCell>
+                    <TableCell align="center">{row.fname}</TableCell>
+                    <TableCell align="center">{row.lname}</TableCell>
+                    <TableCell align="center">{row.phone_number}</TableCell>
+                    <TableCell align="center">{row.sex}</TableCell>
+                    <TableCell align="center">{row.blood}</TableCell>
+                    <TableCell align="center">{row.drugAllergy}</TableCell>
+                    <TableCell align="center">{row.congenitalDisease}</TableCell>
+                    <TableCell align="center">{row.etcNote}</TableCell>
+                    <TableCell align="center">
+                      <ButtonGroup aria-label="outlined primary button group">
+                        {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button>  */}
+
+                        <Button
+                          color="primary"
+                          onClick={() => update_customer(row.number_id)}
+                        >
+                          Edit
+                        </Button>
+                        {/* <Button color="error" onClick={() => del(row.number_id)}>
+              Delete!
+            </Button> */}
+                      </ButtonGroup>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div><></></div>
     </>
   );
 }

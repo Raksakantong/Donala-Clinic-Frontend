@@ -138,7 +138,9 @@ export default function EmployeesEdit() {
                                                 </Grid>
                                                 <Grid item xs={12}>
                                                     <TextField
-                                                        defaultValue={d.start_date}
+                                                    InputLabelProps={{ shrink: true }}
+                                                    type='date'
+                                                        // defaultValue={new Date(d.start_date).toLocaleDateString()}
                                                         variant="outlined"
                                                         required
                                                         fullWidth
@@ -149,7 +151,9 @@ export default function EmployeesEdit() {
                                                 </Grid>
                                                 <Grid item xs={12}>
                                                     <TextField
-                                                        defaultValue={d.date_of_birth}
+                                                    InputLabelProps={{ shrink: true }}
+                                                    type='date'
+                                                        // defaultValue={new Date(d.date_of_birth).toLocaleDateString()}
                                                         variant="outlined"
                                                         required
                                                         fullWidth

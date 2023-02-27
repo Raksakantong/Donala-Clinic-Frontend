@@ -151,6 +151,8 @@ export default function UserCreate() {
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <TextField
+                InputLabelProps={{ shrink: true }}
+                type='date'
                   variant="filled"
                   required
                   fullWidth
@@ -171,6 +173,8 @@ export default function UserCreate() {
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <TextField
+                InputLabelProps={{ shrink: true }}
+                type='date'
                   variant="filled"
                   required
                   fullWidth

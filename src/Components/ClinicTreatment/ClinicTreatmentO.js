@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import IconButton from '@mui/material/IconButton';
+import InputBase from '@mui/material/InputBase';
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,6 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import SearchIcon from '@mui/icons-material/Search';
 import {
   apiDeleteCustomer,
   apiGetTreatment,
@@ -22,6 +24,7 @@ import { Button, ButtonGroup } from "@mui/material";
 export default function ClinicTreatmentO() {
   const [treatment, setTreatment] = useState([]);
   const [Id, setId] = useState();
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     GetTreatment();
@@ -58,6 +61,14 @@ export default function ClinicTreatmentO() {
   function goToAdd() {
     navigate("/customer/AddCustomer");
   }
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredCases = treatment.filter((item) =>
+    item.customer_id.includes(searchTerm)
+  );
   // /customer/AddCustomer
   return (
     <>
@@ -66,6 +77,25 @@ export default function ClinicTreatmentO() {
         {/* <button type="" onClick={() => goToAdd()}>
           เพิ่มข้อมูล
         </button> */}
+         <Paper
+          component="form"
+          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+        >
+          <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            placeholder="ค้นหาOPD"
+            // inputProps={{ 'aria-label': 'search google maps' }}
+            onChange={handleSearch}
+
+          />
+          <IconButton type="button" sx={{ p: '10px' }}style={{borderRadius: 0,background:'none'}}>
+            <SearchIcon color="primary"/>
+          </IconButton>
+          {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <DirectionsIcon />
+          </IconButton> */}
+        </Paper>
       </div>
       <div className="table">
         <TableContainer component={Paper}>
@@ -90,7 +120,7 @@ export default function ClinicTreatmentO() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {treatment.map((row, index) => (
+              {filteredCases.map((row, index) => (
                 <TableRow key={row.case_id}>
                   <TableCell component="th" scope="row">
                     {index+1}
@@ -99,7 +129,7 @@ export default function ClinicTreatmentO() {
                   <TableCell align="center">{row.customer_id}</TableCell>
                   <TableCell align="center">{row.case_detail}</TableCell>
                   <TableCell align="center">{row.price}</TableCell>
-                  <TableCell align="center">{row.date}</TableCell>
+                  <TableCell align="center">{new Date(row.date).toLocaleDateString()}</TableCell>
 
                   {/* <TableCell align="center"> */}
                   {/* <ButtonGroup aria-label="outlined primary button group"> */}

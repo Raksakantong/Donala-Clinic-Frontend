@@ -22,6 +22,9 @@ import Stack from '@mui/material/Stack';
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
 
 import user from "../../../Assets/user.png";
 
@@ -35,9 +38,10 @@ export default function ShowEmployee() {
     const act = ["ลบ", "แก้ไข"];
     const [Employees, setEmployees] = useState([]);
     const [Id, setId] = useState();
-    const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState("");
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const navigate = useNavigate();
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -95,6 +99,13 @@ export default function ShowEmployee() {
     function goToAdd() {
         navigate('/Employee/create')
     }
+    const handleSearch = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const filteredCases = Employees.filter((item) =>
+        item.number_id.includes(searchTerm)
+    );
     return (
         <>
             {/* <TableContainer component={Paper}>
@@ -158,10 +169,29 @@ export default function ShowEmployee() {
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
                     <div className="add-employee">
-                        <button type="" onClick={() => goToAdd()}>เพิ่มข้อมูล</button>
+                        <button type="" onClick={() => goToAdd()} style={{borderRadius:5}}>เพิ่มข้อมูล</button>
+                        <Paper
+                            component="form"
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+                        >
+                            <InputBase
+                                sx={{ ml: 1, flex: 1 }}
+                                placeholder="ค้นหาพนักงาน"
+                                // inputProps={{ 'aria-label': 'search google maps' }}
+                                onChange={handleSearch}
+
+                            />
+                            <IconButton type="button" sx={{ p: '10px' }} style={{ borderRadius: 0, background: 'none' }}>
+                                <SearchIcon color="primary" />
+                            </IconButton>
+                            {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <DirectionsIcon />
+          </IconButton> */}
+                        </Paper>
                     </div>
                 </Grid>
-                {Employees.map((data) => (
+                {filteredCases.map((data) => (
                     <Grid item xs={12} sm={6} md={6} lg={3} xl={3} key={data.number_id}>
                         <div className="employee-card" >
 
@@ -178,7 +208,7 @@ export default function ShowEmployee() {
                                     <p>กรุ๊ปเลือด : B</p>
                                     <p>ส่วนสูง {data.height} ซม.</p>
                                     <p>น้ำหนัก {data.weight} กก.</p>
-                                    <p>เริ่มงาน : {data.start_date}</p>
+                                    <p>เริ่มงาน : {new Date(data.start_date).toLocaleDateString()}</p>
                                     <p>เพศ : {data.sex}</p>
                                 </div>
                             </div>

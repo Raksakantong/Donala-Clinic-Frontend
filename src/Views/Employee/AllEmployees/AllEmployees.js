@@ -22,6 +22,9 @@ import Stack from '@mui/material/Stack';
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
 
 import user from "../../../Assets/user.png";
 
@@ -38,6 +41,7 @@ export default function AllEmployees() {
     const navigate = useNavigate();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -94,8 +98,15 @@ export default function AllEmployees() {
     // function goToAdd() {
     //     navigate('/Employee/create')
     // }
+    const handleSearch = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const filteredCases = Employees.filter((item) =>
+        item.number_id.includes(searchTerm)
+    );
     return (
-        <>
+        <div >
             {/* <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="caption table">
           <caption>A basic table example with a caption</caption>
@@ -154,34 +165,75 @@ export default function AllEmployees() {
             {/* card employee */}
             <HeaderEmployee />
             <br/>
-            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                <Grid item  xs={12} sm={12} md={12} lg={12} xl={12} >
-                    <div className="add-employee"> 
-                        {/* <button type="" onClick={()=>goToAdd()}>เพิ่มข้อมูล</button> */}
-                    </div>
+            <div style={{ margin: 20 }}>
+                <Grid container rowSpacing={1} spacing={1}>
+            
+                <Grid item xs={12} sm={12} md={12} xl={8} lg={8}>
+                    <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '0px', p: '2px 4px', display: 'flex', }}>
+                        พนักงานทั้งหมดของคลินิก
+                    </Typography>
                 </Grid>
-                {Employees.map((data) => (
-                    <Grid item xs={12} sm={6} md={6} lg={3} xl={3}>
-                        <div className="employee-card">
+                <Grid item xs={12} sm={12} md={12} xl={4} lg={4}>
+                    <Paper
+                        component="form"
+                        sx={{ p: '0px 0px', display: 'flex', alignItems: 'center', width: '100%', marginBottom: '0px', marginTop: '0px' }}
+                    >
+                        <InputBase
+                            sx={{ ml: 1, flex: 1 }}
+                            placeholder="ค้นหาOPD"
+                            // inputProps={{ 'aria-label': 'search google maps' }}
+                            onChange={handleSearch}
 
-                            <div className="employee-img">
-                                <img src={user} alt="" />
-                            </div>
-                            <div className="employee-detail">
-                                <h4>ID : {data.number_id}</h4>
-                                <div className="details">
-                                    <p>
-                                        ชื่อ {data.fname} {data.lname}
-                                    </p>
-                                    <p>อายุ {data.age} ปี</p>
-                                    <p>กรุ๊ปเลือด : {data.blood}</p>
-                                    <p>ส่วนสูง {data.height} ซม.</p>
-                                    <p>น้ำหนัก {data.weight} กก.</p>
-                                    <p>เริ่มงาน : {data.start_date}</p>
-                                    <p>เพศ : {data.sex}</p>
+                        />
+                        <IconButton type="button" sx={{ p: '10px' }} style={{ borderRadius: 0, background: 'none' }}>
+                            <SearchIcon color="primary" />
+                        </IconButton>
+                        {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
+            <DirectionsIcon />
+          </IconButton> */}
+                    </Paper>
+                </Grid>
+                {/* <Grid item xs={4} sm={4} md={4} xl={2} lg={2}>
+              <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '-2px', p: '2px 4px', display: 'flex', justifyContent: 'end' }}><button type="" onClick={() => goToAdd()}
+                style={{
+                  borderRadius: 5,
+                  margin: 0,
+                  borderRadius: '5px',
+                  border: 0,
+                  padding: '0px',
+                  color: '#fff',
+                  backgroundColor: '#a47600',
+                  alignSelf: 'end', width: '100%', height: 45
+                }}>เพิ่มข้อมูล</button></Typography>
+            </Grid> */}
+            </Grid>
+            <div style={{ backgroundColor: '#ffff', height: 1, marginTop: 15, marginBottom: 8 ,width:'full'}}></div>
+                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                    <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
+                    </Grid>
+                    {filteredCases.map((data) => (
+                        <Grid item xs={12} sm={6} md={6} lg={3} xl={3}>
+                            <div className="employee-card">
+
+                                <div className="employee-img">
+                                    <img src={user} alt="" />
                                 </div>
-                            </div>
-                            {/* <div className="more-vert">
+                                <div className="employee-detail">
+                                    <h4>ID : {data.number_id}</h4>
+                                    <div className="details">
+                                        <p>
+                                            ชื่อ {data.fname} {data.lname}
+                                        </p>
+                                        <p>อายุ {data.age} ปี</p>
+                                        <p>กรุ๊ปเลือด : {data.blood}</p>
+                                        <p>ส่วนสูง {data.height} ซม.</p>
+                                        <p>น้ำหนัก {data.weight} กก.</p>
+                                        <p>เริ่มงาน : {new Date(data.start_date).toLocaleDateString()}</p>
+                                        <p>เพศ : {data.sex}</p>
+                                    </div>
+                                </div>
+                                {/* <div className="more-vert">
                                 <Box sx={{marginRight:1,display:'flex'}}>
                                     <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.id)}/>
                                     <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.id)}/>
@@ -190,12 +242,13 @@ export default function AllEmployees() {
 
                             </div> */}
 
-                        </div>
+                            </div>
 
-                    </Grid>
-                
-                ))}
-            </Grid>
-        </>
+                        </Grid>
+
+                    ))}
+                </Grid></div>
+
+        </div>
     );
 }
