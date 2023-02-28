@@ -21,7 +21,7 @@ import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
 import ShowCustomer from '../../Views/Customer/ShowCustomer/ShowCustomer';
 
-const pages = ["ข้อมูลพนักงาน", "ข้อมูลลูกค้า", "ข้อมูลแพทย์", "ประวัติการรักษาคลินิก"];
+const pages = ["ข้อมูลพนักงาน", "ข้อมูลลูกค้า", "ข้อมูลแพทย์", "เคสการรักษาทั้งหมดของคลินิก"];
 // const settings = ["โปรไฟล์", "ออกจากระบบ"];
 const nav = [
   "/Employee/ShowEmployee",

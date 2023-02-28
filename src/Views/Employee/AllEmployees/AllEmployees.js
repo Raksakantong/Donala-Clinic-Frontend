@@ -107,94 +107,38 @@ export default function AllEmployees() {
     );
     return (
         <div >
-            {/* <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="caption table">
-          <caption>A basic table example with a caption</caption>
-          <TableHead>
-            <TableRow>
-              <TableCell>เลขบัตรประจำตัวประชาชน</TableCell>
-              <TableCell align="right">ชื่อ</TableCell>
-              <TableCell align="right">นามสกุล</TableCell>
-              <TableCell align="right">อายุ</TableCell>
-              <TableCell align="right">กรุ๊ปเลือด</TableCell>
-              <TableCell align="right">ส่วนสูง</TableCell>
-              <TableCell align="right">น้ำหนัก</TableCell>
-              <TableCell align="right">วันเริ่มงาน</TableCell>
-              <TableCell align="right">วันเกิด</TableCell>
-              <TableCell align="right">เพศ</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableHead> */}
-            {/* <TableBody>
-            {Employees.map((row, index) => (
-              <TableRow key={row.id}>
-                <TableCell component="th" scope="row">
-                  {row.number_id}
-                </TableCell>
-                <TableCell align="right">{row.fname}</TableCell>
-                <TableCell align="right">{row.lname}</TableCell>
-                <TableCell align="right">{row.age}</TableCell>
-                <TableCell align="right">{row.blood}</TableCell>
-                <TableCell align="right">{row.height}</TableCell>
-                <TableCell align="right">{row.weight}</TableCell>
-                <TableCell align="right">{row.start_date}</TableCell>
-                <TableCell align="right">{row.date_of_birth}</TableCell>
-                <TableCell align="right">{row.sex}</TableCell>
-                <TableCell align="center">
-                  <ButtonGroup aria-label="outlined primary button group"> */}
-            {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}
-
-            {/* <Button
-                      color="primary"
-                      onClick={() => update_employee(row.id)}
-                    >
-                      Edit
-                    </Button>
-                    <Button color="error" onClick={() => del(row.id)}>
-                      Delete!
-                    </Button> */}
-            {/* </ButtonGroup>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <>{Id}</> */}
-
-            {/* card employee */}
             <HeaderEmployee />
-            <br/>
+            <br />
             <div style={{ margin: 20 }}>
                 <Grid container rowSpacing={1} spacing={1}>
-            
-                <Grid item xs={12} sm={12} md={12} xl={8} lg={8}>
-                    <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '0px', p: '2px 4px', display: 'flex', }}>
-                        พนักงานทั้งหมดของคลินิก
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} xl={4} lg={4}>
-                    <Paper
-                        component="form"
-                        sx={{ p: '0px 0px', display: 'flex', alignItems: 'center', width: '100%', marginBottom: '0px', marginTop: '0px' }}
-                    >
-                        <InputBase
-                            sx={{ ml: 1, flex: 1 }}
-                            placeholder="ค้นหาOPD"
-                            // inputProps={{ 'aria-label': 'search google maps' }}
-                            onChange={handleSearch}
 
-                        />
-                        <IconButton type="button" sx={{ p: '10px' }} style={{ borderRadius: 0, background: 'none' }}>
-                            <SearchIcon color="primary" />
-                        </IconButton>
-                        {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+                    <Grid item xs={12} sm={12} md={12} xl={8} lg={8}>
+                        <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '0px', p: '2px 4px', display: 'flex', }}>
+                            พนักงานทั้งหมดของคลินิก
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} xl={4} lg={4}>
+                        <Paper
+                            component="form"
+                            sx={{ p: '0px 0px', display: 'flex', alignItems: 'center', width: '100%', marginBottom: '0px', marginTop: '0px' }}
+                        >
+                            <InputBase
+                                sx={{ ml: 1, flex: 1 }}
+                                placeholder="ค้นหาOPD"
+                                // inputProps={{ 'aria-label': 'search google maps' }}
+                                onChange={handleSearch}
+
+                            />
+                            <IconButton type="button" sx={{ p: '10px' }} style={{ borderRadius: 0, background: 'none' }}>
+                                <SearchIcon color="primary" />
+                            </IconButton>
+                            {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
           <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
             <DirectionsIcon />
           </IconButton> */}
-                    </Paper>
-                </Grid>
-                {/* <Grid item xs={4} sm={4} md={4} xl={2} lg={2}>
+                        </Paper>
+                    </Grid>
+                    {/* <Grid item xs={4} sm={4} md={4} xl={2} lg={2}>
               <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '-2px', p: '2px 4px', display: 'flex', justifyContent: 'end' }}><button type="" onClick={() => goToAdd()}
                 style={{
                   borderRadius: 5,
@@ -207,8 +151,8 @@ export default function AllEmployees() {
                   alignSelf: 'end', width: '100%', height: 45
                 }}>เพิ่มข้อมูล</button></Typography>
             </Grid> */}
-            </Grid>
-            <div style={{ backgroundColor: '#ffff', height: 1, marginTop: 15, marginBottom: 8 ,width:'full'}}></div>
+                </Grid>
+                <div style={{ backgroundColor: '#ffff', height: 1, marginTop: 15, marginBottom: 8, width: 'full' }}></div>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
                     </Grid>
@@ -247,7 +191,8 @@ export default function AllEmployees() {
                         </Grid>
 
                     ))}
-                </Grid></div>
+                </Grid>
+                </div>
 
         </div>
     );

@@ -179,7 +179,8 @@ export default function ShowCustomer() {
               </TableBody>
             </Table>
           </TableContainer>
-        </div><></></div>
+        </div>
+      </div>
     </>
   );
 }

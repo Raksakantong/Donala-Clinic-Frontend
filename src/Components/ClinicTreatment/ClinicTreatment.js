@@ -11,6 +11,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import Grid from "@mui/material/Grid";
+import Typography from '@mui/material/Typography';
 import {
   apiDeleteCustomer,
   apiGetTreatment,
@@ -20,8 +21,8 @@ import {
 import "./ClinicTreatment.scss";
 
 import axios from "axios";
-import Typography from '@mui/material/Typography';
-import { margin } from "@mui/system";
+
+// import { margin } from "@mui/system";
 
 export default function ClinicTreatmentO() {
   const [treatment, setTreatment] = useState([]);
@@ -40,7 +41,7 @@ export default function ClinicTreatmentO() {
       console.log("GetTreatment() ==>", res.data);
       console.log("GetTreatment date ==>", res.data.map((m) => m.date));
       setTreatment(res.data);
-      setDate(res.data.map((m) => m.date.slice(0, 10)))
+      // setDate(res.data.map((m) => m.date.slice(0, 10)))
     });
   }
   function del(id, e) {
@@ -148,7 +149,7 @@ export default function ClinicTreatmentO() {
                   <TableCell align="center">{row.case_name}</TableCell>
                   <TableCell align="center">{row.customer_id}</TableCell>
                   <TableCell align="center">{row.case_detail}</TableCell>
-                  <TableCell align="center">{row.price}</TableCell>
+                  <TableCell align="center">{row.price.toLocaleString('en-US')}</TableCell>
                   <TableCell align="center">{new Date(row.date).toLocaleDateString()}</TableCell>
 
 

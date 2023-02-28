@@ -118,7 +118,7 @@ export default function TreatmentForm() {
                   fontSize: 'medium',
 
                 }}
-                InputLabelProps={{shrink: false}}
+                // InputLabelProps={{shrink: false}}
                 >
                   <InputLabel shrink={true} id="demo-simple-select-required-label" sx={{ marginTop:1}}>ชื่อการรักษา </InputLabel>
                   <Select
