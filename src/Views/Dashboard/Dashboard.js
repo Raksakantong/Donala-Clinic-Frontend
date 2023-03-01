@@ -33,18 +33,16 @@ const Dashboard = () => {
                 <Grid item xs={12} sm={12} md={12} lg={3} xl={3} >
                     <TotalCustomer />
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={8} xl={8} >
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
                     <StaticChart />
+                </Grid>
+
+                <Grid item xs={12} sm={12} md={12} lg={8} xl={8} >
+                    <TrendChart />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} lg={4} xl={4} >
                     <CourseChart />
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
-                    <TrendChart />
-                </Grid>
-
-
-
             </Grid>
 
         </div>
