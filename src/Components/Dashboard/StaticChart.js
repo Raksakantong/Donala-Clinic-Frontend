@@ -28,8 +28,8 @@ const StaticChart = () => {
     const [data, setData] = useState([])
     const [allCase, setAllCase] = useState()
     const [lines, setLines] = useState()
-    const [year, setYear] = useState(2022)
-    const [select,setSelect] = useState()
+    const [year, setYear] = useState(new Date().getFullYear())
+    const [select, setSelect] = useState()
 
     useEffect(() => {
         getData()
@@ -45,27 +45,30 @@ const StaticChart = () => {
             const totalCases = res.data.length;
             console.log("totalCases ===", totalCases);
             setAllCase(totalCases)
-            const selectedYear = <Box sx={{ display: 'flex', justifyContent: 'flex-end'}}>   <FormControl sx={{ m: 1, minWidth: 100,height:10, marginBottom:4}}>
-            <FormHelperText>เลือกปี</FormHelperText>
-            <Select
-                value={year}
-                onChange={(e)=>setYear(e.target.value)}
-                displayEmpty
-                inputProps={{ 'aria-label': 'Without label' }}
-                // sx={{width:3}}
-            >
-                <MenuItem value="">
-                    {year}
-                </MenuItem>
-                <MenuItem value={2019}>2019</MenuItem>
-                <MenuItem value={2022}>2022</MenuItem>
-                <MenuItem value={2023}>2023</MenuItem>
-            </Select>
-            
-        </FormControl></Box>
-         
-        setSelect(selectedYear)
-        
+            const selectedYear =
+                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>   <FormControl sx={{ m: 1, minWidth: 100, height: 10, marginBottom: 4 }}>
+                    <FormHelperText>เลือกปี</FormHelperText>
+                    <Select
+                        sx={{ height: 30, width: 90 }}
+                        value={year}
+                        onChange={(e) => setYear(e.target.value)}
+                        displayEmpty
+                        inputProps={{ 'aria-label': 'Without label' }}
+                    // sx={{width:3}}
+                    >
+                        {/* <MenuItem value="">
+                            {year}
+                        </MenuItem> */}
+                        <MenuItem value={2019}>2019</MenuItem>
+                        <MenuItem value={2022}>2022</MenuItem>
+                        <MenuItem value={2023}>2023</MenuItem>
+                    </Select>
+
+                </FormControl>
+                </Box>
+
+            setSelect(selectedYear)
+
             const filteredData = res.data.filter(item => {
                 const _year = new Date(item.date).getFullYear();
                 return _year === year;
@@ -107,7 +110,7 @@ const StaticChart = () => {
                 ],
             };
             const options = {
-                responsive:true,
+                responsive: true,
                 // aspectRatio:,
                 scales: {
                     y:
@@ -115,7 +118,7 @@ const StaticChart = () => {
                         ticks: {
                             beginAtZero: true,
                             stepSize: 5000
-                            
+
                         },
                     },
 
@@ -148,7 +151,7 @@ const StaticChart = () => {
 
 
     return (
-        <Paper  sx={{  alignItems: 'center', gap: 0, paddingTop: 1, paddingRight: 1, paddingBottom: 1, paddingLeft: 2 }}>
+        <Paper sx={{ alignItems: 'center', gap: 0, paddingTop: 1, paddingRight: 1, paddingBottom: 1, paddingLeft: 2 }}>
             {select}
             {lines}
         </Paper>
