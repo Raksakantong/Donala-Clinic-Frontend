@@ -181,7 +181,7 @@ export default function ShowEmployee() {
                         >
                             <InputBase
                                 sx={{ ml: 1, flex: 1 }}
-                                placeholder="ค้นหาOPD"
+                                placeholder="ค้นหาพนักงาน"
                                 // inputProps={{ 'aria-label': 'search google maps' }}
                                 onChange={handleSearch}
 
@@ -214,7 +214,7 @@ export default function ShowEmployee() {
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
                     </Grid>
                     {filteredCases.map((data) => (
-                        <Grid item xs={12} sm={6} md={6} lg={3} xl={3}>
+                        <Grid item xs={12} sm={6} md={6} lg={3} xl={3} key={data.number_id}>
                             <div className="employee-card">
 
                                 <div className="employee-img">
@@ -234,14 +234,14 @@ export default function ShowEmployee() {
                                         <p>เพศ : {data.sex}</p>
                                     </div>
                                 </div>
-                                {/* <div className="more-vert">
+                                <div className="more-vert">
                                 <Box sx={{marginRight:1,display:'flex'}}>
-                                    <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.id)}/>
-                                    <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.id)}/>
+                                    <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.number_id)}/>
+                                    <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.number_id)}/>
                                     
                                 </Box>
 
-                            </div> */}
+                            </div>
 
                             </div>
 

@@ -78,7 +78,7 @@ export default function ShowCustomer() {
       < >
         <Grid container rowSpacing={3} spacing={2}>
           <Grid item xs={12} sm={12} md={12} xl={8} lg={8}>
-            <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '5px', p: '2px 4px' }} >เคสการรักษาทั้งหมดของคลินิก</Typography>
+            <Typography variant="h5" fontWeight='bold' color='#fff' sx={{ marginTop: '5px', p: '2px 4px' }} >ข้อมูลลูกค้า (OPD)</Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={12} xl={4} lg={4}  >
             <Paper

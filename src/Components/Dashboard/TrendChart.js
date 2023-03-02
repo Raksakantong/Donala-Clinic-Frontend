@@ -119,7 +119,7 @@ const TrendChart = () => {
           },
           title: {
             display: true,
-            text: "สถิติยอดรายรับรวมตามคอร์ส",
+            text: "สถิติยอดรายรับรวมตามเคส",
             font: {
               size: 20,
             },
