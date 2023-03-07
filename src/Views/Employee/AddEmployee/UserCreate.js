@@ -11,6 +11,11 @@ import { apiUpdate } from "../../../Service/api";
 import "./AddEmployee.scss";
 import user from "../../../Assets/user.png";
 import Header from "../../../Components/Header/Header";
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 export default function UserCreate() {
   const navigate = useNavigate();
@@ -28,8 +33,8 @@ export default function UserCreate() {
       height: height,
       weight: weight,
       blood: blood,
-      role:role,
-      password:password
+      role: role,
+      password: password
     };
     axios
       .post(
@@ -91,7 +96,7 @@ export default function UserCreate() {
                   required
                   fullWidth
                   id="number_id"
-                  label="Number id"
+                  label="เลขบัตรประจำตัวประชาชน"
                   onChange={(e) => setNumber_id(e.target.value)}
                   autoFocus
                   inputProps={{
@@ -114,7 +119,7 @@ export default function UserCreate() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="ชื่อ"
                   onChange={(e) => setFname(e.target.value)}
                   autoFocus
                   inputProps={{
@@ -135,7 +140,7 @@ export default function UserCreate() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="นามสกุล"
                   onChange={(e) => setLname(e.target.value)}
                   inputProps={{
                     style: {
@@ -151,13 +156,13 @@ export default function UserCreate() {
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <TextField
-                InputLabelProps={{ shrink: true }}
-                type='date'
+                  InputLabelProps={{ shrink: true }}
+                  type='date'
                   variant="filled"
                   required
                   fullWidth
                   id="Start date"
-                  label="Start Date"
+                  label="วันเริ่มงาน"
                   onChange={(e) => setStart_date(e.target.value)}
                   inputProps={{
                     style: {
@@ -173,13 +178,13 @@ export default function UserCreate() {
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
                 <TextField
-                InputLabelProps={{ shrink: true }}
-                type='date'
+                  InputLabelProps={{ shrink: true }}
+                  type='date'
                   variant="filled"
                   required
                   fullWidth
                   id="date of birth"
-                  label="Date of Birth"
+                  label="วันเกิด"
                   onChange={(e) => setdate_of_birth(e.target.value)}
                   inputProps={{
                     style: {
@@ -199,7 +204,7 @@ export default function UserCreate() {
                   required
                   fullWidth
                   id="age"
-                  label="Age"
+                  label="อายุ"
                   onChange={(e) => setAge(e.target.value)}
                   inputProps={{
                     style: {
@@ -214,32 +219,30 @@ export default function UserCreate() {
                 />
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
-                <TextField
-                  variant="filled"
-                  required
-                  fullWidth
-                  id="sex"
-                  label="Sex"
-                  onChange={(e) => setSex(e.target.value)}
-                  inputProps={{
-                    style: {
-                      fontFamily: "Arial",
-                      color: "#0F3A5D",
-                      backgroundColor: "#fff7",
-                      height: "15px",
-                      fontWeight: 'bold',
-                      fontSize: 'medium'
-                    },
-                  }}
-                />
+                <FormControl fullWidth sx={{}}>
+                  <InputLabel id="demo-simple-select-label">เพศ</InputLabel>
+                  <Select
+                    sx={{ height: 48, minWidth: 80, backgroundColor: '#fff6' }}
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={sex}
+                    label="เพศ"
+                    onChange={(e) => setSex(e.target.value)}
+                  >
+                    <MenuItem value='ชาย'>ชาย</MenuItem>
+                    <MenuItem value='หญิง'>หญิง</MenuItem>
+
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12} md={4} lg={4} xl={4}>
                 <TextField
+                  type='number'
                   variant="filled"
                   required
                   fullWidth
                   id="height"
-                  label="Height"
+                  label="ส่วนสูง"
                   onChange={(e) => setHeight(e.target.value)}
                   inputProps={{
                     style: {
@@ -255,11 +258,12 @@ export default function UserCreate() {
               </Grid>
               <Grid item xs={12} md={4} lg={4} xl={4}>
                 <TextField
+                  type='number'
                   variant="filled"
                   required
                   fullWidth
                   id="weight"
-                  label="weight"
+                  label="น้ำหนัก"
                   onChange={(e) => setWeight(e.target.value)}
                   inputProps={{
                     style: {
@@ -274,24 +278,22 @@ export default function UserCreate() {
                 />
               </Grid>
               <Grid item xs={12} md={4} lg={4} xl={4}>
-                <TextField
-                  variant="filled"
-                  required
-                  fullWidth
-                  id="blood"
-                  label="Blood"
-                  onChange={(e) => setBlood(e.target.value)}
-                  inputProps={{
-                    style: {
-                      fontFamily: "Arial",
-                      color: "#0F3A5D",
-                      backgroundColor: "#fff7",
-                      height: "15px",
-                      fontWeight: 'bold',
-                      fontSize: 'medium'
-                    },
-                  }}
-                />
+                <FormControl fullWidth sx={{}}>
+                  <InputLabel id="demo-simple-select-label">กรุ๊ปเลือด</InputLabel>
+                  <Select
+                    sx={{ height: 48, minWidth: 80, backgroundColor: '#fff6' }}
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={blood}
+                    label="กรุ็ปเลือด"
+                    onChange={(e) => setBlood(e.target.value)}
+                  >
+                    <MenuItem value='A'>A</MenuItem>
+                    <MenuItem value='B'>B</MenuItem>
+                    <MenuItem value='AB'>AB</MenuItem>
+                    <MenuItem value='O'>O</MenuItem>
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -302,7 +304,7 @@ export default function UserCreate() {
                   required
                   fullWidth
                   id="password"
-                  label="Password"
+                  label="รหัสผ่าน"
                   onChange={(e) => setPassword(e.target.value)}
                   autoFocus
                   inputProps={{
@@ -320,7 +322,7 @@ export default function UserCreate() {
             </Grid>
             <br />
             <Button type="submit" fullWidth variant="contained" color="primary">
-              Create
+              บันทึกข้อมูล
             </Button>
           </form>
         </div>

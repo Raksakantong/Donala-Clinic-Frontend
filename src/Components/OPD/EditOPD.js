@@ -10,6 +10,12 @@ import {
 import axios from "axios";
 import Header from "../../Components/Header/Header";
 
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -108,6 +114,7 @@ export default function EditOPD() {
             <Grid container spacing={2}>
               <Grid item xs={12} md={12}>
                 <TextField
+                type='number'
                   value={number_id}
                   autoComplete="number_id"
                   name="number_id"
@@ -115,7 +122,7 @@ export default function EditOPD() {
                   required
                   fullWidth
                   id="number_id"
-                  label="Number id"
+                  label="เลขบัตรประจำตัวประชาชน"
                   // onChange={(e) => setNumber_id(e.target.value)}
                   autoFocus
                 />
@@ -129,7 +136,7 @@ export default function EditOPD() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="ชื่อ"
                   onChange={(e) => {
                     setFname(e.target.value);
                     console.log("ee ==> ", e);
@@ -144,42 +151,60 @@ export default function EditOPD() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="นามสกุล"
                   onChange={(e) => setLname(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                type='number'
                   value={phone_number}
                   variant="outlined"
                   required
                   fullWidth
                   id="Phone"
-                  label="Phone Number"
+                  label="หมายเลขโทรศัพท์"
                   onChange={(e) => setPhone_number(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
-                <TextField
-                  value={sex}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="sex"
-                  label="Sex"
-                  onChange={(e) => setSex(e.target.value)}
-                />
+              <FormControl fullWidth sx={{}}>
+                  <InputLabel id="sex-label">เพศ</InputLabel>
+                  <Select
+                    sx={{ height: 48, minWidth: 80, backgroundColor: '#fff0' }}
+                    labelId="demo-simple-select-label"
+                    id="sex"
+                    value={sex}
+                    label="เพศ"
+                    onChange={(e) => setSex(e.target.value)}
+                  >
+                    <MenuItem value='ชาย'>ชาย</MenuItem>
+                    <MenuItem value='หญิง'>หญิง</MenuItem>
+                   
+
+
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
-                <TextField
-                  value={blood}
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="blood"
-                  label="Blood"
-                  onChange={(e) => setBlood(e.target.value)}
-                />
+              <FormControl fullWidth sx={{}}>
+                  <InputLabel id="blood-label">กรุ๊ปเลือด</InputLabel>
+                  <Select
+                    sx={{ height: 48, minWidth: 80, backgroundColor: '#fff0' }}
+                    labelId="demo-simple-select-label"
+                    id="blood"
+                    value={blood}
+                    label="กรุ๊ปเลือด"
+                    onChange={(e) => setBlood(e.target.value)}
+                  >
+                    <MenuItem value='A'>A</MenuItem>
+                    <MenuItem value='B'>B</MenuItem>
+                    <MenuItem value='AB'>AB</MenuItem>
+                    <MenuItem value='O'>O</MenuItem>
+
+
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -188,7 +213,7 @@ export default function EditOPD() {
                   required
                   fullWidth
                   id="drug_allergy"
-                  label="Drug allergy"
+                  label="แพ้ยา"
                   onChange={(e) => setDrugAllergy(e.target.value)}
                 />
               </Grid>
@@ -199,7 +224,7 @@ export default function EditOPD() {
                   required
                   fullWidth
                   id="Congenital diseaset"
-                  label="Congenital diseaset "
+                  label="โรคประจำตัว"
                   onChange={(e) => setCongenitalDisease(e.target.value)}
                 />
               </Grid>
@@ -210,7 +235,7 @@ export default function EditOPD() {
                   required
                   fullWidth
                   id="etc"
-                  label="etc note"
+                  label="อื่นๆ"
                   onChange={(e) => setEtcNote(e.target.value)}
                 />
               </Grid>

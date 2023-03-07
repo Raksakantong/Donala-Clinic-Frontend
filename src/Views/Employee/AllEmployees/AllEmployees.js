@@ -157,7 +157,7 @@ export default function AllEmployees() {
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
                     </Grid>
                     {filteredCases.map((data) => (
-                        <Grid item xs={12} sm={6} md={6} lg={3} xl={3}>
+                        <Grid item xs={12} sm={6} md={6} lg={3} xl={3} key={data.number_id}>
                             <div className="employee-card">
 
                                 <div className="employee-img">

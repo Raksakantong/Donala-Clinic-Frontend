@@ -9,7 +9,11 @@ import Container from '@mui/material/Container';
 import { apiAddCustomer } from '../../../Service/api'
 import HeaderEmployee from "../../../Components/Header/HeaderEmployee/HeaderEmployee";
 
-
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const AddCustomerForEmployee = () => {
   const navigate = useNavigate()
@@ -66,13 +70,14 @@ const AddCustomerForEmployee = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} >
                 <TextField
+                  type='number'
                   autoComplete="number_id"
                   name="number_id"
                   variant="outlined"
                   required
                   fullWidth
                   id="number_id"
-                  label="Number id"
+                  label="เลขบัตรประจำตัวประชาชน"
                   onChange={(e) => setNumber_id(e.target.value)}
                   autoFocus
                 />
@@ -85,7 +90,7 @@ const AddCustomerForEmployee = () => {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="ชื่อ"
                   onChange={(e) => setFname(e.target.value)}
                   autoFocus
                 />
@@ -96,7 +101,7 @@ const AddCustomerForEmployee = () => {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="นามสกุล"
                   onChange={(e) => setLname(e.target.value)}
                 />
               </Grid>
@@ -106,29 +111,46 @@ const AddCustomerForEmployee = () => {
                   required
                   fullWidth
                   id="phone_number"
-                  label="Phone number"
+                  label="หมายเลขโทรศัพท์"
                   onChange={(e) => setPhone_number(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="sex"
-                  label="Sex"
-                  onChange={(e) => setSex(e.target.value)}
-                />
+                <FormControl fullWidth sx={{}}>
+                  <InputLabel id="sex-label">เพศ</InputLabel>
+                  <Select
+                    sx={{ height: 48, minWidth: 80, backgroundColor: '#fff0' }}
+                    labelId="demo-simple-select-label"
+                    id="sex"
+                    value={sex}
+                    label="เพศ"
+                    onChange={(e) => setSex(e.target.value)}
+                  >
+                    <MenuItem value='ชาย'>ชาย</MenuItem>
+                    <MenuItem value='หญิง'>หญิง</MenuItem>
+
+
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12} md={6} lg={6} xl={6}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="blood"
-                  label="Blood"
-                  onChange={(e) => setBlood(e.target.value)}
-                />
+                <FormControl fullWidth sx={{}}>
+                  <InputLabel id="blood-label">กรุ๊ปเลือด</InputLabel>
+                  <Select
+                    sx={{ height: 48, minWidth: 80, backgroundColor: '#fff0' }}
+                    labelId="demo-simple-select-label"
+                    id="blood"
+                    value={blood}
+                    label="กรุ๊ปเลือด"
+                    onChange={(e) => setBlood(e.target.value)}
+                  >
+                    <MenuItem value='A'>A</MenuItem>
+                    <MenuItem value='B'>B</MenuItem>
+                    <MenuItem value='AB'>AB</MenuItem>
+                    <MenuItem value='O'>O</MenuItem>
+
+                  </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -136,7 +158,7 @@ const AddCustomerForEmployee = () => {
                   required
                   fullWidth
                   id="drug_allergy"
-                  label="Drug allergy"
+                  label="แพ้ยา"
                   onChange={(e) => setDrug_allergy(e.target.value)}
                 />
               </Grid>
@@ -146,7 +168,7 @@ const AddCustomerForEmployee = () => {
                   required
                   fullWidth
                   id="congenital_diseaset"
-                  label="Congenital diseaset"
+                  label="โรคประจำตัว"
                   onChange={(e) => setCongenital_diseaset(e.target.value)}
                 />
               </Grid>
@@ -156,7 +178,7 @@ const AddCustomerForEmployee = () => {
                   required
                   fullWidth
                   id="etc_note"
-                  label="Note"
+                  label="อื่นๆ"
                   onChange={(e) => setEtc_note(e.target.value)}
                 />
               </Grid>
@@ -168,7 +190,7 @@ const AddCustomerForEmployee = () => {
               variant="contained"
               color="primary"
             >
-              Create
+              บันทึกข้อมูล
             </Button>
           </form>
         </div>

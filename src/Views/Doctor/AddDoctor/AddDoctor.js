@@ -81,7 +81,7 @@ export default function AddDoctor() {
                   fullWidth
                   id="specialist"
                   label="ความเชี่ยวชาญ"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setSpecialist(e.target.value)}
                 />
               </Grid>
               {/* <Grid item xs={12}>

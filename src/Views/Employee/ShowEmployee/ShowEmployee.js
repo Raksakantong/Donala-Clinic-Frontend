@@ -27,6 +27,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 
 import user from "../../../Assets/user.png";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 import axios from "axios";
 import { Button, ButtonGroup } from "@mui/material";
@@ -35,6 +40,7 @@ import "./ShowEmployee.scss";
 import Header from "../../../Components/Header/Header";
 
 export default function ShowEmployee() {
+    const [open, setOpen] = useState(false);
     const act = ["ลบ", "แก้ไข"];
     const [Employees, setEmployees] = useState([]);
     const [Id, setId] = useState();
@@ -66,10 +72,6 @@ export default function ShowEmployee() {
             console.log(res.data);
             setEmployees(res.data);
         });
-        // axios.get('http://localhost:5000/users').then(res => {
-        //     console.log(res.data);
-        //
-        // })
     }
     function del(id, e) {
         let idParse = id.toString();
@@ -84,6 +86,7 @@ export default function ShowEmployee() {
                 console.log(res.data);
 
                 getUsers();
+                handleClose()
 
             });
         handleCloseNavMenu()
@@ -106,64 +109,15 @@ export default function ShowEmployee() {
     const filteredCases = Employees.filter((item) =>
         item.number_id.includes(searchTerm)
     );
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <>
-            {/* <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="caption table">
-          <caption>A basic table example with a caption</caption>
-          <TableHead>
-            <TableRow>
-              <TableCell>เลขบัตรประจำตัวประชาชน</TableCell>
-              <TableCell align="right">ชื่อ</TableCell>
-              <TableCell align="right">นามสกุล</TableCell>
-              <TableCell align="right">อายุ</TableCell>
-              <TableCell align="right">กรุ๊ปเลือด</TableCell>
-              <TableCell align="right">ส่วนสูง</TableCell>
-              <TableCell align="right">น้ำหนัก</TableCell>
-              <TableCell align="right">วันเริ่มงาน</TableCell>
-              <TableCell align="right">วันเกิด</TableCell>
-              <TableCell align="right">เพศ</TableCell>
-              <TableCell align="right"></TableCell>
-            </TableRow>
-          </TableHead> */}
-            {/* <TableBody>
-            {Employees.map((row, index) => (
-              <TableRow key={row.id}>
-                <TableCell component="th" scope="row">
-                  {row.number_id}
-                </TableCell>
-                <TableCell align="right">{row.fname}</TableCell>
-                <TableCell align="right">{row.lname}</TableCell>
-                <TableCell align="right">{row.age}</TableCell>
-                <TableCell align="right">{row.blood}</TableCell>
-                <TableCell align="right">{row.height}</TableCell>
-                <TableCell align="right">{row.weight}</TableCell>
-                <TableCell align="right">{row.start_date}</TableCell>
-                <TableCell align="right">{row.date_of_birth}</TableCell>
-                <TableCell align="right">{row.sex}</TableCell>
-                <TableCell align="center">
-                  <ButtonGroup aria-label="outlined primary button group"> */}
-            {/* <Button onClick={() => UpdateUser(user.id)}>Edit</Button> */}
-
-            {/* <Button
-                      color="primary"
-                      onClick={() => update_employee(row.id)}
-                    >
-                      Edit
-                    </Button>
-                    <Button color="error" onClick={() => del(row.id)}>
-                      Delete!
-                    </Button> */}
-            {/* </ButtonGroup>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <>{Id}</> */}
-
-            {/* card employee */}
             <Header />
             <br />
             <div style={{ margin: 20 }}>
@@ -235,13 +189,34 @@ export default function ShowEmployee() {
                                     </div>
                                 </div>
                                 <div className="more-vert">
-                                <Box sx={{marginRight:1,display:'flex'}}>
-                                    <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => del(data.number_id)}/>
-                                    <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.number_id)}/>
-                                    
-                                </Box>
+                                    <Box sx={{ marginRight: 1, display: 'flex' }}>
+                                        <DeleteForeverTwoToneIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => handleClickOpen()} />
+                                        <CreateIcon sx={{ color: 'rgb(207, 207, 207)' }} onClick={() => update_employee(data.number_id)} />
 
-                            </div>
+                                    </Box>
+                                    <Dialog
+                                        open={open}
+                                        onClose={handleClose}
+                                        aria-labelledby="alert-dialog-title"
+                                        aria-describedby="alert-dialog-description"
+                                    >
+                                        <DialogTitle id="alert-dialog-title">
+                                            {"แจ้งเตือนการลบข้อมูล !"}
+                                        </DialogTitle>
+                                        <DialogContent>
+                                            <DialogContentText id="alert-dialog-description">
+                                                กด "ยืนยันการลบ" เพื่อลบข้อมูล ยืนยันที่จะลบข้อมูลหรือไม่?
+                                            </DialogContentText>
+                                        </DialogContent>
+                                        <DialogActions>
+                                            <Button onClick={handleClose}>ยกเลิก</Button>
+                                            <Button onClick={() => del(data.number_id)} autoFocus>
+                                                ยืนยันการลบ
+                                            </Button>
+                                        </DialogActions>
+                                    </Dialog>
+
+                                </div>
 
                             </div>
 

@@ -24,7 +24,14 @@ import { Button, ButtonGroup } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 export default function ShowCustomer() {
+  const [open, setOpen] = useState(false);
   const [Customers, setCustomers] = useState([]);
   const [Id, setId] = useState();
   const [searchTerm, setSearchTerm] = useState("");
@@ -49,6 +56,7 @@ export default function ShowCustomer() {
       console.log(res);
       console.log(res.data);
       GetCustomer();
+      handleClose()
     });
   }
   function update_customer(ID) {
@@ -71,6 +79,13 @@ export default function ShowCustomer() {
     item.number_id.includes(searchTerm)
   );
   // /customer/AddCustomer
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <Header />
@@ -170,10 +185,31 @@ export default function ShowCustomer() {
                         >
                           Edit
                         </Button>
-                        <Button color="error" onClick={() => del(row.number_id)}>
+                        <Button color="error" onClick={() => handleClickOpen()}>
                           Delete!
                         </Button>
                       </ButtonGroup>
+                      <Dialog
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                      >
+                        <DialogTitle id="alert-dialog-title">
+                          {"แจ้งเตือนการลบข้อมูล !"}
+                        </DialogTitle>
+                        <DialogContent>
+                          <DialogContentText id="alert-dialog-description">
+                            กด "ยืนยันการลบ" เพื่อลบข้อมูล ยืนยันที่จะลบข้อมูลหรือไม่? 
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleClose}>ยกเลิก</Button>
+                          <Button onClick={() =>del(row.number_id)} autoFocus>
+                            ยืนยันการลบ
+                          </Button>
+                        </DialogActions>
+                      </Dialog>
                     </TableCell>
                   </TableRow>
                 ))}
