@@ -10,10 +10,10 @@ import Grid from '@mui/material/Grid';
 
 const TotalTodaySale = () => {
 
-    const [data, setData] = useState([])
-    const [date, setDate] = useState()
-    const [today, setToday] = useState()
-    const [todayRevenue,setTodayRevenue] = useState()
+    // const [data, setData] = useState([])
+    // const [date, setDate] = useState()
+    // const [today, setToday] = useState()
+    const [todayRevenue,setTodayRevenue] = useState("")
 
     useEffect(() => {
         getData()
@@ -22,7 +22,7 @@ const TotalTodaySale = () => {
 
     const getData = async () => {
         await apiGetTreatment().then((res) => {
-            setData(res.data)
+            // setData(res.data)
             console.log(res.data);
             console.log(new Date().getDate())
             const today = new Date();

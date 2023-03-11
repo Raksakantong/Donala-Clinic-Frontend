@@ -26,8 +26,8 @@ import axios from "axios";
 
 export default function ClinicTreatmentO() {
   const [treatment, setTreatment] = useState([]);
-  const [Id, setId] = useState();
-  const [date, setDate] = useState([])
+  // const [Id, setId] = useState();
+  // const [date, setDate] = useState([])
   const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
@@ -44,33 +44,33 @@ export default function ClinicTreatmentO() {
       // setDate(res.data.map((m) => m.date.slice(0, 10)))
     });
   }
-  function del(id, e) {
-    let idParse = id.toString();
-    let ID = {
-      number_id: idParse,
-    };
-    console.log("ID", ID);
-    apiDeleteCustomer(ID).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      // GetCustomer();
-    });
-  }
-  function update_customer(ID) {
-    console.log("number id == ", ID);
-    let idParse = ID.toString();
-    navigate("/customer/updateCustomer", {
-      state: {
-        id: idParse,
-      },
-    });
-  }
-  function goToAdd() {
-    navigate("/customer/AddCustomer");
-  }
-  function showDate() {
-    console.log("วันที่ทั้งหมด ===> ", date);
-  }
+  // function del(id, e) {
+  //   let idParse = id.toString();
+  //   let ID = {
+  //     number_id: idParse,
+  //   };
+  //   console.log("ID", ID);
+  //   apiDeleteCustomer(ID).then((res) => {
+  //     console.log(res);
+  //     console.log(res.data);
+  //     // GetCustomer();
+  //   });
+  // }
+  // function update_customer(ID) {
+  //   console.log("number id == ", ID);
+  //   let idParse = ID.toString();
+  //   navigate("/customer/updateCustomer", {
+  //     state: {
+  //       id: idParse,
+  //     },
+  //   });
+  // }
+  // function goToAdd() {
+  //   navigate("/customer/AddCustomer");
+  // }
+  // function showDate() {
+  //   console.log("วันที่ทั้งหมด ===> ", date);
+  // }
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);

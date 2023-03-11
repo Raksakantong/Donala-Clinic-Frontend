@@ -25,7 +25,7 @@ import { Button, ButtonGroup } from "@mui/material";
 
 export default function ClinicTreatmentO() {
   const [treatment, setTreatment] = useState([]);
-  const [Id, setId] = useState();
+  // const [Id, setId] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   useEffect(() => {

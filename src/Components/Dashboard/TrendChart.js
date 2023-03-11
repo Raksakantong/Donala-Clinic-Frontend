@@ -25,7 +25,7 @@ Chart.register(CategoryScale);
 const TrendChart = () => {
   const [data, setData] = useState([])
   const [allCase, setAllCase] = useState()
-  const [lines, setLines] = useState()
+  const [bar, setBar] = useState()
   const [year, setYear] = useState(String(new Date().getFullYear()))
   const [select, setSelect] = useState()
 
@@ -45,27 +45,28 @@ const TrendChart = () => {
       setAllCase(totalCases)
 
       const selectedYear =
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>   <FormControl sx={{ m: 1, minWidth: 100, height: 10, marginBottom: 4 }}>
-          <FormHelperText>เลือกปี</FormHelperText>
-          <Select
-            sx={{ height: 30, width: 90 }}
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            displayEmpty
-            inputProps={{ 'aria-label': 'Without label' }}
-          // sx={{width:3}}
-          >
-            {/* <MenuItem value="">
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <FormControl sx={{ m: 1, minWidth: 100, height: 10, marginBottom: 4 }}>
+            <FormHelperText>เลือกปี</FormHelperText>
+            <Select
+              sx={{ height: 30, width: 90 }}
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              displayEmpty
+              inputProps={{ 'aria-label': 'Without label' }}
+            // sx={{width:3}}
+            >
+              {/* <MenuItem value="">
                           {year}
                       </MenuItem> */}
-            <MenuItem value="2019">2019</MenuItem>
-            <MenuItem value="2020">2020</MenuItem>
-            <MenuItem value="2021">2021</MenuItem>
-            <MenuItem value="2022">2022</MenuItem>
-            <MenuItem value="2023">2023</MenuItem>
-          </Select>
+              <MenuItem value="2019">2019</MenuItem>
+              <MenuItem value="2020">2020</MenuItem>
+              <MenuItem value="2021">2021</MenuItem>
+              <MenuItem value="2022">2022</MenuItem>
+              <MenuItem value="2023">2023</MenuItem>
+            </Select>
 
-        </FormControl>
+          </FormControl>
         </Box>
 
       setSelect(selectedYear)
@@ -129,8 +130,8 @@ const TrendChart = () => {
         },
       };
 
-      const LineChart = <Bar data={data1} options={options} />
-      setLines(LineChart)
+      const BarChart = <Bar data={data1} options={options} />
+      setBar(BarChart)
 
     })
   }
@@ -143,7 +144,7 @@ const TrendChart = () => {
   return (
     <Paper sx={{ alignItems: 'center', gap: 0, paddingTop: 1, paddingRight: 1, paddingBottom: 1, paddingLeft: 2 }}>
       {select}
-      {lines}
+      {bar}
     </Paper>
   );
 };

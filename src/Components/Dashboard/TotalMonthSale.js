@@ -9,7 +9,7 @@ import { apiGetTreatment } from '../../Service/api';
 
 
 const TotalMonthSale = () => {
-    const [data, setData] = useState([])
+    // const [data, setData] = useState([])
     const [monthRevenue, setMonthRevenue] = useState()
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const TotalMonthSale = () => {
     }, [])
     const getData = async () => {
         await apiGetTreatment().then((res) => {
-            setData(res.data)
+            // setData(res.data)
             console.log(res.data);
             // หาเดือนปัจจุบันและปี
             const today = new Date();

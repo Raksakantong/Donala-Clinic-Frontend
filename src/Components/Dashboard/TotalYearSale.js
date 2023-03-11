@@ -8,7 +8,7 @@ import SavingsIcon from '@mui/icons-material/Savings';
 import Grid from '@mui/material/Grid';
 
 const TotalYearSale = () => {
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const [yearRevenue, setYearRevenue] = useState()
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const TotalYearSale = () => {
   }, [])
   const getData = async () => {
     await apiGetTreatment().then((res) => {
-      setData(res.data)
+      // setData(res.data)
       console.log(res.data);
       const currentYear = new Date().getFullYear(); // หาปีปัจจุบัน
 

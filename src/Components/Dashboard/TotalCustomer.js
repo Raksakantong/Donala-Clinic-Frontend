@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 
 const TotalCustomer = () => {
 
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const [allCase, setAllCase] = useState()
 
   useEffect(() => {
@@ -19,12 +19,12 @@ const TotalCustomer = () => {
 
   const getData = async () => {
     await apiGetTreatment().then((res) => {
-      setData(res.data)
+      // setData(res.data)
       console.log(res.data);
       console.log(new Date().getDate())
       // นับเคสทั้งหมดจากข้อมูลที่ดึงมา
       const totalCases = res.data.length;
-      console.log("totalCases ===",totalCases);
+      console.log("totalCases ===",typeof totalCases);
       setAllCase(totalCases)
 
 
