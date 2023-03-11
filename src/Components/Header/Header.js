@@ -21,7 +21,7 @@ import { useNavigate } from "react-router";
 import { Logout } from "@mui/icons-material";
 import ShowCustomer from '../../Views/Customer/ShowCustomer/ShowCustomer';
 
-const pages = ["ข้อมูลพนักงาน", "ข้อมูลลูกค้า", "ข้อมูลแพทย์", "เคสการรักษาทั้งหมดของคลินิก"];
+const pages = ["ข้อมูลพนักงาน", "ข้อมูลลูกค้า (OPD)", "ข้อมูลแพทย์", "เคสการรักษาทั้งหมดของคลินิก"];
 // const settings = ["โปรไฟล์", "ออกจากระบบ"];
 const nav = [
   "/Employee/ShowEmployee",
@@ -53,6 +53,7 @@ function Header() {
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
+    console.log("event.currentTarget",Boolean(event.currentTarget));
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -68,7 +69,7 @@ function Header() {
   const navEmployee = () => { 
       navigate('/Employee/ShowEmployee')  
   }
-  const navCustomer = () =>{
+  const navOPD = () =>{
     navigate('/customer/showCustomers')
   }
   const navDoctor = () =>{
@@ -154,7 +155,7 @@ function Header() {
                   {pages[0]}
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={navCustomer}  sx={{ color: "#C3A55C" }}>
+              <MenuItem onClick={navOPD}  sx={{ color: "#C3A55C" }}>
                 <Typography textAlign="center" sx={{ color: "#C3A55C" }}>
                   {pages[1]}
                 </Typography>
@@ -203,7 +204,7 @@ function Header() {
               </Button>
               <Button
                 
-                onClick={navCustomer}
+                onClick={navOPD}
                 sx={{ my: 2, color: "#C3A55C", display: "block" }}
               >
                 {pages[1]}

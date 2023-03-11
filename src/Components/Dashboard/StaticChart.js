@@ -43,7 +43,7 @@ const StaticChart = () => {
             console.log(new Date().getDate())
             // นับเคสทั้งหมดจากข้อมูลที่ดึงมา
             const totalCases = res.data.length;
-            console.log("totalCases ===", totalCases);
+            console.log("totalCases s ===", totalCases);
             setAllCase(totalCases)
             const selectedYear =
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>   <FormControl sx={{ m: 1, minWidth: 100, height: 10, marginBottom: 4 }}>
@@ -60,6 +60,8 @@ const StaticChart = () => {
                             {year}
                         </MenuItem> */}
                         <MenuItem value={2019}>2019</MenuItem>
+                        <MenuItem value={2020}>2020</MenuItem>
+                        <MenuItem value={2021}>2021</MenuItem>
                         <MenuItem value={2022}>2022</MenuItem>
                         <MenuItem value={2023}>2023</MenuItem>
                     </Select>

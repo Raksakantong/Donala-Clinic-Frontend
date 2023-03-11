@@ -24,9 +24,9 @@ import { Button, ButtonGroup } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-export default function ShowCustomer() {
-  const [Customers, setCustomers] = useState([]);
-  const [Id, setId] = useState();
+export default function OPD() {
+  const [customers, setCustomers] = useState([]);
+  // const [Id, setId] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
@@ -39,35 +39,35 @@ export default function ShowCustomer() {
       setCustomers(res.data);
     });
   }
-  function del(id, e) {
-    let idParse = id.toString();
-    let ID = {
-      number_id: idParse,
-    };
-    console.log("ID", ID);
-    apiDeleteCustomer(ID).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      GetCustomer();
-    });
-  }
-  function update_customer(ID) {
-    console.log("number id == ", ID);
-    let idParse = ID.toString();
-    navigate("/customer/updateCustomer", {
-      state: {
-        id: idParse,
-      },
-    });
-  }
-  function goToAdd() {
-    navigate('/customer/AddCustomer')
-  }
+  // function del(id, e) {
+  //   let idParse = id.toString();
+  //   let ID = {
+  //     number_id: idParse,
+  //   };
+  //   console.log("ID", ID);
+  //   apiDeleteCustomer(ID).then((res) => {
+  //     console.log(res);
+  //     console.log(res.data);
+  //     GetCustomer();
+  //   });
+  // }
+  // function update_customer(ID) {
+  //   console.log("number id == ", ID);
+  //   let idParse = ID.toString();
+  //   navigate("/customer/updateCustomer", {
+  //     state: {
+  //       id: idParse,
+  //     },
+  //   });
+  // }
+  // function goToAdd() {
+  //   navigate('/customer/AddCustomer')
+  // }
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredCases = Customers.filter((item) =>
+  const filteredCases = customers.filter((item) =>
     item.number_id.includes(searchTerm)
   );
   // /customer/AddCustomer

@@ -39,18 +39,18 @@ export default function ShowCustomer() {
       setCustomers(res.data);
     });
   }
-  function del(id, e) {
-    let idParse = id.toString();
-    let ID = {
-      number_id: idParse,
-    };
-    console.log("ID", ID);
-    apiDeleteCustomer(ID).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      GetCustomer();
-    });
-  }
+  // function del(id, e) {
+  //   let idParse = id.toString();
+  //   let ID = {
+  //     number_id: idParse,
+  //   };
+  //   console.log("ID", ID);
+  //   apiDeleteCustomer(ID).then((res) => {
+  //     console.log(res);
+  //     console.log(res.data);
+  //     GetCustomer();
+  //   });
+  // }
   function update_customer(ID) {
     console.log("number id == ", ID);
     let idParse = ID.toString();

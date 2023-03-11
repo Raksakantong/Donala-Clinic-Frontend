@@ -37,9 +37,9 @@ export default function EditOPD() {
   const [drugAllergy, setDrugAllergy] = useState("");
   const [congenitalDisease, setCongenitalDisease] = useState("");
   const [etcNote, setEtcNote] = useState("");
-  const [Employees, setEmployees] = useState([]);
-  const [ID, setId] = useState();
-  const [Employees1, setEmployees1] = useState();
+  // const [Employees, setEmployees] = useState([]);
+  // const [ID, setId] = useState();
+  // const [Employees1, setEmployees1] = useState();
 
   useEffect(() => {
     getDataFromID();

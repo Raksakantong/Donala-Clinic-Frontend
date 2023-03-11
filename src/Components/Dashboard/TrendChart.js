@@ -59,6 +59,8 @@ const TrendChart = () => {
                           {year}
                       </MenuItem> */}
             <MenuItem value="2019">2019</MenuItem>
+            <MenuItem value="2020">2020</MenuItem>
+            <MenuItem value="2021">2021</MenuItem>
             <MenuItem value="2022">2022</MenuItem>
             <MenuItem value="2023">2023</MenuItem>
           </Select>

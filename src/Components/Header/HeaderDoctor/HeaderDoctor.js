@@ -67,10 +67,10 @@ function HeaderDoctor() {
   const navEmployee = () => { 
       navigate('/treatmentform')  
   }
-  const navCustomer = () =>{
+  const navShowTreatment = () =>{
     navigate('/doctor/show-clinic-treatment')
   }
-  const navDoctor = () =>{
+  const navOPD = () =>{
     navigate('/showOPD')
   }
   const LogOut = () =>{
@@ -135,12 +135,12 @@ function HeaderDoctor() {
                   {pages[0]}
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={navCustomer}  sx={{ color: "#C3A55C" }}>
+              <MenuItem onClick={navShowTreatment}  sx={{ color: "#C3A55C" }}>
                 <Typography textAlign="center" sx={{ color: "#C3A55C" }}>
                   {pages[1]}
                 </Typography>
               </MenuItem>
-              <MenuItem onClick={navDoctor} sx={{ color: "#C3A55C" }}>
+              <MenuItem onClick={navOPD} sx={{ color: "#C3A55C" }}>
                 <Typography  textAlign="center" sx={{ color: "#C3A55C" }}>
                   {pages[2]}
                 </Typography>
@@ -184,14 +184,14 @@ function HeaderDoctor() {
               </Button>
               <Button
                 
-                onClick={navCustomer}
+                onClick={navShowTreatment}
                 sx={{ my: 2, color: "#C3A55C", display: "block" }}
               >
                 {pages[1]}
               </Button>
               <Button
                
-                onClick={navDoctor}
+                onClick={navOPD}
                 sx={{ my: 2, color: "#C3A55C", display: "block" }}
               >
                 {pages[2]}
