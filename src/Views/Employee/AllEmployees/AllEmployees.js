@@ -35,28 +35,28 @@ import "./AllEmployees.scss";
 import HeaderEmployee from "../../../Components/Header/HeaderEmployee/HeaderEmployee";
 
 export default function AllEmployees() {
-    const act = ["ลบ", "แก้ไข"];
-    const [Employees, setEmployees] = useState([]);
-    const [Id, setId] = useState();
-    const navigate = useNavigate();
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    // const act = ["ลบ", "แก้ไข"];
+    const [employees, setEmployees] = useState([]);
+    // const [Id, setId] = useState();
+    // const navigate = useNavigate();
+    // const [anchorElNav, setAnchorElNav] = React.useState(null);
+    // const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [searchTerm, setSearchTerm] = useState("");
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
+    // const handleOpenNavMenu = (event) => {
+    //     setAnchorElNav(event.currentTarget);
+    // };
+    // const handleOpenUserMenu = (event) => {
+    //     setAnchorElUser(event.currentTarget);
+    // };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(false);
-    };
+    // const handleCloseNavMenu = () => {
+    //     setAnchorElNav(false);
+    // };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(true);
-    };
+    // const handleCloseUserMenu = () => {
+    //     setAnchorElUser(true);
+    // };
     useEffect(() => {
         getUsers();
     }, []);
@@ -102,7 +102,7 @@ export default function AllEmployees() {
         setSearchTerm(event.target.value);
     };
 
-    const filteredCases = Employees.filter((item) =>
+    const filteredCases = employees.filter((item) =>
         item.number_id.includes(searchTerm)
     );
     return (

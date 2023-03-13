@@ -17,7 +17,20 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-export default function UserCreate() {
+export default function AddEmployee() {
+
+  const [number_id, setNumber_id] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [start_date, setStart_date] = useState("");
+  const [date_of_birth, setdate_of_birth] = useState("");
+  const [age, setAge] = useState("");
+  const [sex, setSex] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [blood, setBlood] = useState("");
+  const [role, setRole] = useState("1");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -58,18 +71,7 @@ export default function UserCreate() {
       });
   };
 
-  const [number_id, setNumber_id] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [start_date, setStart_date] = useState("");
-  const [date_of_birth, setdate_of_birth] = useState("");
-  const [age, setAge] = useState("");
-  const [sex, setSex] = useState("");
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const [blood, setBlood] = useState("");
-  const [role, setRole] = useState("1");
-  const [password, setPassword] = useState("");
+
   return (
     <div>
       <Header />

@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import { Button, Typography } from '@mui/material';
 import CreditScore from '@mui/icons-material/CreditScore';
 import { useNavigate, useLocation } from 'react-router-dom';
-import HeaderEmployee from '../../../Components/Header/HeaderEmployee/HeaderEmployee';
+import Header from '../../../Components/Header/Header';
 import Cookies from 'js-cookie';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
@@ -27,7 +27,7 @@ const OwnerProfile = () => {
     const [cookies,setCookies] = useState()
   
     useEffect(() => {  
-      getCookies()
+      getProfile()
     }
     
      
@@ -35,13 +35,13 @@ const OwnerProfile = () => {
       , [])
   
   
-     const getCookies = async() => {
-      // let res = JSON.stringify(Cookies.get('data'));
-      const json = await JSON.parse(Cookies.get('data'));
-      await setCookies(json);
-      console.log("data cookies ===>", json);
-      await getProfile()
-    }
+    //  const getCookies = async() => {
+    //   // let res = JSON.stringify(Cookies.get('data'));
+    //   const json = await JSON.parse(Cookies.get('data'));
+    //   await setCookies(json);
+    //   console.log("data cookies ===>", json);
+    //   await getProfile()
+    // }
     async function getProfile() {
       const json = await JSON.parse(Cookies.get('data'));
       await apiGetSomeOwner(json.id).then((res) => {
@@ -50,7 +50,7 @@ const OwnerProfile = () => {
       })
     }
   
-    function update_employee(ID) {
+    function update_owner(ID) {
       let idParse = ID.toString();
       navigate("/homeOwner/profile/edit", {
         state: {
@@ -61,7 +61,7 @@ const OwnerProfile = () => {
   
     return (
       <>
-        <HeaderEmployee />
+        <Header />
         <div className='card-profile'>
           <h2>ข้อมูลส่วนตัว</h2>
           <div className='profile'>
@@ -88,7 +88,7 @@ const OwnerProfile = () => {
                       </div>
                       <>
                         <Typography align='center' margin={1}>
-                          <Button variant="contained" startIcon={<CreditScore />} color={'info'} onClick={() => update_employee(d.number_id)}>
+                          <Button variant="contained" startIcon={<CreditScore />} color={'info'} onClick={() => update_owner(d.number_id)}>
                             แก้ไขข้อมูล
                           </Button>
                         </Typography>

@@ -94,7 +94,6 @@ export default function UpdateEmployee() {
         setHeight(data[0].height)
         setWeight(data[0].weight)
         setBlood(data[0].blood)
-        setEmployees(data[0].Employees)
         setId(data[0].id)
       }
 

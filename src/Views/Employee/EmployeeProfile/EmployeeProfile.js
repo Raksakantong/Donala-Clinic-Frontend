@@ -22,11 +22,11 @@ const EmployeeProfile = () => {
 
   const [data, setData] = useState([])
   const navigate = useNavigate()
-  const location = useLocation()
-  const [cookies,setCookies] = useState()
+  // const location = useLocation()
+  // const [cookies,setCookies] = useState()
 
   useEffect(() => {  
-    getCookies()
+    getProfile()
   }
   
    
@@ -34,13 +34,13 @@ const EmployeeProfile = () => {
     , [])
 
 
-   const getCookies = async() => {
-    // let res = JSON.stringify(Cookies.get('data'));
-    const json = await JSON.parse(Cookies.get('data'));
-    await setCookies(json);
-    console.log("data cookies ===>", json);
-    await getProfile()
-  }
+  //  const getCookies = async() => {
+  //   // let res = JSON.stringify(Cookies.get('data'));
+  //   const json = await JSON.parse(Cookies.get('data'));
+  //   // await setCookies(json);
+  //   console.log("data cookies ===>", json);
+  //   await getProfile()
+  // }
   async function getProfile() {
     const json = await JSON.parse(Cookies.get('data'));
     await apiGetSomeUser(json.id).then((res) => {

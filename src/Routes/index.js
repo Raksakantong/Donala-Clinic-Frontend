@@ -2,7 +2,7 @@ import React from 'react'
 import ShowEmployee  from '../Views/Employee/ShowEmployee/ShowEmployee';
 // import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import UserCreate from "../Views/Employee/AddEmployee/UserCreate";
+import AddEmployee from "../Views/Employee/AddEmployee/AddEmployee";
 import UpdateEmployee from "../Views/Employee/UpdateEmployee/UpdateEmployee";
 import  Login  from "../Views/Login/Login";
 import AddCustomer from "../Views/Customer/AddCustomer/AddCustomer";
@@ -40,7 +40,7 @@ export default function Routes1() {
       <Route exact path="/HomeDoctor" element= {<HomeDoctor/>} />
       <Route exact path="/treatmentform" element= {<TreatmentForm/>} />
       <Route exact path="/Employee/ShowEmployee" element={<ShowEmployee />} />
-      <Route exact path='/Employee/create' element={<UserCreate />} />
+      <Route exact path='/Employee/create' element={<AddEmployee />} />
       <Route exact path='/Employee/update' element={<UpdateEmployee />} />
       <Route exact path="/homeOwner/profile" element= {<OwnerProfile/>} />
       <Route exact path="/homeOwner/profile/edit" element= {<OwnerEdit/>} />

@@ -5,7 +5,7 @@ import welcome from "../../../Assets/welcome.png";
 import Cookies from 'js-cookie'
 
 export default function HomeEmployee() {
-  const [data,setData] = useState([])
+  // const [data,setData] = useState([])
 
   return (
 

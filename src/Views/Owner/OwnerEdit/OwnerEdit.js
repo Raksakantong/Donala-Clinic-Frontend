@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import { Button, Typography, TextField } from '@mui/material';
 import CreditScore from '@mui/icons-material/CreditScore';
 import { useNavigate, useLocation } from 'react-router-dom';
-import HeaderEmployee from '../../../Components/Header/HeaderEmployee/HeaderEmployee';
+import Header from '../../../Components/Header/Header';
 // import CreditScore from '@mui/icons-material/CreditScore';
 
 export default function OwnerEdit() {
@@ -76,7 +76,7 @@ export default function OwnerEdit() {
 
     return (
         <>
-            <HeaderEmployee />
+            <Header />
             <div className='card-profile'>
                 <h2>แก้ไขมูลส่วนตัว</h2>
                 <div className='profile'>

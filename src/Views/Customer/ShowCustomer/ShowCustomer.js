@@ -32,10 +32,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 export default function ShowCustomer() {
   const [open, setOpen] = useState(false);
-  const [Customers, setCustomers] = useState([]);
-  const [Id, setId] = useState();
+  const [customers, setCustomers] = useState([]);
+  // const [Id, setId] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  
   useEffect(() => {
     GetCustomer();
   }, []);
@@ -75,7 +76,7 @@ export default function ShowCustomer() {
     setSearchTerm(event.target.value);
   };
 
-  const filteredCases = Customers.filter((item) =>
+  const filteredCases = customers.filter((item) =>
     item.number_id.includes(searchTerm)
   );
   // /customer/AddCustomer

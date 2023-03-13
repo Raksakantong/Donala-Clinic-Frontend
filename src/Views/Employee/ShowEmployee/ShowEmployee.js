@@ -41,9 +41,9 @@ import Header from "../../../Components/Header/Header";
 
 export default function ShowEmployee() {
     const [open, setOpen] = useState(false);
-    const act = ["ลบ", "แก้ไข"];
-    const [Employees, setEmployees] = useState([]);
-    const [Id, setId] = useState();
+    // const act = ["ลบ", "แก้ไข"];
+    const [employees, setEmployees] = useState([]);
+    // const [Id, setId] = useState();
     const [searchTerm, setSearchTerm] = useState("");
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -106,7 +106,7 @@ export default function ShowEmployee() {
         setSearchTerm(event.target.value);
     };
 
-    const filteredCases = Employees.filter((item) =>
+    const filteredCases = employees.filter((item) =>
         item.number_id.includes(searchTerm)
     );
     const handleClickOpen = () => {
