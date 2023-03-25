@@ -61,7 +61,8 @@ export default function OwnerEdit() {
             };
             console.log("data : ", data);
             apiUpdateOwner(data).then(function (res) {
-                alert(res.data);
+                // alert(res.data);
+                alert("แก้ไขข้อมูลสำเร็จ");
                 if (res["status"] === 200) {
                     // window.location.href = '/';
                     navigate("/homeOwner/profile");

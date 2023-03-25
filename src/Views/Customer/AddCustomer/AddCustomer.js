@@ -43,7 +43,7 @@ const AddCustomer = () => {
       "etc_note": etc_note
     }
     apiAddCustomer(data).then(function (res) {
-      alert(res.data)
+      alert("บันทึกข้อมูลสำเร็จ");
       if (res['status'] === 200) {
         // window.location.href = '/';
         navigate("/customer/ShowCustomers")

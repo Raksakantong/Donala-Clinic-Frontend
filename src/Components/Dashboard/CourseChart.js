@@ -76,11 +76,11 @@ const CourseChart = () => {
 
       console.log("case name === ", result); // จะแสดงผลลัพธ์เป็น Object ที่มี key เป็นชื่อ case_name และ value เป็นจำนวนของ case_name ในปี 2022
       const data = {
-        labels: ["ปาก",'คาง', 'จมูก', 'ตา', 'โบท็อก', 'ฉีดผิวขาว', 'เคสแก้จมูก', 'ตัดปีกจมูก'],
+        labels: ["ปาก",'คาง', 'เสริมจมูก', 'ตา', 'โบท็อก', 'ฉีดผิวขาว', 'เคสแก้จมูก', 'ตัดปีกจมูก'],
         datasets: [
           {
             label: 'จำนวนเคส',
-            data: [result.ปาก?result.ปาก:0,result.คาง?result.คาง:0, result.จมูก?result.จมูก:0, result.ตา?result.ตา:0, result.โบท็อก?result.โบท็อก:0, result.ฉีดผิวขาว?result.ฉีดผิวขาว:0, result.เคสแก้จมูก?result.เคสแก้จมูก:0, result.ตัดปีกจมูก?result.ตัดปีกจมูก:0],
+            data: [result.ปาก?result.ปาก:0,result.คาง?result.คาง:0, result.เสริมจมูก?result.เสริมจมูก:0, result.ตา?result.ตา:0, result.โบท็อก?result.โบท็อก:0, result.ฉีดผิวขาว?result.ฉีดผิวขาว:0, result.เคสแก้จมูก?result.เคสแก้จมูก:0, result.ตัดปีกจมูก?result.ตัดปีกจมูก:0],
             backgroundColor: [
               'rgba(250, 100, 52, 0.8)',
               'rgba(255, 99, 132, 0.8)',

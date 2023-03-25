@@ -65,7 +65,8 @@ export default function EmployeesEdit() {
         };
         console.log("data : ", data);
         apiUpdate(data).then(function (res) {
-            alert(res.data);
+            // alert(res.data);
+            alert("แก้ไขข้อมูลสำเร็จ");
             if (res["status"] === 200) {
                 // window.location.href = '/';
                 navigate("/homeEmployee/profile");

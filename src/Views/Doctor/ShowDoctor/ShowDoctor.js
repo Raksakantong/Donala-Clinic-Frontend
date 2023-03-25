@@ -190,6 +190,8 @@ export default function ShowDoctor() {
                           Delete!
                         </Button>
                       </ButtonGroup>
+
+
                       <Dialog
                         open={open}
                         onClose={handleClose}
@@ -201,12 +203,12 @@ export default function ShowDoctor() {
                         </DialogTitle>
                         <DialogContent>
                           <DialogContentText id="alert-dialog-description">
-                            กด "ยืนยันการลบ" เพื่อลบข้อมูล ยืนยันที่จะลบข้อมูลหรือไม่? 
+                            กด "ยืนยันการลบ" เพื่อลบข้อมูล ยืนยันที่จะลบข้อมูลหรือไม่?
                           </DialogContentText>
                         </DialogContent>
                         <DialogActions>
                           <Button onClick={handleClose}>ยกเลิก</Button>
-                          <Button onClick={() =>del(row.number_id)} autoFocus>
+                          <Button onClick={() => del(row.number_id)} autoFocus>
                             ยืนยันการลบ
                           </Button>
                         </DialogActions>

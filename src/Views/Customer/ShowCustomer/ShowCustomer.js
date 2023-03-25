@@ -8,6 +8,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Button, ButtonGroup } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
@@ -20,7 +21,6 @@ import Header from "../../../Components/Header/Header";
 import "./showCustomer.scss";
 
 import axios from "axios";
-import { Button, ButtonGroup } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
@@ -29,17 +29,22 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 export default function ShowCustomer() {
   const [open, setOpen] = useState(false);
   const [customers, setCustomers] = useState([]);
-  // const [Id, setId] = useState();
+  const [Id, setId] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
-  
+
+
+
   useEffect(() => {
     GetCustomer();
   }, []);
+
   function GetCustomer() {
     let getData = apiGetCustomer();
     getData.then((res) => {
@@ -47,17 +52,17 @@ export default function ShowCustomer() {
       setCustomers(res.data);
     });
   }
-  function del(id, e) {
-    let idParse = id.toString();
-    let ID = {
-      number_id: idParse,
-    };
-    console.log("ID", ID);
-    apiDeleteCustomer(ID).then((res) => {
+  async function del() {
+    // let idParse = await id.toString();
+    // let ID = {
+    //   id: idParse,
+    // };
+    // console.log("ID", ID);
+    await apiDeleteCustomer({number_id:Id}).then(async (res) => {
       console.log(res);
-      console.log(res.data);
-      GetCustomer();
-      handleClose()
+      console.log("=====", res.data);
+      await GetCustomer();
+      await handleClose()
     });
   }
   function update_customer(ID) {
@@ -80,10 +85,11 @@ export default function ShowCustomer() {
     item.number_id.includes(searchTerm)
   );
   // /customer/AddCustomer
-  const handleClickOpen = () => {
+  const handleClickOpen = (id) => {
+    console.log(id);
     setOpen(true);
-  };
-
+    setId(id)
+  }
   const handleClose = () => {
     setOpen(false);
   };
@@ -164,7 +170,7 @@ export default function ShowCustomer() {
               </TableHead>
               <TableBody>
                 {filteredCases.map((row, index) => (
-                  <TableRow key={row.number_id}>
+                  <TableRow key={index}>
                     <TableCell component="th" scope="row">
                       {row.number_id}
                     </TableCell>
@@ -186,39 +192,42 @@ export default function ShowCustomer() {
                         >
                           Edit
                         </Button>
-                        <Button color="error" onClick={() => handleClickOpen()}>
-                          Delete!
+                        <Button color="error" onClick={() => handleClickOpen(row.number_id)}>
+                          Delete2
                         </Button>
                       </ButtonGroup>
-                      <Dialog
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="alert-dialog-title"
-                        aria-describedby="alert-dialog-description"
-                      >
-                        <DialogTitle id="alert-dialog-title">
-                          {"แจ้งเตือนการลบข้อมูล !"}
-                        </DialogTitle>
-                        <DialogContent>
-                          <DialogContentText id="alert-dialog-description">
-                            กด "ยืนยันการลบ" เพื่อลบข้อมูล ยืนยันที่จะลบข้อมูลหรือไม่? 
-                          </DialogContentText>
-                        </DialogContent>
-                        <DialogActions>
-                          <Button onClick={handleClose}>ยกเลิก</Button>
-                          <Button onClick={() =>del(row.number_id)} autoFocus>
-                            ยืนยันการลบ
-                          </Button>
-                        </DialogActions>
-                      </Dialog>
                     </TableCell>
                   </TableRow>
+
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
         </div>
       </div>
+      <Dialog
+        
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-title"
+        aria-describedby="alert-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"แจ้งเตือนการลบข้อมูล !"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            กด "ยืนยันการลบ" เพื่อลบข้อมูล ยืนยันที่จะลบข้อมูลหรือไม่?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>ยกเลิก</Button>
+          <Button onClick={() => del()} autoFocus>
+            ยืนยันการลบ
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
+

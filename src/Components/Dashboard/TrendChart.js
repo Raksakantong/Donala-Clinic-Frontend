@@ -84,13 +84,13 @@ const TrendChart = () => {
       console.log("result ==", result); // แสดงผลลัพธ์
 
       const data1 = {
-        labels: ['ปาก', 'คาง', 'จมูก', 'ตา', 'โบท็อก', 'ฉีดผิวขาว', 'เคสแก้จมูก', 'ตัดปีกจมูก'],
+        labels: ['ปาก', 'คาง', 'เสริมจมูก', 'ตา', 'โบท็อก', 'ฉีดผิวขาว', 'เคสแก้จมูก', 'ตัดปีกจมูก'],
         datasets: [
           {
             label: 'ยอดรายรับ',
             // data: [month1,month2,month3,month4,month5,month6,month7,month8,month9,month10,month11,month12],
             data: [
-              result.ปาก ? result.ปาก : 0, result.คาง ? result.คาง : 0, result.จมูก ? result.จมูก : 0, result.ตา ? result.ตา : 0, result.โบท็อก ? result.โบท็อก : 0, result.ฉีดผิวขาว ? result.ฉีดผิวขาว : 0, result.เคสแก้จมูก ? result.เคสแก้จมูก : 0, result.ตัดปีกจมูก ? result.ตัดปีกจมูก : 0,
+              result.ปาก ? result.ปาก : 0, result.คาง ? result.คาง : 0, result.เสริมจมูก ? result.เสริมจมูก : 0, result.ตา ? result.ตา : 0, result.โบท็อก ? result.โบท็อก : 0, result.ฉีดผิวขาว ? result.ฉีดผิวขาว : 0, result.เคสแก้จมูก ? result.เคสแก้จมูก : 0, result.ตัดปีกจมูก ? result.ตัดปีกจมูก : 0,
             ],
             fill: true,
             borderColor: 'rgba(75,192,192,1)',
